@@ -1,4 +1,4 @@
-# 2D Physics Tests
+# Super Agile Bros
 
 This demo contains a series of tests for the 2D
 physics engine.
