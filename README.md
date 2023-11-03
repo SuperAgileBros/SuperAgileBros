@@ -6,12 +6,13 @@ Language: GDScript
 
 Renderer: GLES 2
 
-## Screenshots
-
 Authors:
  - Michał Pańczyk
  - Mateusz Rączka
  - Kamil Pietczyk
  - Tomasz Sieńko
+
+## Screenshots
+
 
 ![Screenshot](screenshots/screenshot.png)
