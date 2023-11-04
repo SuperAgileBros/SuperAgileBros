@@ -9,25 +9,13 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "MenuButton",
-"class": "OptionMenu",
+"base": "KinematicBody2D",
+"class": "Actor",
 "language": "GDScript",
-"path": "res://utils/option_menu.gd"
-}, {
-"base": "Node2D",
-"class": "Test",
-"language": "GDScript",
-"path": "res://test.gd"
-}, {
-"base": "Test",
-"class": "TestCharacter",
-"language": "GDScript",
-"path": "res://tests/functional/test_character.gd"
+"path": "res://actors/src/Actor.gd"
 } ]
 _global_script_class_icons={
-"OptionMenu": "",
-"Test": "",
-"TestCharacter": ""
+"Actor": ""
 }
 
 [application]
@@ -39,8 +27,7 @@ They can be used for different purpose:
 
 - Functional tests to check for regressions and behavior of the 2D physics engine
 - Performance tests to evaluate performance of the 2D physics engine"
-run/main_scene="res://main.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://lvls/lvl_tutorial.tscn"
 
 [autoload]
 
@@ -53,6 +40,11 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
+window/size/width=1980
+window/size/height=1080
+window/size/resizable=false
+window/size/borderless=true
+window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
@@ -118,6 +110,13 @@ character_jump={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="items"
+2d_physics/layer_4="world"
 
 [memory]
 
