@@ -5,3 +5,4 @@
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 8
 script = ExtResource( 2 )
+speed = Vector2( 800, 1000 )
