@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "HBoxContainer",
 "class": "KeyBinding",
 "language": "GDScript",
-"path": "res://menus/ui/key_binding.gd"
+"path": "res://menus/ui/Key_binding.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
