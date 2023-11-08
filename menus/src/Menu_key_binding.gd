@@ -20,7 +20,7 @@ func _bindingNode(action,binding,parent):
 	container.add_child(Label.new())
 	container.add_child(Button.new())
 	
-	container.get_child(0).text = action
+	container.get_child(0).text = action.split("_")[1]
 	container.get_child(1).text = binding
 	
 	get_node(parent).add_child(container)
