@@ -8,11 +8,11 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
 		if get_tree().paused:
-			$Pause_menu.hide()
+			$Menu_pause.hide()
 			get_tree().paused = false
 		else:
 			get_tree().paused = true
-			$Pause_menu.show()
+			$Menu_pause.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
