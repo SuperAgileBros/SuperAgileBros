@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://menus/ui/Key_binding.gd" type="Script" id=1]
+
+[node name="Control" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1882.0
+margin_bottom = -1060.0
+rect_min_size = Vector2( 100, 20 )
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 100.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 100, 0 )
+text = "empty"
+
+[node name="AddButton" type="Button" parent="."]
+margin_left = 104.0
+margin_right = 124.0
+margin_bottom = 20.0
+text = "+"
+
+[connection signal="pressed" from="AddButton" to="." method="_on_AddButton_pressed"]

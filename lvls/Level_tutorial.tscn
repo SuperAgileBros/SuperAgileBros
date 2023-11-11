@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/Dummy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://lvls/src/Level_tutorial.gd" type="Script" id=4]
+[ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+pause_mode = 1
 position = Vector2( 363, 410 )
 scale = Vector2( 2, 2 )
 
@@ -15,6 +20,7 @@ position = Vector2( 0, 0 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="TileMap" type="TileMap" parent="."]
+pause_mode = 1
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -22,3 +28,11 @@ collision_layer = 8
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 0, 3, 0, 30, 3, 0, 65536, 3, 0, 65566, 3, 0, 131072, 3, 0, 131096, 5, 0, 131097, 5, 0, 131098, 5, 0, 131099, 5, 0, 131100, 5, 0, 131101, 5, 0, 131102, 3, 0, 196608, 3, 0, 196638, 3, 0, 262144, 3, 0, 262174, 3, 0, 327680, 3, 0, 327710, 3, 0, 393216, 3, 0, 393232, 5, 0, 393233, 5, 0, 393234, 5, 0, 393235, 5, 0, 393236, 5, 0, 393246, 3, 0, 458752, 3, 0, 458782, 3, 0, 524288, 3, 0, 524318, 3, 0, 589824, 3, 0, 589829, 5, 0, 589830, 5, 0, 589831, 5, 0, 589832, 5, 0, 589833, 5, 0, 589834, 5, 0, 589835, 5, 0, 589854, 3, 0, 655360, 3, 0, 655390, 3, 0, 720896, 3, 0, 720926, 3, 0, 786432, 3, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786452, 5, 0, 786462, 3, 0, 851968, 3, 0, 851998, 3, 0, 917504, 3, 0, 917527, 5, 0, 917528, 5, 0, 917529, 5, 0, 917534, 3, 0, 983040, 3, 0, 983070, 3, 0, 1048576, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1048598, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0, 1048606, 0, 0 )
+
+[node name="Menu_pause" parent="." instance=ExtResource( 5 )]
+visible = true
+anchor_bottom = 0.0
+margin_left = 641.0
+margin_top = 210.0
+margin_right = 1489.0
+margin_bottom = 786.0
