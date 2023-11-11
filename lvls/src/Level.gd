@@ -13,7 +13,3 @@ func _process(_delta):
 		else:
 			get_tree().paused = true
 			$Menu_pause.show()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

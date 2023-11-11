@@ -30,3 +30,8 @@ func _on_button_pressed(binding):
 	button.queue_free()
 
 func _on_AddButton_pressed():
+	var button = get_node("AddButton")
+	button.text = "Press a key..."
+	yield(get_tree(), "idle_frame")
+
+

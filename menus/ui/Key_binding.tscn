@@ -9,9 +9,6 @@ margin_right = -1882.0
 margin_bottom = -1060.0
 rect_min_size = Vector2( 100, 20 )
 script = ExtResource( 1 )
-action_name = null
-controller_name = null
-controller_id = null
 
 [node name="Label" type="Label" parent="."]
 margin_top = 3.0

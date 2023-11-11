@@ -9,14 +9,3 @@ margin_right = -1972.0
 margin_bottom = -1044.0
 tab_align = 2
 script = ExtResource( 1 )
-
-[node name="AddBindingPopup" type="PopupDialog" parent="."]
-visible = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[connection signal="gui_input" from="AddBindingPopup" to="." method="_on_AddBindingPopup_gui_input"]

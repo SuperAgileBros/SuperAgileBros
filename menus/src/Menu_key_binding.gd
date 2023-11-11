@@ -20,8 +20,3 @@ func _ready():
 		newTab.controller_name = Input.get_joy_name(joypad)
 		newTab.controller_id = joypad
 		add_child(newTab)
-
-
-func _on_AddBindingPopup_gui_input(event):
-	print(self.name)
-	pass # Replace with function body.
