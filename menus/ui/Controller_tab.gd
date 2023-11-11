@@ -33,8 +33,7 @@ func _ready():
 			ui_actions.append(action)
 	
 	_set_keys(vbox, character_actions, "Character")
-	_set_keys(vbox, ui_actions, "UI")
-
+	
 func _set_keys(vbox, action_list, title):
 	var title_label = Label.new()
 	title_label.set_text(title)
