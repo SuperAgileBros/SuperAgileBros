@@ -7,11 +7,12 @@ export var controller_id = -1
 var new_binding
 var listening = false
 var can_change_keys = true
+var bindings = []
 
 func _ready():
 	can_change_keys = get_parent().get_parent().get_parent().can_change_keys
 	self.get_node("Label").set_text(action_name.split("_")[1].capitalize())
-	var bindings = InputMap.get_action_list(action_name)
+	bindings = InputMap.get_action_list(action_name)
 	
 	for binding in bindings:
 		if controller_id == -1 and binding is InputEventKey:
@@ -22,7 +23,9 @@ func _ready():
 			_add_button(binding, Input.get_joy_axis_string(binding.axis))
 
 func _input(event):
-	if listening:
+	if _total_event_is_action(event):
+		print("This key is already used")
+	elif listening:
 		if controller_id == -1 and event is InputEventKey:
 			InputMap.action_add_event(action_name, event)
 			_add_button(event, event.as_text())
@@ -35,7 +38,11 @@ func _input(event):
 			else:
 				_add_button(event, Input.get_joy_axis_string(event.axis))
 				_on_AddButton_pressed()
-
+func _total_event_is_action(event):
+	var actions = InputMap.get_actions()
+	for action in actions:
+		if InputMap.event_is_action(event, action):
+			return true
 
 func _add_button(binding, binding_name):
 	var button = Button.new()
