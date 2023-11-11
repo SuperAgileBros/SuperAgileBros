@@ -3,6 +3,7 @@ extends Tabs
 export var actions = []
 export var controller_name = ""
 export var controller_id = -1
+export var can_change_keys = true
 
 var KeyBinding = preload("res://menus/ui/Key_binding.tscn")
 

@@ -4,8 +4,12 @@ class_name KeyBinding
 export var action_name: String = ""
 export var controller_name: String = ""
 export var controller_id = -1
+var new_binding
+var listening = false
+var can_change_keys = true
 
 func _ready():
+	can_change_keys = get_parent().get_parent().get_parent().can_change_keys
 	self.get_node("Label").set_text(action_name.split("_")[1].capitalize())
 	var bindings = InputMap.get_action_list(action_name)
 	
@@ -16,6 +20,22 @@ func _ready():
 			_add_button(binding, Input.get_joy_button_string(binding.button_index))
 		elif controller_id != -1 and binding is InputEventJoypadMotion:
 			_add_button(binding, Input.get_joy_axis_string(binding.axis))
+
+func _input(event):
+	if listening:
+		if controller_id == -1 and event is InputEventKey:
+			InputMap.action_add_event(action_name, event)
+			_add_button(event, event.as_text())
+			_on_AddButton_pressed()
+		elif controller_id != -1 and ( event is InputEventJoypadButton or event is InputEventJoypadMotion ):
+			InputMap.action_add_event(action_name, event)
+			if event is InputEventJoypadButton:
+				_add_button(event, Input.get_joy_button_string(event.button_index))
+				_on_AddButton_pressed()
+			else:
+				_add_button(event, Input.get_joy_axis_string(event.axis))
+				_on_AddButton_pressed()
+
 
 func _add_button(binding, binding_name):
 	var button = Button.new()
@@ -31,7 +51,13 @@ func _on_button_pressed(binding):
 
 func _on_AddButton_pressed():
 	var button = get_node("AddButton")
-	button.text = "Press a key..."
-	yield(get_tree(), "idle_frame")
+	if can_change_keys:
+		button.text = "Press a key..."
+		can_change_keys = false
+		listening = true
+	elif listening:
+		button.text = "+"
+		listening = false
+		can_change_keys = true
 
 
