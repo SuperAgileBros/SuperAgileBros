@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/Dummy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://lvls/src/Level_tutorial.gd" type="Script" id=4]
+[ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=5]
+
+[node name="Node2D" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+pause_mode = 1
+position = Vector2( 363, 410 )
+scale = Vector2( 2, 2 )
+
+[node name="CollisionPolygon2D2" parent="Player" instance=ExtResource( 3 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+pause_mode = 1
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 8
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 131096, 5, 0, 131097, 5, 0, 131098, 5, 0, 131099, 5, 0, 131100, 5, 0, 393232, 5, 0, 393233, 5, 0, 393234, 5, 0, 393235, 5, 0, 393236, 5, 0, 589829, 5, 0, 589830, 5, 0, 589831, 5, 0, 589832, 5, 0, 589833, 5, 0, 589834, 5, 0, 589835, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786452, 5, 0, 917527, 5, 0, 917528, 5, 0, 917529, 5, 0 )
+
+[node name="Menu_pause" parent="." instance=ExtResource( 5 )]
+visible = true
+anchor_bottom = 0.0
+margin_left = 641.0
+margin_top = 210.0
+margin_right = 1489.0
+margin_bottom = 786.0
