@@ -15,6 +15,21 @@ _global_script_classes=[ {
 "path": "res://actors/src/Actor.gd"
 }, {
 "base": "HBoxContainer",
+"class": "ContributorClass",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/ContributorClass.gd"
+}, {
+"base": "PanelContainer",
+"class": "GistItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/GistItem.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InvitationItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+}, {
+"base": "HBoxContainer",
 "class": "KeyBinding",
 "language": "GDScript",
 "path": "res://menus/ui/Key_binding.gd"
@@ -23,11 +38,20 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://lvls/src/Level.gd"
+}, {
+"base": "PanelContainer",
+"class": "RepositoryItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
+"ContributorClass": "",
+"GistItem": "",
+"InvitationItem": "",
 "KeyBinding": "",
-"Level": ""
+"Level": "",
+"RepositoryItem": ""
 }
 
 [application]
@@ -45,6 +69,10 @@ run/main_scene="res://menus/Menu_main.tscn"
 
 Log="*res://utils/system_log.gd"
 System="*res://utils/system.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
 [debug]
 
@@ -60,6 +88,10 @@ window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
 
 [input]
 
