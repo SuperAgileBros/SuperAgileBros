@@ -1,6 +1,15 @@
 extends Actor
+class_name Player
 
 var face_right = true
+
+func _input(event):
+	if event.is_action_pressed("character_action"):
+		_action()
+
+func _action():
+	#implemented in character script
+	pass
 
 func _physics_process(_delta) -> void:
 	var direction := get_direction()
