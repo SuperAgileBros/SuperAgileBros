@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://actors/Dummy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://actors/Mat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://lvls/src/Level_tutorial.gd" type="Script" id=4]
 [ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=5]
 
@@ -10,14 +9,8 @@
 pause_mode = 1
 script = ExtResource( 4 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-pause_mode = 1
-position = Vector2( 363, 410 )
-scale = Vector2( 2, 2 )
-
-[node name="CollisionPolygon2D2" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 0, 0 )
-scale = Vector2( 0.5, 0.5 )
+[node name="CollisionPolygon2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 452, 407 )
 
 [node name="TileMap" type="TileMap" parent="."]
 pause_mode = 1

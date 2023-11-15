@@ -1,8 +1,27 @@
 extends Actor
+class_name Player
 
+var face_right = true
+
+func _input(event):
+	if event.is_action_pressed("character_action"):
+		_action()
+
+func _action():
+	#implemented in character script
+	pass
 
 func _physics_process(_delta) -> void:
-	var direction: = get_direction()
+	var direction := get_direction()
+	var sprite := get_child(0)
+	
+	if direction.x > 0:
+		face_right = true
+		sprite.scale.x = 1
+	elif direction.x < 0:
+		face_right = false
+		sprite.scale.x = -1
+
 	velocity = calculate_velocity(velocity, direction, speed)
 	velocity = move_and_slide(velocity, Vector2.UP)
 
