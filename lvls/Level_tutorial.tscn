@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://actors/Slime1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/Mat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://lvls/src/Level_tutorial.gd" type="Script" id=4]
 [ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=5]
@@ -63,3 +64,6 @@ texture = ExtResource( 7 )
 position = Vector2( 264, 411 )
 scale = Vector2( 3.412, 4.023 )
 texture = ExtResource( 9 )
+
+[node name="Slime1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1260, 345 )
