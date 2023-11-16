@@ -15,21 +15,6 @@ _global_script_classes=[ {
 "path": "res://actors/src/Actor.gd"
 }, {
 "base": "HBoxContainer",
-"class": "ContributorClass",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
-}, {
-"base": "PanelContainer",
-"class": "GistItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
-}, {
-"base": "HBoxContainer",
 "class": "KeyBinding",
 "language": "GDScript",
 "path": "res://menus/ui/Key_binding.gd"
@@ -43,22 +28,12 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://actors/src/Player.gd"
-}, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
-"ContributorClass": "",
-"GistItem": "",
-"InvitationItem": "",
 "KeyBinding": "",
 "Level": "",
-"Player": "",
-
-"RepositoryItem": ""
+"Player": ""
 }
 
 [application]
@@ -95,10 +70,6 @@ window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
-
-[editor_plugins]
-
-
 
 [input]
 
