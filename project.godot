@@ -57,7 +57,6 @@ _global_script_class_icons={
 "KeyBinding": "",
 "Level": "",
 "Player": "",
-
 "RepositoryItem": ""
 }
 
@@ -98,6 +97,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
+enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
 
 [input]
 

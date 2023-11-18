@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://actors/items/Stone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/Mat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://lvls/src/Level_tutorial.gd" type="Script" id=4]
 [ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/items/Stick.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -29,3 +31,9 @@ margin_left = 641.0
 margin_top = 210.0
 margin_right = 1489.0
 margin_bottom = 786.0
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 704, 145 )
+
+[node name="RigidBody2D2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 852, 200 )

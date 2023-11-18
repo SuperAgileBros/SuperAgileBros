@@ -3,12 +3,11 @@
 [ext_resource path="res://actors/assets/stone.png" type="Texture" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 10.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="RigidBody2D" type="RigidBody2D" groups=["item"]]
 scale = Vector2( 0.1, 0.1 )
 collision_layer = 4
-collision_mask = 9
+collision_mask = 8
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

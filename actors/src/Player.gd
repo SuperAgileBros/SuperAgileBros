@@ -23,7 +23,11 @@ func _physics_process(_delta) -> void:
 		sprite.scale.x = -1
 
 	velocity = calculate_velocity(velocity, direction, speed)
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+	collision_process()
+	
+func collision_process():
+	pass
 
 func get_direction() -> Vector2:
 	return Vector2(
