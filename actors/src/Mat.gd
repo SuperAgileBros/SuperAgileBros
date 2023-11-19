@@ -9,7 +9,5 @@ func _action():
 		var item = load(items_common[key]).instance()
 		item.position = position
 		get_parent().add_child(item)
-		
-		
-		
-	
+
+
