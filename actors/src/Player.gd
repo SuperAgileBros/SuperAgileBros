@@ -2,10 +2,19 @@ extends Actor
 class_name Player
 
 var face_right = true
-
+var equipment = []
 func _input(event):
 	if event.is_action_pressed("character_action"):
 		_action()
+	if event.is_action_pressed("character_attack"):
+		_attack()
+
+func _attack():
+	if equipment.size() > 0:
+		pass
+	else:
+		print("no weapon equipped")
+	pass
 
 func _action():
 	#implemented in character script
@@ -27,7 +36,24 @@ func _physics_process(_delta) -> void:
 	collision_process()
 	
 func collision_process():
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		if collision.collider is TileMap:
+			pass
+		elif collision.collider is Item:
+			print(collision.collider)
+			pickup_item(collision.collider)
+		
+		#zachowaniwe pędu przy kolizji z Rigidbody2D
+		if (collision.collider != null) and (collision.collider is RigidBody2D):
+			collision.collider.apply_central_impulse(-collision.normal * 100)
 	pass
+
+func pickup_item(item):
+	if equipment.size() < 8:
+		equipment.append(item)
+		item.queue_free()
+		
 
 func get_direction() -> Vector2:
 	return Vector2(
