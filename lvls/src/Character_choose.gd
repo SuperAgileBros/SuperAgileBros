@@ -15,7 +15,7 @@ var tomekCharacter : PackedScene = preload("res://actors/Tomek.tscn")
 var matCharacter : PackedScene = preload("res://actors/Mat.tscn")
 var kamilCharacter : PackedScene = preload("res://actors/Kamil.tscn")
 var michalCharacter : PackedScene = preload("res://actors/Michal.tscn")
-onready var currentKinematicBody = get_node("/root/Node2D/CollisionPolygon2D")
+onready var currentKinematicBody = get_node("/root/Node2D/Player")
 
 func _process(delta): 
 	if  self.visible:	
