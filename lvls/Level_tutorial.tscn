@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
+
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://actors/Slime1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/items/Stone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/Mat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://lvls/src/Level_tutorial.gd" type="Script" id=4]
 [ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=5]
@@ -9,12 +10,13 @@
 [ext_resource path="res://actors/assets/tomek.png" type="Texture" id=8]
 [ext_resource path="res://actors/assets/kamil.png" type="Texture" id=9]
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=10]
+[ext_resource path="res://actors/items/Stick.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 4 )
 
-[node name="CollisionPolygon2D" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 452, 407 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -34,12 +36,6 @@ margin_left = 641.0
 margin_top = 210.0
 margin_right = 1489.0
 margin_bottom = 786.0
-
-[node name="RigidBody2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 704, 145 )
-
-[node name="RigidBody2D2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 852, 200 )
 
 [node name="Character_choose" type="Panel" parent="."]
 visible = false
@@ -70,5 +66,9 @@ position = Vector2( 264, 411 )
 scale = Vector2( 3.412, 4.023 )
 texture = ExtResource( 9 )
 
-[node name="Slime1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1260, 345 )
+[node name="RigidBody2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 727, 343 )
+
+[node name="RigidBody2D2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 893, 330 )
+scale = Vector2( 0.01, 0.01 )
