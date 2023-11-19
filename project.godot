@@ -28,7 +28,6 @@ _global_script_classes=[ {
 "class": "InvitationItem",
 "language": "GDScript",
 "path": "res://addons/github-integration/scripts/InvitationItem.gd"
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Item",
@@ -63,6 +62,7 @@ _global_script_class_icons={
 "Item": "",
 "KeyBinding": "",
 "Level": "",
+"Player": "",
 "RepositoryItem": ""
 }
 
