@@ -27,7 +27,10 @@ _global_script_classes=[ {
 "base": "HBoxContainer",
 "class": "InvitationItem",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+"path": "res://addons/github-inte<<<<<<< level_maker
+102
+ 
+gration/scripts/InvitationItem.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Item",
@@ -98,7 +101,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg", "res://addons/nklbdev.tile_palette/plugin.cfg" )
 
 [input]
 
