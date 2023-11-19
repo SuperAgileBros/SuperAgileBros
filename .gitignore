@@ -7,9 +7,9 @@ export_presets.cfg
 *.import
 .github/
 addons/
+
 LICENSE
 lvls/assets/tiles_demo.png.import
 *.import
 *.import
 lvls/assets/tiles_demo.png.import
-VERSION.md
