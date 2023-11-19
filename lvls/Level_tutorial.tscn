@@ -1,23 +1,21 @@
-[gd_scene load_steps=6 format=2]
-
+[gd_scene load_steps=11 format=2]
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://actors/Dummy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://actors/Slime1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/Mat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://lvls/src/Level_tutorial.gd" type="Script" id=4]
 [ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/assets/michal.png" type="Texture" id=6]
+[ext_resource path="res://actors/assets/mati.png" type="Texture" id=7]
+[ext_resource path="res://actors/assets/tomek.png" type="Texture" id=8]
+[ext_resource path="res://actors/assets/kamil.png" type="Texture" id=9]
+[ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=10]
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 4 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-pause_mode = 1
-position = Vector2( 363, 410 )
-scale = Vector2( 2, 2 )
-
-[node name="CollisionPolygon2D2" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 0, 0 )
-scale = Vector2( 0.5, 0.5 )
+[node name="CollisionPolygon2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 452, 407 )
 
 [node name="TileMap" type="TileMap" parent="."]
 pause_mode = 1
@@ -36,3 +34,41 @@ margin_left = 641.0
 margin_top = 210.0
 margin_right = 1489.0
 margin_bottom = 786.0
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 704, 145 )
+
+[node name="RigidBody2D2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 852, 200 )
+
+[node name="Character_choose" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.788235 )
+margin_left = 354.0
+margin_top = 110.0
+margin_right = 1615.0
+margin_bottom = 966.0
+script = ExtResource( 10 )
+
+[node name="Michał" type="Sprite" parent="Character_choose"]
+position = Vector2( 935, 430 )
+scale = Vector2( 3.412, 4.023 )
+texture = ExtResource( 6 )
+
+[node name="Tomek" type="Sprite" parent="Character_choose"]
+position = Vector2( 605, 686 )
+scale = Vector2( 3.412, 4.023 )
+texture = ExtResource( 8 )
+
+[node name="Mateusz" type="Sprite" parent="Character_choose"]
+position = Vector2( 601, 157 )
+scale = Vector2( 3.412, 4.023 )
+texture = ExtResource( 7 )
+
+[node name="Kamil" type="Sprite" parent="Character_choose"]
+position = Vector2( 264, 411 )
+scale = Vector2( 3.412, 4.023 )
+texture = ExtResource( 9 )
+
+[node name="Slime1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1260, 345 )

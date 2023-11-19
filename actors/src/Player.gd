@@ -1,10 +1,59 @@
 extends Actor
+class_name Player
 
+var face_right = true
+var equipment = []
+func _input(event):
+	if event.is_action_pressed("character_action"):
+		_action()
+	if event.is_action_pressed("character_attack"):
+		_attack()
+
+func _attack():
+	if equipment.size() > 0:
+		pass
+	else:
+		print("no weapon equipped")
+	pass
+
+func _action():
+	#implemented in character script
+	pass
 
 func _physics_process(_delta) -> void:
-	var direction: = get_direction()
+	var direction := get_direction()
+	var sprite := get_child(0)
+	
+	if direction.x > 0:
+		face_right = true
+		sprite.scale.x = 1
+	elif direction.x < 0:
+		face_right = false
+		sprite.scale.x = -1
+
 	velocity = calculate_velocity(velocity, direction, speed)
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+	collision_process()
+	
+func collision_process():
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		if collision.collider is TileMap:
+			pass
+		elif collision.collider is Item:
+			print(collision.collider)
+			pickup_item(collision.collider)
+		
+		#zachowaniwe pędu przy kolizji z Rigidbody2D
+		if (collision.collider != null) and (collision.collider is RigidBody2D):
+			collision.collider.apply_central_impulse(-collision.normal * 100)
+	pass
+
+func pickup_item(item):
+	if equipment.size() < 8:
+		equipment.append(item)
+		item.queue_free()
+		
 
 func get_direction() -> Vector2:
 	return Vector2(
