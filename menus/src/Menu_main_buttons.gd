@@ -2,7 +2,7 @@ extends VBoxContainer
 
 var tutorial = "res://lvls/Level_tutorial.tscn"
 var new_game = "res://lvls/Level_tutorial.tscn"
-var load_game = "res://lvls/Level_tutorial.tscn"
+var load_game = "res://lvls/Level_0.tscn"
 var settings = "res://menus/Menu_key_binding.tscn"
 
 func _ready():

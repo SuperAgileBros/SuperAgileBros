@@ -39,3 +39,4 @@ func _characterSwitch(choosenCharacter):
 	currentKinematicBody.position = previousKinematicBody.position
 	currentKinematicBody.z_index = -1
 	get_parent().add_child(currentKinematicBody,currentindex)
+	get_parent().move_child(currentKinematicBody,currentindex)
