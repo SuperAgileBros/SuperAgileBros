@@ -16,11 +16,10 @@ var move_direction = 1  # Tu ustawiam chwilowo kierunek slime w trakcie jego wys
 
 
 func _ready():
-	# Pobieram instancje gracza za pomocą indexu, poniewaz ustawiany jest na 0
-	# Inaczej mozna to zrobic najpierw za pomcoa nazwy, a index przypisac do
-	# jakiejs zmiennej
-	node = get_node("/root/Node2D")
-	player = node.get_child(0)
+	# Pobieram instancje gracza za pomocą nazwy, udało mi sie w skrypcie do zmiany gracza
+	# przypisać wartość "Name" taką jaką miał poprzedni obiekt
+	player = get_parent().get_node("Player")
+	
 
 	
 
@@ -36,7 +35,7 @@ func _process(delta):
 	else:
 		# Jak funkcja zmiany postaci usuwa gracza na sam moment wyboru to slime musi sobie poczekać
 		# chwilowo
-		player = node.get_child(0) # Tu przypisuje od nowa gracza na tego który był wybrany
+		player = get_parent().get_node("Player") # Tu przypisuje od nowa gracza na tego który był wybrany
 		move_timer -= delta
 		if move_timer <= 0:
 			move_timer = rand_range(move_interval_min, move_interval_max)
@@ -44,7 +43,7 @@ func _process(delta):
 		velocity.x = move_direction * 100  # random prędkość
 	# Funkcja poruszania
 	velocity = move_and_slide(velocity, Vector2.UP)
-
+	collision_process()
 	# timer random skoku
 	jump_timer -= delta
 
@@ -58,3 +57,11 @@ func jump():
 	if is_on_floor():
 		# predkosc skoku
 		velocity.y = -jump_power
+		
+func collision_process():
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		if collision.collider is KinematicBody2D:
+			player.health = player.health - 1
+			get_parent().set_health_bar() 
+	pass

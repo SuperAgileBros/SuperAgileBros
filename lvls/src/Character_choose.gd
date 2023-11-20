@@ -32,11 +32,14 @@ func _process(delta):
 			_characterSwitch(kamilCharacter)
 			
 func _characterSwitch(choosenCharacter):
+	var instanceName = "Player"
 	var previousKinematicBody = currentKinematicBody
 	var currentindex = currentKinematicBody.get_index()
+	currentKinematicBody.name = "TEMP"
 	currentKinematicBody.queue_free()
 	currentKinematicBody = choosenCharacter.instance()
 	currentKinematicBody.position = previousKinematicBody.position
 	currentKinematicBody.z_index = -1
-	get_parent().add_child(currentKinematicBody,currentindex)
+	currentKinematicBody.name = instanceName
+	get_parent().add_child(currentKinematicBody,true)
 	get_parent().move_child(currentKinematicBody,currentindex)
