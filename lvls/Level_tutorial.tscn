@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://actors/items/Stone.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://actors/assets/kamil.png" type="Texture" id=9]
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=10]
 [ext_resource path="res://actors/items/Stick.tscn" type="PackedScene" id=11]
+[ext_resource path="res://actors/Slime1.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
@@ -72,3 +73,6 @@ position = Vector2( 727, 343 )
 [node name="RigidBody2D2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 893, 330 )
 scale = Vector2( 0.01, 0.01 )
+
+[node name="Slime1" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1382, 350 )
