@@ -5,7 +5,10 @@ var characterChooseVisible: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	set_health_bar() 
 
+func set_health_bar() -> void:
+	$HealthBar.value = $Player.health
 
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):

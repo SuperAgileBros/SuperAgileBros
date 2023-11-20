@@ -1,7 +1,9 @@
 extends Actor
 class_name Player
 
+const max_health = 100
 var face_right = true
+var health = max_health
 var equipment = []
 func _input(event):
 	if event.is_action_pressed("character_action"):
@@ -43,7 +45,9 @@ func collision_process():
 		elif collision.collider is Item:
 			print(collision.collider)
 			pickup_item(collision.collider)
-		
+		if collision.collider is KinematicBody2D:
+			health = health - 1
+			get_parent().set_health_bar() 
 		#zachowaniwe pędu przy kolizji z Rigidbody2D
 		if (collision.collider != null) and (collision.collider is RigidBody2D):
 			collision.collider.apply_central_impulse(-collision.normal * 100)
