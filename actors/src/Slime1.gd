@@ -31,7 +31,7 @@ func _process(delta):
 		var direction_to_player = (player.global_position - global_position).normalized()
 
 		# Ustawia prędkosć względem gracza
-		velocity.x = direction_to_player.x * 100  # Tu możemy zwiększyć prędkosć slime
+		velocity.x = direction_to_player.x * 200  # Tu możemy zwiększyć prędkosć slime
 	else:
 		# Jak funkcja zmiany postaci usuwa gracza na sam moment wyboru to slime musi sobie poczekać
 		# chwilowo
