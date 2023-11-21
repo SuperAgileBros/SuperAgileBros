@@ -53,6 +53,10 @@ They can be used for different purpose:
 - Performance tests to evaluate performance of the 2D physics engine"
 run/main_scene="res://menus/Menu_main.tscn"
 
+[audio]
+
+default_bus_layout=""
+
 [autoload]
 
 Log="*res://utils/system_log.gd"

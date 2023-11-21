@@ -29,7 +29,9 @@ func _process(_delta):
 			get_tree().paused = false
 			$Character_choose.hide()
 			characterChooseVisible = false
-
+	if $Player.health <= 0:
+		play_death_animation()
+		
 ##	if Input.is_action_just_pressed("character_change"):   // Michał ne wywalaj jeszcze tego proszę :D
 	#	if get_tree().paused: 
 	#		$Character_choose.hide()
@@ -38,4 +40,5 @@ func _process(_delta):
 	#		get_tree().paused = true
 	#		$Character_choose.show()
 
-
+func play_death_animation():
+	 $Player.animation.play("Death", false)

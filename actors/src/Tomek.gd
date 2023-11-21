@@ -1,4 +1,5 @@
 extends Player
+#onready var animation = $CollisionPolygon2D/Animation
 
 func _input(event):
 	if event.is_action_pressed("character_action"):
@@ -7,6 +8,8 @@ func _input(event):
 func _action():
 	# Implemented in character script
 	pass
+	
+		
 
 func get_direction() -> Vector2:
 	return Vector2(

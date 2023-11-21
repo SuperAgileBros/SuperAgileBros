@@ -2,6 +2,7 @@ extends Actor
 class_name Player
 
 const max_health = 100
+onready var animation = $CollisionPolygon2D/Animation
 var face_right = true
 var health = max_health
 var equipment = []
