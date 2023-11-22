@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://lvls/assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://actors/items/Stone.tscn" type="PackedScene" id=2]
@@ -12,6 +12,93 @@
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=10]
 [ext_resource path="res://actors/items/Stick.tscn" type="PackedScene" id=11]
 [ext_resource path="res://actors/Slime1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://actors/assets/audio/chooseSelect.mp3" type="AudioStream" id=13]
+[ext_resource path="res://actors/assets/arrow.png" type="Texture" id=14]
+
+[sub_resource type="Theme" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 0.913725, 0.576471, 0.584314 )
+border_color = Color( 0.94902, 0.901961, 0.901961, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_size = 13
+
+[sub_resource type="Animation" id=6]
+resource_name = "highlight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 527, 325 ), Vector2( 527, 297 ), Vector2( 527, 325 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "highlight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 367.497, 491 ), Vector2( 367.497, 462 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "highlight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 370, 149 ), Vector2( 370, 112 ), Vector2( 370, 149 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "highlight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 212, 323 ), Vector2( 212, 285 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 0.913725, 0.576471, 0.584314 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+shadow_size = 5
 
 [sub_resource type="Theme" id=1]
 
@@ -48,32 +135,95 @@ margin_bottom = 786.0
 
 [node name="Character_choose" type="Panel" parent="."]
 visible = false
+modulate = Color( 1, 0.976471, 0.976471, 1 )
 self_modulate = Color( 1, 1, 1, 0.788235 )
-margin_left = 354.0
-margin_top = 110.0
-margin_right = 1615.0
-margin_bottom = 966.0
+margin_left = 631.0
+margin_top = 211.0
+margin_right = 1347.0
+margin_bottom = 829.0
+rect_scale = Vector2( 1.00137, 1 )
+size_flags_stretch_ratio = 0.0
+theme = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
 script = ExtResource( 10 )
 
 [node name="Michał" type="Sprite" parent="Character_choose"]
-position = Vector2( 935, 430 )
-scale = Vector2( 3.412, 4.023 )
+position = Vector2( 527, 325 )
+scale = Vector2( 2.54831, 2.70888 )
 texture = ExtResource( 6 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Michał"]
+anims/highlight = SubResource( 6 )
+
 [node name="Tomek" type="Sprite" parent="Character_choose"]
-position = Vector2( 605, 686 )
-scale = Vector2( 3.412, 4.023 )
+position = Vector2( 367.497, 491 )
+scale = Vector2( 2.45456, 2.63075 )
 texture = ExtResource( 8 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Tomek"]
+anims/highlight = SubResource( 7 )
+
 [node name="Mateusz" type="Sprite" parent="Character_choose"]
-position = Vector2( 601, 157 )
-scale = Vector2( 3.412, 4.023 )
+position = Vector2( 370, 149 )
+scale = Vector2( 2.61225, 2.7615 )
 texture = ExtResource( 7 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Mateusz"]
+anims/highlight = SubResource( 8 )
+
 [node name="Kamil" type="Sprite" parent="Character_choose"]
-position = Vector2( 264, 411 )
-scale = Vector2( 3.412, 4.023 )
+position = Vector2( 212, 323 )
+scale = Vector2( 2.70456, 2.62294 )
 texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Kamil"]
+anims/highlight = SubResource( 9 )
+
+[node name="chooseSound" type="AudioStreamPlayer" parent="Character_choose"]
+stream = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="Character_choose"]
+light_mask = 512
+margin_left = 153.0
+margin_top = -80.0
+margin_right = 310.774
+margin_bottom = -62.0
+rect_scale = Vector2( 2.77165, 4.37977 )
+custom_styles/normal = SubResource( 10 )
+text = "WYBIERZ BOHATERA"
+align = 1
+valign = 1
+
+[node name="Arrow" type="Sprite" parent="Character_choose"]
+self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
+position = Vector2( 394.459, 304 )
+scale = Vector2( 0.104692, 0.0839845 )
+texture = ExtResource( 14 )
+offset = Vector2( 0.000976563, 250.046 )
+
+[node name="Arrow2" type="Sprite" parent="Character_choose"]
+self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
+position = Vector2( 342.528, 296 )
+rotation = -1.57319
+scale = Vector2( 0.104692, 0.0839845 )
+texture = ExtResource( 14 )
+offset = Vector2( 0.000976563, 250.046 )
+
+[node name="Arrow3" type="Sprite" parent="Character_choose"]
+self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
+position = Vector2( 384.471, 358.021 )
+rotation = 1.57079
+scale = Vector2( 0.104692, 0.0839845 )
+texture = ExtResource( 14 )
+offset = Vector2( 0.000976563, 250.046 )
+
+[node name="Arrow4" type="Sprite" parent="Character_choose"]
+self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
+position = Vector2( 333.543, 347 )
+rotation = -3.14159
+scale = Vector2( 0.104692, 0.0839845 )
+texture = ExtResource( 14 )
+offset = Vector2( 0.000976563, 250.046 )
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 11 )]
 position = Vector2( 727, 343 )
