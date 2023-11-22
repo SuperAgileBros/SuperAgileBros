@@ -72,10 +72,16 @@ anims/RESET = SubResource( 2 )
 script = ExtResource( 4 )
 
 [node name="Hand" type="Position2D" parent="."]
-position = Vector2( 14, -29 )
+position = Vector2( 32, -29 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
+[node name="ActionTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 3.0
+one_shot = true
+
 [connection signal="tree_entered" from="." to="." method="_on_Mat_tree_entered"]
 [connection signal="animation_finished" from="CollisionPolygon2D/Animation" to="CollisionPolygon2D/Animation" method="_on_Animation_animation_finished"]
+[connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]

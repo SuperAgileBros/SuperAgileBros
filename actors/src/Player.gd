@@ -6,9 +6,13 @@ onready var animation = $CollisionPolygon2D/Animation
 var face_right = true
 var health = max_health
 var equipment = []
+var action_press_time = 0
 func _input(event):
 	if event.is_action_pressed("character_action"):
-		_action()
+		$ActionTimer.start()
+	if event.is_action_released("character_action"):
+		print($ActionTimer.get_time_left())
+		$ActionTimer.stop()
 	if event.is_action_pressed("character_attack"):
 		_attack()
 
@@ -19,7 +23,7 @@ func _attack():
 		print("no weapon equipped")
 	pass
 
-func _action():
+func _action(action_press_time):
 	#implemented in character script
 	pass
 
@@ -27,13 +31,14 @@ func _physics_process(_delta) -> void:
 	var direction := get_direction()
 	var sprite := get_child(0)
 	
-	if direction.x > 0:
+	if direction.x > 0 and face_right == false:
 		face_right = true
-		sprite.scale.x = 1
-	elif direction.x < 0:
+		scale.x = -1
+	if direction.x < 0 and face_right == true:
 		face_right = false
-		sprite.scale.x = -1
+		scale.x = -1
 
+	
 	velocity = calculate_velocity(velocity, direction, speed)
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
 	collision_process()
@@ -44,7 +49,6 @@ func collision_process():
 		if collision.collider is TileMap:
 			pass
 		elif collision.collider is Item:
-			print(collision.collider)
 			pickup_item(collision.collider)
 		if collision.collider is KinematicBody2D:
 			health = health - 1
