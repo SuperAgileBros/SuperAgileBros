@@ -20,7 +20,7 @@ var tomekCharacter : PackedScene = preload("res://actors/Tomek.tscn")
 var matCharacter : PackedScene = preload("res://actors/Mat.tscn")
 var kamilCharacter : PackedScene = preload("res://actors/Kamil.tscn")
 var michalCharacter : PackedScene = preload("res://actors/Michal.tscn")
-onready var currentKinematicBody = get_node("/root/Node2D/Player")
+onready var currentKinematicBody = get_parent().get_parent().get_node("Player")
 
 func _process(delta): 
 	if  self.visible:	
@@ -59,8 +59,8 @@ func _characterSwitch(choosenCharacter):
 	currentKinematicBody.position = previousKinematicBody.position
 	currentKinematicBody.z_index = -1
 	currentKinematicBody.name = instanceName
-	get_parent().add_child(currentKinematicBody,true)
-	get_parent().move_child(currentKinematicBody,currentindex)
+	get_parent().get_parent().add_child(currentKinematicBody,true)
+	get_parent().get_parent().move_child(currentKinematicBody,currentindex)
 	
 
 

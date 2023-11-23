@@ -15,6 +15,14 @@
 [ext_resource path="res://actors/assets/audio/chooseSelect.mp3" type="AudioStream" id=13]
 [ext_resource path="res://actors/assets/arrow.png" type="Texture" id=14]
 
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.913725, 0.25098, 0.25098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.321569, 0.027451, 0.027451, 1 )
+
 [sub_resource type="Theme" id=4]
 
 [sub_resource type="StyleBoxFlat" id=5]
@@ -100,14 +108,6 @@ corner_radius_top_left = 25
 corner_radius_top_right = 25
 shadow_size = 5
 
-[sub_resource type="Theme" id=1]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.913725, 0.25098, 0.25098, 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.321569, 0.027451, 0.027451, 1 )
-
 [node name="Node2D" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 4 )
@@ -133,56 +133,85 @@ margin_top = 210.0
 margin_right = 1489.0
 margin_bottom = 786.0
 
-[node name="Character_choose" type="Panel" parent="."]
+[node name="RigidBody2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 727, 343 )
+
+[node name="RigidBody2D2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 893, 330 )
+scale = Vector2( 0.01, 0.01 )
+
+[node name="Slime1" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1382, 350 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+anchor_left = 0.448
+anchor_top = 0.108
+anchor_right = 0.456
+anchor_bottom = 0.115
+margin_left = -823.04
+margin_top = -89.64
+margin_right = -460.88
+margin_bottom = -45.2
+theme = SubResource( 1 )
+custom_colors/font_color = Color( 0.0470588, 0.00784314, 0.00784314, 1 )
+custom_colors/font_color_shadow = Color( 0.0705882, 0.00784314, 0.00784314, 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+step = 1.0
+value = 100.0
+
+[node name="Character_choose" type="Panel" parent="CanvasLayer"]
 visible = false
 modulate = Color( 1, 0.976471, 0.976471, 1 )
 self_modulate = Color( 1, 1, 1, 0.788235 )
-margin_left = 631.0
-margin_top = 211.0
-margin_right = 1347.0
-margin_bottom = 829.0
+margin_left = 616.0
+margin_top = 237.0
+margin_right = 1332.0
+margin_bottom = 855.0
 rect_scale = Vector2( 1.00137, 1 )
 size_flags_stretch_ratio = 0.0
 theme = SubResource( 4 )
 custom_styles/panel = SubResource( 5 )
 script = ExtResource( 10 )
 
-[node name="Michał" type="Sprite" parent="Character_choose"]
+[node name="Michał" type="Sprite" parent="CanvasLayer/Character_choose"]
 position = Vector2( 527, 325 )
 scale = Vector2( 2.54831, 2.70888 )
 texture = ExtResource( 6 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Michał"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Character_choose/Michał"]
 anims/highlight = SubResource( 6 )
 
-[node name="Tomek" type="Sprite" parent="Character_choose"]
+[node name="Tomek" type="Sprite" parent="CanvasLayer/Character_choose"]
 position = Vector2( 367.497, 491 )
 scale = Vector2( 2.45456, 2.63075 )
 texture = ExtResource( 8 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Tomek"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Character_choose/Tomek"]
 anims/highlight = SubResource( 7 )
 
-[node name="Mateusz" type="Sprite" parent="Character_choose"]
+[node name="Mateusz" type="Sprite" parent="CanvasLayer/Character_choose"]
 position = Vector2( 370, 149 )
 scale = Vector2( 2.61225, 2.7615 )
 texture = ExtResource( 7 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Mateusz"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Character_choose/Mateusz"]
 anims/highlight = SubResource( 8 )
 
-[node name="Kamil" type="Sprite" parent="Character_choose"]
+[node name="Kamil" type="Sprite" parent="CanvasLayer/Character_choose"]
 position = Vector2( 212, 323 )
 scale = Vector2( 2.70456, 2.62294 )
 texture = ExtResource( 9 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Kamil"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Character_choose/Kamil"]
 anims/highlight = SubResource( 9 )
 
-[node name="chooseSound" type="AudioStreamPlayer" parent="Character_choose"]
+[node name="chooseSound" type="AudioStreamPlayer" parent="CanvasLayer/Character_choose"]
 stream = ExtResource( 13 )
 
-[node name="Label" type="Label" parent="Character_choose"]
+[node name="Label" type="Label" parent="CanvasLayer/Character_choose"]
 light_mask = 512
 margin_left = 153.0
 margin_top = -80.0
@@ -194,14 +223,14 @@ text = "WYBIERZ BOHATERA"
 align = 1
 valign = 1
 
-[node name="Arrow" type="Sprite" parent="Character_choose"]
+[node name="Arrow" type="Sprite" parent="CanvasLayer/Character_choose"]
 self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
 position = Vector2( 394.459, 304 )
 scale = Vector2( 0.104692, 0.0839845 )
 texture = ExtResource( 14 )
 offset = Vector2( 0.000976563, 250.046 )
 
-[node name="Arrow2" type="Sprite" parent="Character_choose"]
+[node name="Arrow2" type="Sprite" parent="CanvasLayer/Character_choose"]
 self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
 position = Vector2( 342.528, 296 )
 rotation = -1.57319
@@ -209,7 +238,7 @@ scale = Vector2( 0.104692, 0.0839845 )
 texture = ExtResource( 14 )
 offset = Vector2( 0.000976563, 250.046 )
 
-[node name="Arrow3" type="Sprite" parent="Character_choose"]
+[node name="Arrow3" type="Sprite" parent="CanvasLayer/Character_choose"]
 self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
 position = Vector2( 384.471, 358.021 )
 rotation = 1.57079
@@ -217,33 +246,10 @@ scale = Vector2( 0.104692, 0.0839845 )
 texture = ExtResource( 14 )
 offset = Vector2( 0.000976563, 250.046 )
 
-[node name="Arrow4" type="Sprite" parent="Character_choose"]
+[node name="Arrow4" type="Sprite" parent="CanvasLayer/Character_choose"]
 self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
 position = Vector2( 333.543, 347 )
 rotation = -3.14159
 scale = Vector2( 0.104692, 0.0839845 )
 texture = ExtResource( 14 )
 offset = Vector2( 0.000976563, 250.046 )
-
-[node name="RigidBody2D" parent="." instance=ExtResource( 11 )]
-position = Vector2( 727, 343 )
-
-[node name="RigidBody2D2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 893, 330 )
-scale = Vector2( 0.01, 0.01 )
-
-[node name="Slime1" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1382, 350 )
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 95.0
-margin_top = 33.0
-margin_right = 473.0
-margin_bottom = 85.0
-theme = SubResource( 1 )
-custom_colors/font_color = Color( 0.0470588, 0.00784314, 0.00784314, 1 )
-custom_colors/font_color_shadow = Color( 0.0705882, 0.00784314, 0.00784314, 1 )
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
-step = 1.0
-value = 100.0

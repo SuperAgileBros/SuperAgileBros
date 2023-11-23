@@ -77,4 +77,7 @@ script = ExtResource( 3 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
 [connection signal="animation_finished" from="CollisionPolygon2D/Animation" to="CollisionPolygon2D/Animation" method="_on_Animation_animation_finished"]

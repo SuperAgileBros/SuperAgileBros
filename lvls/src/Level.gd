@@ -8,7 +8,7 @@ func _ready():
 	set_health_bar() 
 
 func set_health_bar() -> void:
-	$HealthBar.value = $Player.health
+	$CanvasLayer/HealthBar.value = $Player.health
 
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
@@ -18,16 +18,15 @@ func _process(_delta):
 		else:
 			get_tree().paused = true
 			$Menu_pause.show()
-
 	if Input.is_action_just_pressed("character_change_window") and not characterChooseVisible:
-		if not $Character_choose.visible:
+		if not $CanvasLayer/Character_choose.visible:
 			get_tree().paused = true
-			$Character_choose.show()
+			$CanvasLayer/Character_choose.show()
 			characterChooseVisible = true
 
 	elif Input.is_action_just_released("character_change_window") and characterChooseVisible:
 			get_tree().paused = false
-			$Character_choose.hide()
+			$CanvasLayer/Character_choose.hide()
 			characterChooseVisible = false
 	if $Player.health <= 0:
 		play_death_animation()
