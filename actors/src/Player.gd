@@ -1,17 +1,23 @@
 extends Actor
 class_name Player
 
-const max_health = 100
+
 onready var animation = $CollisionPolygon2D/Animation
+
 var face_right = true
+
+const max_health = 100
 var health = max_health
-var equipment = []
+
+export var equipment = []
+signal update_hud
+
 var action_press_time = 0
+
 func _input(event):
 	if event.is_action_pressed("character_action"):
 		$ActionTimer.start()
 	if event.is_action_released("character_action"):
-		print($ActionTimer.get_time_left())
 		$ActionTimer.stop()
 	if event.is_action_pressed("character_attack"):
 		_attack()
@@ -50,7 +56,7 @@ func collision_process():
 			pass
 		elif collision.collider is Item:
 			pickup_item(collision.collider)
-		if collision.collider is KinematicBody2D:
+		elif collision.collider is KinematicBody2D:
 			health = health - 1
 			get_parent().set_health_bar() 
 		#zachowaniwe pędu przy kolizji z Rigidbody2D
@@ -60,8 +66,9 @@ func collision_process():
 
 func pickup_item(item):
 	if equipment.size() < 8:
-		equipment.append(item)
+		equipment.append(item.duplicate())
 		item.queue_free()
+		emit_signal("update_hud")
 		
 
 func get_direction() -> Vector2:
@@ -81,3 +88,7 @@ func calculate_velocity(
 	if direction.y < 0:
 		new_velocity.y = direction.y * speed.y
 	return new_velocity
+
+
+func _on_ActionTimer_timeout():
+	pass # Replace with function body.

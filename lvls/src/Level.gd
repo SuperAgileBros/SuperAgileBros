@@ -1,14 +1,39 @@
 extends Node2D
 class_name Level
 
+var hud = preload("res://lvls/HUD.tscn")
+
+export var players = {
+	"MAT":preload("res://actors/Mat.tscn"),
+	"KAM":preload("res://actors/Kam.tscn"),
+	"TOM":preload("res://actors/Tom.tscn"),
+	"MIC":preload("res://actors/Mic.tscn")
+}
+export var current_player: String = "MAT"
+
 var characterChooseVisible: bool = false
-# Called when the node enters the scene tree for the first time.
+
+func _init():
+	_add_player()
+	hud = hud.instance()
+	$Player.connect("update_hud", hud, "_on_update_hud")
+	add_child(hud)
+
+
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_health_bar() 
+	if $PlayerSpawn != null:
+		$Player.set_position($PlayerSpawn.position)
+
+func _add_player():
+	var player = players[current_player].instance()
+	player.name = "Player"
+	add_child(player)
+
 
 func set_health_bar() -> void:
-	$HealthBar.value = $Player.health
+	$HUD/HealthBar.value = $Player.health
 
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
@@ -17,17 +42,16 @@ func _process(_delta):
 			get_tree().paused = false
 		else:
 			get_tree().paused = true
-			$Menu_pause.show()
-
+			$HUD/Menu_pause.show()
 	if Input.is_action_just_pressed("character_change_window") and not characterChooseVisible:
-		if not $Character_choose.visible:
+		if not $HUD/Character_choose.visible:
 			get_tree().paused = true
-			$Character_choose.show()
+			$HUD/Character_choose.show()
 			characterChooseVisible = true
 
 	elif Input.is_action_just_released("character_change_window") and characterChooseVisible:
 			get_tree().paused = false
-			$Character_choose.hide()
+			$HUD/Character_choose.hide()
 			characterChooseVisible = false
 	if $Player.health <= 0:
 		play_death_animation()
