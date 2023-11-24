@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=1]
+[ext_resource path="res://lvls/src/HUD.gd" type="Script" id=2]
 [ext_resource path="res://actors/assets/michal.png" type="Texture" id=3]
 [ext_resource path="res://actors/assets/kamil.png" type="Texture" id=4]
 [ext_resource path="res://actors/assets/tomek.png" type="Texture" id=5]
@@ -104,6 +105,7 @@ bg_color = Color( 0.321569, 0.027451, 0.027451, 1 )
 
 [node name="HUD" type="CanvasLayer"]
 layer = 99
+script = ExtResource( 2 )
 
 [node name="Character_choose" type="Panel" parent="."]
 visible = false
@@ -215,3 +217,64 @@ custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 step = 1.0
 value = 100.0
+
+[node name="Equipment" type="HBoxContainer" parent="."]
+margin_left = 88.0
+margin_top = 176.0
+margin_right = 88.0
+margin_bottom = 176.0
+
+[node name="slot_0" type="PanelContainer" parent="Equipment"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="slot_1" type="PanelContainer" parent="Equipment"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="slot_2" type="PanelContainer" parent="Equipment"]
+margin_left = 108.0
+margin_right = 158.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="slot_3" type="PanelContainer" parent="Equipment"]
+margin_left = 162.0
+margin_right = 212.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="slot_4" type="PanelContainer" parent="Equipment"]
+margin_left = 216.0
+margin_right = 266.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="slot_5" type="PanelContainer" parent="Equipment"]
+margin_left = 270.0
+margin_right = 320.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="slot_6" type="PanelContainer" parent="Equipment"]
+margin_left = 324.0
+margin_right = 374.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="slot_7" type="PanelContainer" parent="Equipment"]
+margin_left = 378.0
+margin_right = 428.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )

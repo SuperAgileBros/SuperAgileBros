@@ -1,7 +1,7 @@
 extends Node2D
 class_name Level
 
-var camera = preload("res://lvls/HUD.tscn")
+var hud = preload("res://lvls/HUD.tscn")
 
 export var players = {
 	"MAT":preload("res://actors/Mat.tscn"),
@@ -15,14 +15,15 @@ var characterChooseVisible: bool = false
 
 func _init():
 	_add_player()
-	add_child(camera.instance())
+	hud = hud.instance()
+	$Player.connect("update_hud", hud, "_on_update_hud")
+	add_child(hud)
+
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_health_bar() 
 	if $PlayerSpawn != null:
-		print("SP is on")
-		print($PlayerSpawn.position)
 		$Player.set_position($PlayerSpawn.position)
 
 func _add_player():
@@ -37,7 +38,7 @@ func set_health_bar() -> void:
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
 		if get_tree().paused:
-			$HUD/Menu_pause.hide()
+			$Menu_pause.hide()
 			get_tree().paused = false
 		else:
 			get_tree().paused = true
