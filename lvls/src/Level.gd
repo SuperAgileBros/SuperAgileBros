@@ -21,8 +21,6 @@ func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_health_bar() 
 	if $PlayerSpawn != null:
-		print("SP is on")
-		print($PlayerSpawn.position)
 		$Player.set_position($PlayerSpawn.position)
 
 func _add_player():
