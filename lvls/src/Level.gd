@@ -1,11 +1,33 @@
 extends Node2D
 class_name Level
 
+var menu_pause = preload("res://menus/Menu_pause.tscn")
+export var players = {
+	"MAT":preload("res://actors/Mat.tscn"),
+	"KAM":preload("res://actors/Kam.tscn"),
+	"TOM":preload("res://actors/Tom.tscn"),
+	"MIC":preload("res://actors/Mic.tscn")
+}
+
+export var current_player: String = "MAT"
+
 var characterChooseVisible: bool = false
-# Called when the node enters the scene tree for the first time.
+
+func _init():
+	_add_player()
+
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_health_bar() 
+
+func _add_player():
+	var player = players[current_player].instance()
+		
+	if $Player_spawn != null:
+		player.position = $Player_spawn.position
+	player.name = "Player"
+	add_child(player)
+
 
 func set_health_bar() -> void:
 	$CanvasLayer/HealthBar.value = $Player.health
