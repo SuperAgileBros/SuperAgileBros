@@ -7,6 +7,7 @@ var face_right = true
 var health = max_health
 var equipment = []
 var action_press_time = 0
+
 func _input(event):
 	if event.is_action_pressed("character_action"):
 		$ActionTimer.start()
@@ -81,3 +82,7 @@ func calculate_velocity(
 	if direction.y < 0:
 		new_velocity.y = direction.y * speed.y
 	return new_velocity
+
+
+func _on_ActionTimer_timeout():
+	pass # Replace with function body.

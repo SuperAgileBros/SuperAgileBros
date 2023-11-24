@@ -1,25 +1,15 @@
 extends Panel
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var kamil_animation = $Kamil/AnimationPlayer
 onready var michal_animation = $"Michał/AnimationPlayer"
 onready var tomek_animation = $Tomek/AnimationPlayer
 onready var mateusz_animation = $Mateusz/AnimationPlayer
 onready var animations = [kamil_animation,michal_animation,tomek_animation,mateusz_animation]
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-var tomekCharacter : PackedScene = preload("res://actors/Tomek.tscn")
+var tomekCharacter : PackedScene = preload("res://actors/Tom.tscn")
 var matCharacter : PackedScene = preload("res://actors/Mat.tscn")
-var kamilCharacter : PackedScene = preload("res://actors/Kamil.tscn")
-var michalCharacter : PackedScene = preload("res://actors/Michal.tscn")
+var kamilCharacter : PackedScene = preload("res://actors/Kam.tscn")
+var michalCharacter : PackedScene = preload("res://actors/Mic.tscn")
 onready var currentKinematicBody = get_parent().get_parent().get_node("Player")
 
 func _process(delta): 
@@ -49,7 +39,7 @@ func _process(delta):
 		
 			
 func _characterSwitch(choosenCharacter):
-	$chooseSound.play()
+	$ChooseSound.play()
 	var instanceName = "Player"
 	var previousKinematicBody = currentKinematicBody
 	var currentindex = currentKinematicBody.get_index()
