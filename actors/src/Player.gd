@@ -24,10 +24,17 @@ func _input(event):
 
 func _attack():
 	if equipment.size() > 0:
-		pass
-	else:
-		print("no weapon equipped")
-	pass
+		var projectile = equipment.pop_at(0).duplicate()
+		projectile.global_position = $Hand.global_position
+		get_parent().add_child(projectile)
+		emit_signal("update_hud")
+		
+		if face_right:
+			projectile.apply_central_impulse(Vector2(1000, 0))
+			projectile.scale.x = -1
+		else:
+			projectile.scale.x = 1
+			projectile.apply_central_impulse(Vector2(-1000, 0))
 
 func _action(action_press_time):
 	#implemented in character script
