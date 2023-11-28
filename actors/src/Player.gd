@@ -9,7 +9,14 @@ var face_right = true
 const max_health = 100
 var health = max_health
 
-export var equipment = []
+export var backpack = []
+export var equipment = {
+	"weapon": null,
+	"armor": null,
+	"accessory": null,
+	"consumable": null
+}
+
 signal update_hud
 
 var action_press_time = 0
@@ -23,8 +30,8 @@ func _input(event):
 		_attack()
 
 func _attack():
-	if equipment.size() > 0:
-		var projectile = equipment.pop_at(0).duplicate()
+	if backpack.size() > 0:
+		var projectile = backpack.pop_at(0).duplicate()
 		projectile.global_position = $Hand.global_position
 		get_parent().add_child(projectile)
 		emit_signal("update_hud")
@@ -61,8 +68,9 @@ func collision_process():
 		var collision = get_slide_collision(i)
 		if collision.collider is TileMap:
 			pass
-		elif collision.collider is Item:
+		elif collision.collider is Item and backpack.size() < 8:
 			pickup_item(collision.collider)
+			break
 		elif collision.collider is KinematicBody2D:
 			health = health - 1
 			get_parent().set_health_bar() 
@@ -72,11 +80,25 @@ func collision_process():
 	pass
 
 func pickup_item(item):
-	if equipment.size() < 8:
-		equipment.append(item.duplicate())
+	if backpack.size() < 8:
+		backpack.append(item.duplicate())
 		item.queue_free()
 		emit_signal("update_hud")
 		
+func get_equipment(item):
+	if item.item_type == 0:
+		pass
+	elif item.item_type == 1:
+		equipment["weapon"] = item
+	elif item.item_type == 2:
+		equipment["armor"] = item
+	elif item.item_type == 3:
+		equipment["accessory"] = item
+	elif item.item_type == 4:
+		equipment["consumable"] = item
+	else:
+		print("Wrong item type")
+
 
 func get_direction() -> Vector2:
 	return Vector2(

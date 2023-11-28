@@ -218,63 +218,96 @@ custom_styles/bg = SubResource( 3 )
 step = 1.0
 value = 100.0
 
-[node name="Equipment" type="HBoxContainer" parent="."]
+[node name="Backpack" type="HBoxContainer" parent="."]
 margin_left = 88.0
 margin_top = 176.0
 margin_right = 88.0
 margin_bottom = 176.0
 
-[node name="slot_0" type="PanelContainer" parent="Equipment"]
+[node name="slot_0" type="PanelContainer" parent="Backpack"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 
-[node name="slot_1" type="PanelContainer" parent="Equipment"]
+[node name="slot_1" type="PanelContainer" parent="Backpack"]
 margin_left = 54.0
 margin_right = 104.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 
-[node name="slot_2" type="PanelContainer" parent="Equipment"]
+[node name="slot_2" type="PanelContainer" parent="Backpack"]
 margin_left = 108.0
 margin_right = 158.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 
-[node name="slot_3" type="PanelContainer" parent="Equipment"]
+[node name="slot_3" type="PanelContainer" parent="Backpack"]
 margin_left = 162.0
 margin_right = 212.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 
-[node name="slot_4" type="PanelContainer" parent="Equipment"]
+[node name="slot_4" type="PanelContainer" parent="Backpack"]
 margin_left = 216.0
 margin_right = 266.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 
-[node name="slot_5" type="PanelContainer" parent="Equipment"]
+[node name="slot_5" type="PanelContainer" parent="Backpack"]
 margin_left = 270.0
 margin_right = 320.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 
-[node name="slot_6" type="PanelContainer" parent="Equipment"]
+[node name="slot_6" type="PanelContainer" parent="Backpack"]
 margin_left = 324.0
 margin_right = 374.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 
-[node name="slot_7" type="PanelContainer" parent="Equipment"]
+[node name="slot_7" type="PanelContainer" parent="Backpack"]
 margin_left = 378.0
 margin_right = 428.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="Equipment" type="HBoxContainer" parent="."]
+margin_left = 88.0
+margin_top = 264.0
+margin_right = 260.0
+margin_bottom = 314.0
+
+[node name="Weapon" type="PanelContainer" parent="Equipment"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="Armor" type="PanelContainer" parent="Equipment"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="Misc" type="PanelContainer" parent="Equipment"]
+margin_left = 108.0
+margin_right = 158.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+
+[node name="Consumable" type="PanelContainer" parent="Equipment"]
+margin_left = 162.0
+margin_right = 212.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
