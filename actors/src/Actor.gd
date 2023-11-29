@@ -10,3 +10,5 @@ export var items_common = {
 		"stick": "res://actors/items/Stick.tscn",
 		"stone": "res://actors/items/Stone.tscn"
 	}
+func _ready():
+	pause_mode = Node.PAUSE_MODE_STOP

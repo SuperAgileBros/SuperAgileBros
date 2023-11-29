@@ -118,6 +118,5 @@ func calculate_velocity(
 		new_velocity.y = direction.y * speed.y
 	return new_velocity
 
-
 func _on_ActionTimer_timeout():
 	pass # Replace with function body.
