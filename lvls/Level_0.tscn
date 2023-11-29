@@ -144,6 +144,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 points = PoolVector2Array( 16, 16, 3.10811, 16, 3.35811, 0, 16, 0 )
 
 [sub_resource type="TileSet" id=1]
+resource_local_to_scene = true
 0/name = "Tiles.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
