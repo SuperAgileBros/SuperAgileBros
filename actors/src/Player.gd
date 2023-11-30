@@ -28,20 +28,28 @@ func _input(event):
 		$ActionTimer.stop()
 	if event.is_action_pressed("character_attack"):
 		_attack()
-
+	if event.is_action_pressed("character_equip"):
+		_equip()
+func _equip():
+	if backpack.size() > 0:
+		if backpack[0].item_type > 0:
+			var item = backpack.pop_at(0)
+			get_equipment(item)
+			emit_signal("update_hud")
 func _attack():
 	if backpack.size() > 0:
 		var projectile = backpack.pop_at(0).duplicate()
 		projectile.global_position = $Hand.global_position
+		projectile.set_rotation(0)
+		if face_right:
+			projectile.global_position.x += 20
+			projectile.apply_central_impulse(Vector2(1000, 0))
+		else:
+			projectile.global_position.x -= 20
+			projectile.apply_central_impulse(Vector2(-1000, 0))
 		get_parent().add_child(projectile)
 		emit_signal("update_hud")
 		
-		if face_right:
-			projectile.apply_central_impulse(Vector2(1000, 0))
-			projectile.scale.x = -1
-		else:
-			projectile.scale.x = 1
-			projectile.apply_central_impulse(Vector2(-1000, 0))
 
 func _action(action_press_time):
 	#implemented in character script
@@ -80,24 +88,19 @@ func collision_process():
 	pass
 
 func pickup_item(item):
+	print("item picked up")
 	if backpack.size() < 8:
 		backpack.append(item.duplicate())
 		item.queue_free()
 		emit_signal("update_hud")
 		
 func get_equipment(item):
-	if item.item_type == 0:
-		pass
-	elif item.item_type == 1:
-		equipment["weapon"] = item
-	elif item.item_type == 2:
-		equipment["armor"] = item
-	elif item.item_type == 3:
-		equipment["accessory"] = item
-	elif item.item_type == 4:
-		equipment["consumable"] = item
-	else:
-		print("Wrong item type")
+	var item_type = item.item_types[item.item_type]
+	var equiped_item = equipment[item_type].instance()
+	equiped_item.global_position = $Hand.global_position
+	get_parent().add_child(equiped_item)
+
+	equipment[item_type] = item
 
 
 func get_direction() -> Vector2:
@@ -117,7 +120,6 @@ func calculate_velocity(
 	if direction.y < 0:
 		new_velocity.y = direction.y * speed.y
 	return new_velocity
-
 
 func _on_ActionTimer_timeout():
 	pass # Replace with function body.
