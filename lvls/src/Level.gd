@@ -38,7 +38,7 @@ func set_health_bar() -> void:
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
 		if get_tree().paused:
-			$Menu_pause.hide()
+			$HUD/Menu_pause.hide()
 			get_tree().paused = false
 		else:
 			get_tree().paused = true

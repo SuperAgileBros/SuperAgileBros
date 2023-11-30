@@ -9,7 +9,14 @@ var face_right = true
 const max_health = 100
 var health = max_health
 
-export var equipment = []
+export var backpack = []
+export var equipment = {
+	"weapon": null,
+	"armor": null,
+	"accessory": null,
+	"consumable": null
+}
+
 signal update_hud
 
 var action_press_time = 0
@@ -21,13 +28,28 @@ func _input(event):
 		$ActionTimer.stop()
 	if event.is_action_pressed("character_attack"):
 		_attack()
-
+	if event.is_action_pressed("character_equip"):
+		_equip()
+func _equip():
+	if backpack.size() > 0:
+		if backpack[0].item_type > 0:
+			var item = backpack.pop_at(0)
+			get_equipment(item)
+			emit_signal("update_hud")
 func _attack():
-	if equipment.size() > 0:
-		pass
-	else:
-		print("no weapon equipped")
-	pass
+	if backpack.size() > 0:
+		var projectile = backpack.pop_at(0).duplicate()
+		projectile.global_position = $Hand.global_position
+		projectile.set_rotation(0)
+		if face_right:
+			projectile.global_position.x += 20
+			projectile.apply_central_impulse(Vector2(1000, 0))
+		else:
+			projectile.global_position.x -= 20
+			projectile.apply_central_impulse(Vector2(-1000, 0))
+		get_parent().add_child(projectile)
+		emit_signal("update_hud")
+		
 
 func _action(action_press_time):
 	#implemented in character script
@@ -54,8 +76,9 @@ func collision_process():
 		var collision = get_slide_collision(i)
 		if collision.collider is TileMap:
 			pass
-		elif collision.collider is Item:
+		elif collision.collider is Item and backpack.size() < 8:
 			pickup_item(collision.collider)
+			break
 		elif collision.collider is KinematicBody2D:
 			health = health - 1
 			get_parent().set_health_bar() 
@@ -65,11 +88,20 @@ func collision_process():
 	pass
 
 func pickup_item(item):
-	if equipment.size() < 8:
-		equipment.append(item.duplicate())
+	print("item picked up")
+	if backpack.size() < 8:
+		backpack.append(item.duplicate())
 		item.queue_free()
 		emit_signal("update_hud")
 		
+func get_equipment(item):
+	var item_type = item.item_types[item.item_type]
+	var equiped_item = equipment[item_type].instance()
+	equiped_item.global_position = $Hand.global_position
+	get_parent().add_child(equiped_item)
+
+	equipment[item_type] = item
+
 
 func get_direction() -> Vector2:
 	return Vector2(
@@ -88,7 +120,6 @@ func calculate_velocity(
 	if direction.y < 0:
 		new_velocity.y = direction.y * speed.y
 	return new_velocity
-
 
 func _on_ActionTimer_timeout():
 	pass # Replace with function body.
