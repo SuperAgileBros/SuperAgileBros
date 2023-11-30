@@ -73,8 +73,7 @@ scale = Vector2( 1.00481, 0.998904 )
 [node name="Sprite" type="Sprite" parent="CollisionPolygon2D"]
 pause_mode = 1
 position = Vector2( -4.87177, -19.0693 )
-rotation = -5.53748
-scale = Vector2( 0.137205, -0.00255789 )
+scale = Vector2( 0.960324, 1.04832 )
 offset = Vector2( 5.5, 13 )
 
 [node name="Animation" type="AnimationPlayer" parent="CollisionPolygon2D"]

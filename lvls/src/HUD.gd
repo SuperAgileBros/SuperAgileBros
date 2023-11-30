@@ -8,12 +8,14 @@ func _backpack_change():
 	var player = get_parent().get_node("Player")
 	for item in $Backpack.get_children():
 		if item.get_child_count() > 0:
-			item.get_child(0).queue_free()
+			for i in item.get_children():
+				i.queue_free()
+			
 	var i = 0
 	for item in player.backpack:
+		var slot = $Backpack.get_node("slot_"+str(i))
 		var sprite = Sprite.new()
 		sprite.texture = item.get_node("Sprite").texture
-		var slot = $Backpack.get_node("slot_"+str(i))
 		sprite.position = Vector2(slot.rect_size.x/2,slot.rect_size.y/2)
 		slot.add_child(sprite)
 		i += 1

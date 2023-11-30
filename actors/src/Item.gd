@@ -8,4 +8,6 @@ export var item_type = 0
 export var item_durability = 100
 
 func _ready():
+	gravity_scale = 10
 	pass
+

@@ -10,3 +10,7 @@ func _on_ActionTimer_timeout():
 	var item = load(items_common[key]).instance()
 	item.position = get_node("Hand").global_position
 	get_parent().add_child(item)
+	if face_right:
+		item.apply_central_impulse(Vector2(100, 0))
+	else:
+		item.apply_central_impulse(Vector2(-100, 0))

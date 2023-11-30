@@ -4,10 +4,9 @@
 [ext_resource path="res://actors/src/Item.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.335, 16.579 )
+extents = Vector2( 1.335, 16 )
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["item"]]
-scale = Vector2( 0.1, 0.1 )
 z_index = -1
 collision_layer = 4
 collision_mask = 8
@@ -18,7 +17,6 @@ item_name = "stick"
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.76837e-07, 0 )
-rotation = 1.1606
+position = Vector2( 5.96046e-08, 0 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 1 )
