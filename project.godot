@@ -109,6 +109,12 @@ window/stretch/aspect="expand"
 
 enabled=PoolStringArray(  )
 
+[importer_defaults]
+
+texture={
+"flags/filter": false
+}
+
 [input]
 
 ui_left={
