@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://actors/src/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/assets/audio/death-bell.mp3" type="AudioStream" id=2]
 [ext_resource path="res://actors/src/Camera.gd" type="Script" id=3]
 [ext_resource path="res://actors/src/Animation.gd" type="Script" id=4]
+[ext_resource path="res://actors/assets/mati_jump.png" type="Texture" id=5]
+[ext_resource path="res://actors/assets/mat.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
@@ -47,6 +49,36 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
 [sub_resource type="Animation" id=2]
 length = 0.001
 
@@ -74,11 +106,14 @@ scale = Vector2( 1.00481, 0.998904 )
 pause_mode = 1
 position = Vector2( -4.87177, -19.0693 )
 scale = Vector2( 0.960324, 1.04832 )
+texture = ExtResource( 5 )
 offset = Vector2( 5.5, 13 )
 
 [node name="Animation" type="AnimationPlayer" parent="CollisionPolygon2D"]
 root_node = NodePath("../..")
 anims/Death = SubResource( 1 )
+anims/Idle = SubResource( 4 )
+anims/Jump = SubResource( 3 )
 anims/RESET = SubResource( 2 )
 script = ExtResource( 4 )
 
