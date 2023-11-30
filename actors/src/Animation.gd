@@ -15,9 +15,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
 func _on_Animation_animation_finished(anim_name):
 	#get_parent().get_tree().paused = true
-	
-	get_tree().change_scene("res://menus/Menu_main.tscn")
+	if anim_name == "Death":
+		get_tree().change_scene("res://menus/Menu_main.tscn")
 	pass # Replace with function body.

@@ -51,7 +51,7 @@ They can be used for different purpose:
 
 - Functional tests to check for regressions and behavior of the 2D physics engine
 - Performance tests to evaluate performance of the 2D physics engine"
-run/main_scene="res://lvls/Level_0_v2.tscn"
+run/main_scene="res://menus/Menu_main.tscn"
 
 [audio]
 

@@ -65,7 +65,11 @@ func _physics_process(_delta) -> void:
 	if direction.x < 0 and face_right == true:
 		face_right = false
 		scale.x = -1
-
+	
+	if is_on_floor() == true:
+		animation.play("Idle")
+	else:
+		animation.play("Jump")
 	
 	velocity = calculate_velocity(velocity, direction, speed)
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
