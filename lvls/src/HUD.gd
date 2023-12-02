@@ -37,6 +37,13 @@ func add_equipment(var equipment,var equipment_slot):
 	else:
 		if equipment_slot.get_child_count() != 0:
 			equipment_slot.get_child(0).queue_free()
+func _portrait():
+	var player = get_parent().get_node("Player").get_node("CollisionPolygon2D").get_node("Sprite")
+	var portrait = $PortraitFrame/Portrait
+	portrait.texture.atlas = player.texture
+	print("portrait")
+	print(portrait.texture.to_string())
 
 func _on_update_hud():
 	_backpack_change()
+	_portrait()

@@ -14,10 +14,10 @@ export var current_player: String = "MAT"
 var characterChooseVisible: bool = false
 
 func _init():
-	_add_player()
 	hud = hud.instance()
-	$Player.connect("update_hud", hud, "_on_update_hud")
+	hud.name = "HUD"
 	add_child(hud)
+	_add_player()
 
 
 func _ready():
@@ -65,4 +65,4 @@ func _process(_delta):
 	#		$Character_choose.show()
 
 func play_death_animation():
-	 $Player.animation.play("Death", false)
+	 $Player.animation.play("Death")

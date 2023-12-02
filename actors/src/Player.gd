@@ -1,6 +1,7 @@
 extends Actor
 class_name Player
 
+var player_name = "Player"
 
 onready var animation = $CollisionPolygon2D/Animation
 
@@ -20,6 +21,14 @@ export var equipment = {
 signal update_hud
 
 var action_press_time = 0
+
+func _ready():
+	if connect("update_hud", get_parent().get_node("HUD"), "_on_update_hud"):
+		print("connected")
+	else:
+		print("not connected")
+	emit_signal("update_hud")
+	print("player "+player_name+" ready")
 
 func _input(event):
 	if event.is_action_pressed("character_action"):
@@ -70,6 +79,7 @@ func _physics_process(_delta) -> void:
 		animation.play("Idle")
 	else:
 		animation.play("Jump")
+
 	
 	velocity = calculate_velocity(velocity, direction, speed)
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
