@@ -39,13 +39,19 @@ func _input(event):
 		_attack()
 	if event.is_action_pressed("character_equip"):
 		_equip()
+	if event.is_action_pressed("character_throw"):
+		_throw()
 func _equip():
 	if backpack.size() > 0:
-		if backpack[0].item_type > 0:
+		if backpack[0].is_equipable:
 			var item = backpack.pop_at(0)
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
+	if equipment["weapon"] != null:
+		pass
+		
+func _throw():
 	if backpack.size() > 0:
 		var projectile = backpack.pop_at(0).duplicate()
 		projectile.global_position = $Hand.global_position
@@ -84,6 +90,9 @@ func _physics_process(_delta) -> void:
 	velocity = calculate_velocity(velocity, direction, speed)
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
 	collision_process()
+
+	if health <= 0:
+		animation.play("Death")
 	
 func collision_process():
 	for i in range(get_slide_count()):
@@ -110,9 +119,12 @@ func pickup_item(item):
 		
 func get_equipment(item):
 	var item_type = item.item_types[item.item_type]
-	var equiped_item = equipment[item_type].instance()
-	equiped_item.global_position = $Hand.global_position
-	get_parent().add_child(equiped_item)
+	if item_type == "resource":
+		item_type = "weapon"
+	if equipment[item_type] != null:
+		var equiped_item = equipment[item_type].duplicate()
+		equiped_item.global_position = $Hand.global_position
+		get_parent().add_child(equiped_item)
 
 	equipment[item_type] = item
 
