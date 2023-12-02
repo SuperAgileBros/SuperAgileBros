@@ -81,9 +81,9 @@ func _physics_process(_delta) -> void:
 		face_right = false
 		scale.x = -1
 	
-	if is_on_floor() == true:
+	if is_on_floor() == true and health > 0:
 		animation.play("Idle")
-	else:
+	if is_on_floor() == false and health > 0:
 		animation.play("Jump")
 
 	
@@ -92,7 +92,7 @@ func _physics_process(_delta) -> void:
 	collision_process()
 
 	if health <= 0:
-		animation.play("Death")
+		animation.play("Death",false)
 	
 func collision_process():
 	for i in range(get_slide_count()):

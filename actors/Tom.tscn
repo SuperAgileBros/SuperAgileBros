@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://actors/assets/tom.png" type="Texture" id=1]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Kick"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
 
 [node name="Player" instance=ExtResource( 2 )]
 
@@ -10,6 +25,10 @@ polygon = PoolVector2Array( 6.07559, 27.9823, -5.86697, 27.9823, -10.843, 8.9614
 
 [node name="Sprite" parent="CollisionPolygon2D" index="0"]
 texture = ExtResource( 1 )
+frame = 0
+
+[node name="Animation" parent="CollisionPolygon2D" index="1"]
+anims/Kick = SubResource( 1 )
 
 [node name="Hand" parent="." index="4"]
 position = Vector2( 13, -29 )

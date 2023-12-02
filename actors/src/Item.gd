@@ -19,4 +19,3 @@ export var is_throwable = false
 func _ready():
 	gravity_scale = 10
 	pass
-
