@@ -80,18 +80,20 @@ func _physics_process(_delta) -> void:
 	if direction.x < 0 and face_right == true:
 		face_right = false
 		scale.x = -1
-	
-	if is_on_floor() == true and health > 0:
-		animation.play("Idle")
-	if is_on_floor() == false and health > 0:
-		animation.play("Jump")
 
-	
 	velocity = calculate_velocity(velocity, direction, speed)
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+
 	collision_process()
 
-	if health <= 0:
+	if is_on_floor() == true and health > 0:
+		if Input.is_action_pressed("character_right") or Input.is_action_pressed("character_left"):
+			animation.play("Run")
+		else:
+			animation.play("Idle")
+	elif is_on_floor() == false and health > 0:
+		animation.play("Jump")
+	elif health <= 0:
 		animation.play("Death",false)
 	
 func collision_process():
