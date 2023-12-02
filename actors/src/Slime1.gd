@@ -9,7 +9,7 @@ var jump_interval_max = 2.0
 var move_timer = 0
 var move_interval_min = 1.0
 var move_interval_max = 2.0
-var health = 10
+onready var health = 1000
 
 var player
 var node
@@ -77,7 +77,7 @@ func collision_process():
 		if collision.collider is KinematicBody2D:
 			player.health = player.health - 1
 			get_parent().set_health_bar()
-		elif collision.collider is Item:
+		if collision.collider is Item:
 		   health = health - collision.collider.damage
 		
 	pass
