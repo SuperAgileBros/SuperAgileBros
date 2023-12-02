@@ -106,6 +106,7 @@ position = Vector2( -4.87177, -19.0693 )
 scale = Vector2( 0.960324, 1.04832 )
 offset = Vector2( 5.5, 13 )
 hframes = 2
+frame = 1
 
 [node name="Animation" type="AnimationPlayer" parent="CollisionPolygon2D"]
 root_node = NodePath("../..")

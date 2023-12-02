@@ -1,5 +1,8 @@
 extends Player
 
+
+func _init():
+	player_name = "MAT"
 func _ready():
 	randomize()
 

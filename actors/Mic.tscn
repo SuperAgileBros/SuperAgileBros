@@ -9,7 +9,10 @@
 polygon = PoolVector2Array( 6.07559, 27.9823, -5.86697, 27.9823, -11.8382, 5.95813, -2.88133, -14.0638, -9.84782, -19.0693, 2.09473, -28.0792, 5.08037, -28.0792 )
 
 [node name="Sprite" parent="CollisionPolygon2D" index="0"]
+rotation = 0.0
+scale = Vector2( 0.960324, 1.04832 )
 texture = ExtResource( 2 )
+frame = 1
 
 [node name="Hand" parent="." index="4"]
 position = Vector2( 14, -29 )

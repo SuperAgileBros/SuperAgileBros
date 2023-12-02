@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=1]
 [ext_resource path="res://lvls/src/HUD.gd" type="Script" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/assets/audio/chooseSelect.mp3" type="AudioStream" id=8]
 [ext_resource path="res://actors/assets/arrow.png" type="Texture" id=9]
+[ext_resource path="res://lvls/assets/HUD/Base-01.png" type="Texture" id=10]
+[ext_resource path="res://lvls/assets/equipment_background.tres" type="Texture" id=11]
+[ext_resource path="res://lvls/assets/backpack_background.tres" type="Texture" id=12]
+[ext_resource path="res://actors/assets/mat.png" type="Texture" id=13]
 
 [sub_resource type="Theme" id=4]
 
@@ -97,11 +101,25 @@ shadow_size = 5
 
 [sub_resource type="Theme" id=1]
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.913725, 0.25098, 0.25098, 1 )
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 10 )
+region = Rect2( 308, 86, 56, 4 )
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.321569, 0.027451, 0.027451, 1 )
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 10 )
+region = Rect2( 307, 6, 58, 4 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 10 )
+region = Rect2( 308, 118, 56, 4 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 13 )
+region = Rect2( 15, 0, 30, 30 )
 
 [node name="HUD" type="CanvasLayer"]
 pause_mode = 2
@@ -207,110 +225,145 @@ margin_top = 210.0
 margin_right = 1489.0
 margin_bottom = 786.0
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 88.0
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_left = 184.0
 margin_top = 88.0
-margin_right = 466.0
-margin_bottom = 140.0
+margin_right = 504.0
+margin_bottom = 112.0
 theme = SubResource( 1 )
-custom_colors/font_color = Color( 0.0470588, 0.00784314, 0.00784314, 1 )
-custom_colors/font_color_shadow = Color( 0.0705882, 0.00784314, 0.00784314, 1 )
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
-step = 1.0
 value = 100.0
-
-[node name="Backpack" type="HBoxContainer" parent="."]
-margin_left = 88.0
-margin_top = 176.0
-margin_right = 88.0
-margin_bottom = 176.0
-
-[node name="slot_0" type="PanelContainer" parent="Backpack"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
-
-[node name="slot_1" type="PanelContainer" parent="Backpack"]
-margin_left = 54.0
-margin_right = 104.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
-
-[node name="slot_2" type="PanelContainer" parent="Backpack"]
-margin_left = 108.0
-margin_right = 158.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
-
-[node name="slot_3" type="PanelContainer" parent="Backpack"]
-margin_left = 162.0
-margin_right = 212.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
-
-[node name="slot_4" type="PanelContainer" parent="Backpack"]
-margin_left = 216.0
-margin_right = 266.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
-
-[node name="slot_5" type="PanelContainer" parent="Backpack"]
-margin_left = 270.0
-margin_right = 320.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
-
-[node name="slot_6" type="PanelContainer" parent="Backpack"]
-margin_left = 324.0
-margin_right = 374.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
-
-[node name="slot_7" type="PanelContainer" parent="Backpack"]
-margin_left = 378.0
-margin_right = 428.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-rect_pivot_offset = Vector2( 25, 25 )
+texture_under = SubResource( 14 )
+texture_over = SubResource( 12 )
+texture_progress = SubResource( 13 )
+nine_patch_stretch = true
 
 [node name="Equipment" type="HBoxContainer" parent="."]
-margin_left = 88.0
-margin_top = 264.0
-margin_right = 260.0
-margin_bottom = 314.0
+margin_left = 184.0
+margin_top = 120.0
+margin_right = 396.0
+margin_bottom = 170.0
 
-[node name="Weapon" type="PanelContainer" parent="Equipment"]
+[node name="Weapon" type="TextureRect" parent="Equipment"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 11 )
+expand = true
 
-[node name="Armor" type="PanelContainer" parent="Equipment"]
+[node name="Armor" type="TextureRect" parent="Equipment"]
 margin_left = 54.0
 margin_right = 104.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 11 )
+expand = true
 
-[node name="Accessory" type="PanelContainer" parent="Equipment"]
+[node name="Accessory" type="TextureRect" parent="Equipment"]
 pause_mode = 2
 margin_left = 108.0
 margin_right = 158.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 11 )
+expand = true
 
-[node name="Consumable" type="PanelContainer" parent="Equipment"]
+[node name="Consumable" type="TextureRect" parent="Equipment"]
 margin_left = 162.0
 margin_right = 212.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Backpack" type="HBoxContainer" parent="."]
+margin_left = 184.0
+margin_top = 176.0
+margin_right = 612.0
+margin_bottom = 226.0
+
+[node name="slot_0" type="TextureRect" parent="Backpack"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="slot_1" type="TextureRect" parent="Backpack"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="slot_2" type="TextureRect" parent="Backpack"]
+margin_left = 108.0
+margin_right = 158.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="slot_3" type="TextureRect" parent="Backpack"]
+margin_left = 162.0
+margin_right = 212.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="slot_4" type="TextureRect" parent="Backpack"]
+margin_left = 216.0
+margin_right = 266.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="slot_5" type="TextureRect" parent="Backpack"]
+margin_left = 270.0
+margin_right = 320.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="slot_6" type="TextureRect" parent="Backpack"]
+margin_left = 324.0
+margin_right = 374.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 12 )
+expand = true
+
+[node name="PortraitFrame" type="TextureRect" parent="."]
+self_modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+margin_left = 88.0
+margin_top = 88.0
+margin_right = 176.0
+margin_bottom = 176.0
+texture = SubResource( 15 )
+expand = true
+
+[node name="Portrait" type="TextureRect" parent="PortraitFrame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.5
+margin_top = -38.5
+margin_right = 38.5
+margin_bottom = 38.5
+texture = SubResource( 16 )
+expand = true

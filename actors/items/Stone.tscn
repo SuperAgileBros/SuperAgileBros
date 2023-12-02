@@ -13,6 +13,8 @@ collision_layer = 4
 collision_mask = 8
 script = ExtResource( 2 )
 item_name = "stone"
+damage = 3
+is_throwable = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

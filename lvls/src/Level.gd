@@ -14,10 +14,10 @@ export var current_player: String = "MAT"
 var characterChooseVisible: bool = false
 
 func _init():
-	_add_player()
 	hud = hud.instance()
-	$Player.connect("update_hud", hud, "_on_update_hud")
+	hud.name = "HUD"
 	add_child(hud)
+	_add_player()
 
 
 func _ready():
@@ -53,8 +53,6 @@ func _process(_delta):
 			get_tree().paused = false
 			$HUD/Character_choose.hide()
 			characterChooseVisible = false
-	if $Player.health <= 0:
-		play_death_animation()
 		
 ##	if Input.is_action_just_pressed("character_change"):   // Michał ne wywalaj jeszcze tego proszę :D
 	#	if get_tree().paused: 
@@ -64,5 +62,3 @@ func _process(_delta):
 	#		get_tree().paused = true
 	#		$Character_choose.show()
 
-func play_death_animation():
-	 $Player.animation.play("Death", false)
