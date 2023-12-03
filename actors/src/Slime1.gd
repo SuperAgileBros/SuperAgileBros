@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Slime
 
 var velocity = Vector2.ZERO
 var gravity = 800
@@ -9,7 +10,7 @@ var jump_interval_max = 2.0
 var move_timer = 0
 var move_interval_min = 1.0
 var move_interval_max = 2.0
-onready var health = 1000
+onready var health = 4
 
 var player
 var node
@@ -21,9 +22,7 @@ func _ready():
 	# przypisać wartość "Name" taką jaką miał poprzedni obiekt
 	player = get_parent().get_node("Player")
 	#connect("body_entered", self, "_on_RigidBody2D_body_entered")
-	
-	
-	
+
 
 func _process(delta):
 	velocity.y += gravity * delta
@@ -46,7 +45,7 @@ func _process(delta):
 	# Funkcja poruszania
 	#velocity = move_and_slide(velocity, Vector2.UP)
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
-	collision_process()	
+	#collision_process()	
 	# timer random skoku
 	jump_timer -= delta
 
@@ -55,14 +54,7 @@ func _process(delta):
 		jump_timer = rand_range(jump_interval_min, jump_interval_max)
 		jump()
 	if health <= 0:
-		velocity = Vector2.ZERO
 		animation.play("Death",false)
-		yield(animation, "animation_finished")
-		animation.stop()
-		if animation.is_playing():
-			print("Animation is currently playing.")
-		else:
-			self.queue_free()
 
 func jump():
 	# sprawdza czy slime jest na ziemi
@@ -70,15 +62,19 @@ func jump():
 		# predkosc skoku
 		velocity.y = -jump_power
 		
-func collision_process():
-	for i in range(get_slide_count()):
-		var collision = get_slide_collision(i)
-		
-		if collision.collider is KinematicBody2D:
-			player.health = player.health - 1
-			get_parent().set_health_bar()
-		if collision.collider is Item:
-		   health = health - collision.collider.damage
-		
-	pass
+func take_damage(damage):
+	health = health - damage
+
+func die():
+	queue_free()
+	
+#func collision_process():
+#	for i in range(get_slide_count()):
+#		var collision = get_slide_collision(i)
+#		
+#		if collision.collider is KinematicBody2D:
+#			player.health = player.health - 1
+#			get_parent().set_health_bar()
+#		if collision.collider is Item:
+#		   health = health - collision.collider.damage
 
