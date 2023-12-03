@@ -14,20 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Actor.gd"
 }, {
-"base": "HBoxContainer",
-"class": "ContributorClass",
+"base": "Area2D",
+"class": "Hitbox",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
+"path": "res://actors/src/Hitbox.gd"
 }, {
-"base": "PanelContainer",
-"class": "GistItem",
+"base": "Area2D",
+"class": "Hurtbox",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+"path": "res://actors/src/Hurtbox.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Item",
@@ -56,9 +51,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
-"ContributorClass": "",
-"GistItem": "",
-"InvitationItem": "",
+"Hitbox": "",
+"Hurtbox": "",
 "Item": "",
 "KeyBinding": "",
 "Level": "",
@@ -203,6 +197,8 @@ character_throw={
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="items"
 2d_physics/layer_4="world"
+2d_physics/layer_5="hitbox"
+2d_physics/layer_6="hurtbox"
 
 [memory]
 
