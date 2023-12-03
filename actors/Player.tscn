@@ -1,54 +1,71 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://actors/src/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/assets/audio/death-bell.mp3" type="AudioStream" id=2]
 [ext_resource path="res://actors/src/Camera.gd" type="Script" id=3]
 [ext_resource path="res://actors/src/Animation.gd" type="Script" id=4]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Death"
-length = 3.38
+[sub_resource type="Animation" id=6]
+resource_name = "Attack"
+length = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("CollisionPolygon2D/Sprite:rotation_degrees")
+tracks/0/path = NodePath("CollisionPolygon2D/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, -317.274 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionPolygon2D/Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.960324, 1.04832 ), Vector2( 0.137205, -0.00255789 ) ]
-}
-tracks/2/type = "audio"
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+
+[sub_resource type="Animation" id=1]
+resource_name = "Death"
+length = 3.0
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "clips": [ {
-"end_offset": 1.21,
+"end_offset": 1.5738,
 "start_offset": 0.0,
 "stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionPolygon2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -365.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.1, 0.1 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionPolygon2D/Sprite:frame")
 tracks/0/interp = 1
@@ -64,6 +81,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Jump"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionPolygon2D/Sprite:frame")
 tracks/0/interp = 1
@@ -96,7 +114,7 @@ tracks/0/keys = {
 "values": [ 1, 2 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player2" type="KinematicBody2D"]
 collision_mask = 14
 script = ExtResource( 1 )
 
@@ -114,7 +132,6 @@ one_shot = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 pause_mode = 1
 position = Vector2( 0.895191, -26.9516 )
-scale = Vector2( 1.00481, 0.998904 )
 
 [node name="Sprite" type="Sprite" parent="CollisionPolygon2D"]
 pause_mode = 1
@@ -122,10 +139,11 @@ position = Vector2( -4.87177, -19.0693 )
 scale = Vector2( 0.960324, 1.04832 )
 offset = Vector2( 5.5, 13 )
 hframes = 5
-frame = 2
+frame = 3
 
 [node name="Animation" type="AnimationPlayer" parent="CollisionPolygon2D"]
 root_node = NodePath("../..")
+anims/Attack = SubResource( 6 )
 anims/Death = SubResource( 1 )
 anims/Idle = SubResource( 4 )
 anims/Jump = SubResource( 3 )
@@ -138,3 +156,4 @@ position = Vector2( 32, -29 )
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]
 [connection signal="animation_finished" from="CollisionPolygon2D/Animation" to="CollisionPolygon2D/Animation" method="_on_Animation_animation_finished"]
+[connection signal="animation_started" from="CollisionPolygon2D/Animation" to="CollisionPolygon2D/Animation" method="_on_Animation_animation_started"]
