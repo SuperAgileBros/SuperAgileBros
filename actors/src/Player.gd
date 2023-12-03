@@ -70,6 +70,8 @@ func _throw():
 func _action(action_press_time):
 	#implemented in character script
 	pass
+func die():
+	get_tree().change_scene("res://menus/Menu_main.tscn")
 
 func _physics_process(_delta) -> void:
 	var direction := get_direction()

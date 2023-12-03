@@ -5,7 +5,7 @@ func _ready():
 
 func _on_Animation_animation_finished(anim_name):
 	if anim_name == "Death":
-		get_tree().change_scene("res://menus/Menu_main.tscn")
+		owner.die()
 	elif anim_name == "Attack":
 		print("Attack ended")
 		var hand = owner.get_node("Hand")

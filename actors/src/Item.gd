@@ -18,4 +18,10 @@ export var is_throwable = false
 
 func _ready():
 	gravity_scale = 10
-	pass
+	$Sprite/Hitbox.damage = damage
+
+func _process(delta):
+	if linear_velocity == Vector2(0,0):
+		$Sprite/Hitbox/HitboxCollision.disabled = true
+	else:
+		$Sprite/Hitbox/HitboxCollision.disabled = false
