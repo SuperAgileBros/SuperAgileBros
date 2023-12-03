@@ -1,8 +1,5 @@
 extends Player
 
-
-func _init():
-	player_name = "MAT"
 func _ready():
 	randomize()
 
@@ -13,7 +10,11 @@ func _on_ActionTimer_timeout():
 	var item = load(items_common[key]).instance()
 	item.position = get_node("Hand").global_position
 	get_parent().add_child(item)
-	if face_right:
-		item.apply_central_impulse(Vector2(100, 0))
+
+func _attack():
+	if equipment.size() > 0:
+		pass
 	else:
-		item.apply_central_impulse(Vector2(-100, 0))
+		animation.play("Kick")
+		print("no weapon equipped")
+
