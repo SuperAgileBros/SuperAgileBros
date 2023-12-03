@@ -6,6 +6,7 @@ var player_name = "Player"
 onready var animation = $CollisionPolygon2D/Animation
 
 var face_right = true
+export var attack_in_progress = false
 
 const max_health = 100
 var health = max_health
@@ -17,18 +18,17 @@ export var equipment = {
 	"accessory": null,
 	"consumable": null
 }
-
 signal update_hud
 
 var action_press_time = 0
 
 func _ready():
 	if connect("update_hud", get_parent().get_node("HUD"), "_on_update_hud"):
-		print("connected")
+		pass
 	else:
 		print("not connected")
 	emit_signal("update_hud")
-	print("player "+player_name+" ready")
+
 
 func _input(event):
 	if event.is_action_pressed("character_action"):
@@ -48,8 +48,9 @@ func _equip():
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
-	if equipment["weapon"] != null:
-		pass
+	print("ATTAC")
+	attack_in_progress = true
+
 		
 func _throw():
 	if backpack.size() > 0:
@@ -85,8 +86,16 @@ func _physics_process(_delta) -> void:
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
 
 	collision_process()
+	player_animations()
 
-	if is_on_floor() == true and health > 0:
+func player_animations():
+	if attack_in_progress == true:
+		#check is attack animation is finished
+		if animation.current_animation == "Attack":
+			pass
+		else:
+			animation.play("Attack")
+	elif is_on_floor() == true and health > 0:
 		if Input.is_action_pressed("character_right") or Input.is_action_pressed("character_left"):
 			animation.play("Run")
 		else:
@@ -95,7 +104,7 @@ func _physics_process(_delta) -> void:
 		animation.play("Jump")
 	elif health <= 0:
 		animation.play("Death",false)
-	
+
 func collision_process():
 	for i in range(get_slide_count()):
 		var collision = get_slide_collision(i)
@@ -150,4 +159,8 @@ func calculate_velocity(
 	return new_velocity
 
 func _on_ActionTimer_timeout():
+	pass # Replace with function body.
+
+
+func _on_Animation_animation_started(anim_name:String):
 	pass # Replace with function body.
