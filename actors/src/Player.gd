@@ -48,7 +48,6 @@ func _equip():
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
-	print("ATTAC")
 	attack_in_progress = true
 
 		
