@@ -111,7 +111,7 @@ func collision_process():
 		var collision = get_slide_collision(i)
 		if collision.collider is TileMap:
 			pass
-		elif collision.collider is Item and backpack.size() < 8:
+		elif collision.collider is Item and backpack.size() < 7:
 			pickup_item(collision.collider)
 			break
 		elif collision.collider is KinematicBody2D:
@@ -124,7 +124,7 @@ func collision_process():
 
 func pickup_item(item):
 	print("item picked up")
-	if backpack.size() < 8:
+	if backpack.size() < 7:
 		backpack.append(item.duplicate())
 		item.queue_free()
 		emit_signal("update_hud")

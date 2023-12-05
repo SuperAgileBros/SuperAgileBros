@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://lvls/assets/Assets/Tiles.png" type="Texture" id=1]
+[ext_resource path="res://actors/src/Item.gd" type="Script" id=2]
+[ext_resource path="res://actors/src/Hitbox.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 290, 353, 12, 15 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 8.00001
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["item"]]
+z_index = -1
+collision_layer = 4
+collision_mask = 8
+contact_monitor = true
+script = ExtResource( 2 )
+item_name = "bottle"
+item_max_durability = 1
+work_cost = 1
+damage = 3
+is_equipable = true
+is_throwable = true
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 2 )
+
+[node name="Hitbox" type="Area2D" parent="Sprite"]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource( 3 )
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="Sprite/Hitbox"]
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -5.68434e-14, 5.68434e-14 )
+scale = Vector2( 0.999999, 0.999999 )
+polygon = PoolVector2Array( -4, 7.00001, 4, 7.00001, 6.00001, 5, 6.00001, 1, 2, -3, 2, -7.00001, -2, -7.00001, -2, -3, -6.00001, 1, -6.00001, 5 )
