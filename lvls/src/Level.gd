@@ -3,6 +3,7 @@ class_name Level
 
 var hud = preload("res://lvls/HUD.tscn")
 
+
 export var players = {
 	"MAT":preload("res://actors/Mat.tscn"),
 	"KAM":preload("res://actors/Kam.tscn"),
@@ -53,7 +54,8 @@ func _process(_delta):
 			get_tree().paused = false
 			$HUD/Character_choose.hide()
 			characterChooseVisible = false
-		
+			
+			
 ##	if Input.is_action_just_pressed("character_change"):   // Michał ne wywalaj jeszcze tego proszę :D
 	#	if get_tree().paused: 
 	#		$Character_choose.hide()
