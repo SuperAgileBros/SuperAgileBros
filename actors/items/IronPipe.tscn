@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://actors/assets/ZombieRLItems.png" type="Texture" id=1]
+[ext_resource path="res://actors/src/Item.gd" type="Script" id=2]
+[ext_resource path="res://actors/src/Hitbox.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 3, 32, 11, 16 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.12132, 11.6673 )
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["item"]]
+z_index = -1
+collision_layer = 4
+collision_mask = 8
+contact_monitor = true
+script = ExtResource( 2 )
+item_name = "stick"
+item_max_durability = 10
+work_cost = 2
+damage = 9
+is_equipable = true
+is_throwable = true
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+texture = SubResource( 2 )
+
+[node name="Hitbox" type="Area2D" parent="Sprite"]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource( 3 )
+
+[node name="HitboxCollision" type="CollisionPolygon2D" parent="Sprite/Hitbox"]
+rotation = 2.55807
+scale = Vector2( 0.999999, 0.999999 )
+polygon = PoolVector2Array( 7.75662, -2.06868, -4.25101, 0.388853, -2.01483, 4.26178, -3.11676, 5.93083, -5.88775, 6.49796, -7.00045, 5.76333, -7.21104, 0.0323136, -5.37448, -2.74945, 7.18949, -4.83967, 8.85855, -3.73774 )
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.749999, 3.25 )
+rotation = 0.785397
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 1 )

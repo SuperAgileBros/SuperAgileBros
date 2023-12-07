@@ -13,7 +13,10 @@ export var items_common = {
 		"rope": "res://actors/items/Rope.tscn",
 		"woolsack": "res://actors/items/WoolSack.tscn",
 		"bottle" : "res://actors/items/Bottle.tscn",
-		"weed" : "res://actors/items/Weed.tscn"
+		"weed" : "res://actors/items/Weed.tscn",
+		"flower": "res://actors/items/Flower.tscn",
+		"copper wire": "res://actors/items/CopperWire.tscn"
+
 	}
 func _ready():
 	pause_mode = Node.PAUSE_MODE_STOP
