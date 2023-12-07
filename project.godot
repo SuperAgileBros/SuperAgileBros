@@ -79,6 +79,7 @@ default_bus_layout=""
 
 Log="*res://utils/system_log.gd"
 System="*res://utils/system.gd"
+Signal="*res://EnvInteractions/Signal.gd"
 
 [debug]
 

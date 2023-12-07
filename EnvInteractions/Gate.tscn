@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://EnvInteractions/Gate.gd" type="Script" id=1]
+[ext_resource path="res://lvls/assets/Assets/Gate.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 21, 5.38194 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[node name="Gate" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -46 )
+scale = Vector2( 3.89286, 3.32143 )
+texture = ExtResource( 2 )
+hframes = 6
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1, -47 )
+scale = Vector2( 1, 8.64 )
+shape = SubResource( 2 )
+
+[node name="Aniamtion" type="AnimationPlayer" parent="."]
+anims/Open = SubResource( 1 )
