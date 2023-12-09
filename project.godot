@@ -59,10 +59,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Player.gd"
 }, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
+"base": "KinematicBody2D",
+"class": "Slime",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
+"path": "res://actors/src/Slime1.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
@@ -75,7 +75,7 @@ _global_script_class_icons={
 "KeyBinding": "",
 "Level": "",
 "Player": "",
-"RepositoryItem": ""
+"Slime": ""
 }
 
 [application]
@@ -97,6 +97,7 @@ default_bus_layout=""
 
 Log="*res://utils/system_log.gd"
 System="*res://utils/system.gd"
+Signal="*res://EnvInteractions/Signal.gd"
 
 [debug]
 

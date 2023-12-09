@@ -2,10 +2,10 @@ extends Actor
 class_name Player
 
 var player_name = "Player"
+export var climbing = false
 
 onready var animation = $CollisionPolygon2D/Animation
 
-var face_right = true
 export var attack_in_progress = false
 
 const max_health = 100
@@ -48,7 +48,6 @@ func _equip():
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
-	print("ATTAC")
 	attack_in_progress = true
 
 		
@@ -66,14 +65,14 @@ func _throw():
 		get_parent().add_child(projectile)
 		emit_signal("update_hud")
 		
-
-func _action(action_press_time):
-	#implemented in character script
-	pass
+func die():
+	get_tree().change_scene("res://menus/Menu_main.tscn")
 
 func _physics_process(_delta) -> void:
+	
 	var direction := get_direction()
 	var sprite := get_child(0)
+	
 	
 	if direction.x > 0 and face_right == false:
 		face_right = true
@@ -82,8 +81,21 @@ func _physics_process(_delta) -> void:
 		face_right = false
 		scale.x = -1
 
-	velocity = calculate_velocity(velocity, direction, speed)
-	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+	#velocity = calculate_velocity(velocity, direction, speed)
+	#velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+	
+	if climbing == false:
+		velocity = calculate_velocity(velocity, direction, speed)
+		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+		print("TEST")
+	elif climbing == true:
+		velocity = calculate_velocity(velocity, direction, speed)
+		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+		if Input.is_action_pressed("character_jump"):
+			velocity.y = -400
+		elif Input.is_action_pressed("character_down"):
+			velocity.y = 400
+
 
 	collision_process()
 	player_animations()
@@ -110,7 +122,7 @@ func collision_process():
 		var collision = get_slide_collision(i)
 		if collision.collider is TileMap:
 			pass
-		elif collision.collider is Item and backpack.size() < 8:
+		elif collision.collider is Item and backpack.size() < 7:
 			pickup_item(collision.collider)
 			break
 		elif collision.collider is KinematicBody2D:
@@ -123,7 +135,7 @@ func collision_process():
 
 func pickup_item(item):
 	print("item picked up")
-	if backpack.size() < 8:
+	if backpack.size() < 7:
 		backpack.append(item.duplicate())
 		item.queue_free()
 		emit_signal("update_hud")

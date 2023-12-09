@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://actors/assets/tom.png" type="Texture" id=1]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/src/Tom.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Kick"
@@ -19,6 +20,10 @@ tracks/0/keys = {
 }
 
 [node name="Player" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="ActionTimer" parent="." index="2"]
+wait_time = 0.001
 
 [node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PoolVector2Array( 6.07559, 27.9823, -5.86697, 27.9823, -10.843, 8.96142, -3.87654, -15.0649, -10.843, -19.0693, -4.87176, -27.0781, 5.08037, -27.0781 )

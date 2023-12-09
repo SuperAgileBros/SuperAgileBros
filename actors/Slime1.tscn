@@ -1,22 +1,41 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://actors/src/Slime1.gd" type="Script" id=1]
 [ext_resource path="res://actors/assets/slime.png" type="Texture" id=2]
-[ext_resource path="res://actors/AnimationSlime.gd" type="Script" id=3]
+[ext_resource path="res://actors/src/Animation.gd" type="Script" id=3]
+[ext_resource path="res://actors/src/Hurtbox.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 33.0
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
+length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:scale")
+tracks/0/path = NodePath("..:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.179688, 0.140625 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
 }
 
 [node name="Slime1" type="KinematicBody2D"]
@@ -35,6 +54,15 @@ polygon = PoolVector2Array( -25, 12, -24, 17, -21, 21, -17, 24, -12, 27, -4, 27,
 pause_mode = 1
 position = Vector2( 0, -5 )
 texture = ExtResource( 2 )
+
+[node name="Hurtbox" type="Area2D" parent="CollisionPolygon2D/Sprite"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource( 4 )
+
+[node name="ShapeOfHurting" type="CollisionShape2D" parent="CollisionPolygon2D/Sprite/Hurtbox"]
+position = Vector2( 1, 11 )
+shape = SubResource( 2 )
 
 [node name="AnimationSlime" type="AnimationPlayer" parent="CollisionPolygon2D"]
 anims/Death = SubResource( 1 )

@@ -15,7 +15,14 @@ export var damage = 0
 export var is_equipable = false
 export var is_throwable = false
 
+export var equip_rotation = 90
 
 func _ready():
 	gravity_scale = 10
-	pass
+	$Sprite/Hitbox.damage = damage
+
+func _process(delta):
+	if linear_velocity == Vector2(0,0):
+		$Sprite/Hitbox/HitboxCollision.disabled = true
+	else:
+		$Sprite/Hitbox/HitboxCollision.disabled = false
