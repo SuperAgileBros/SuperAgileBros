@@ -30,7 +30,8 @@ export var items_material_rare = {
 
 export var items_weapon_common = {
 		"wooden sword": "res://actors/items/WoodenSword.tscn",
-		"bow": "res://actors/items/Bow.tscn"
+		"bow": "res://actors/items/Bow.tscn",
+		"hammer": "res://actors/items/Hammer.tscn"
 	}
 
 func _ready():
