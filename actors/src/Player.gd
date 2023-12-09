@@ -2,6 +2,7 @@ extends Actor
 class_name Player
 
 var player_name = "Player"
+export var climbing = false
 
 onready var animation = $CollisionPolygon2D/Animation
 
@@ -73,8 +74,10 @@ func die():
 	get_tree().change_scene("res://menus/Menu_main.tscn")
 
 func _physics_process(_delta) -> void:
+	
 	var direction := get_direction()
 	var sprite := get_child(0)
+	
 	
 	if direction.x > 0 and face_right == false:
 		face_right = true
@@ -83,8 +86,21 @@ func _physics_process(_delta) -> void:
 		face_right = false
 		scale.x = -1
 
-	velocity = calculate_velocity(velocity, direction, speed)
-	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+	#velocity = calculate_velocity(velocity, direction, speed)
+	#velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+	
+	if climbing == false:
+		velocity = calculate_velocity(velocity, direction, speed)
+		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+		print("TEST")
+	elif climbing == true:
+		velocity = calculate_velocity(velocity, direction, speed)
+		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+		if Input.is_action_pressed("character_jump"):
+			velocity.y = -400
+		elif Input.is_action_pressed("character_down"):
+			velocity.y = 400
+
 
 	collision_process()
 	player_animations()
