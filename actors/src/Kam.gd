@@ -2,7 +2,8 @@ extends Player
 
 export var recepies_common = {
 	["wooden stick","wooden stick","rope"]: "wooden sword",
-	["wooden stick","rope","rope"]: "bow"
+	["wooden stick","rope","rope"]: "bow",
+	["wooden stick","wooden stick","stone"]: "hammer"
 }
 
 func _init():

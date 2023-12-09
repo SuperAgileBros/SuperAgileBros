@@ -12,7 +12,7 @@ var velocity: = Vector2.ZERO
 
 export var items_material_common = {
 		"wooden stick": "res://actors/items/WoodenStick.tscn",
-#		"stone": "res://actors/items/Stone.tscn",
+		"stone": "res://actors/items/Stone.tscn",
 		"rope": "res://actors/items/Rope.tscn",
 	#	"woolsack": "res://actors/items/WoolSack.tscn",
 		#"bottle" : "res://actors/items/Bottle.tscn",
