@@ -23,6 +23,7 @@ work_cost = 1
 damage = 3
 is_equipable = true
 is_throwable = true
+equip_rotation = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 2 )
