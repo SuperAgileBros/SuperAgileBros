@@ -8,7 +8,6 @@ func _ready():
 	randomize()
 
 func _on_ActionTimer_timeout():
-	print("timeout")
 	var keys = items_material_common.keys()
 	var key = keys[randi() % keys.size()]
 	print(key)
