@@ -3,18 +3,16 @@ extends Player
 
 func _init():
 	player_name = "MAT"
+
 func _ready():
 	randomize()
 
 func _on_ActionTimer_timeout():
 	print("timeout")
-	var keys = items_common.keys()
+	var keys = items_material_common.keys()
 	var key = keys[randi() % keys.size()]
 	print(key)
-	var item = load(items_common[key]).instance()
-	item.position = get_node("Hand").global_position
-	get_parent().add_child(item)
-	if face_right:
-		item.apply_central_impulse(Vector2(100, 0))
-	else:
-		item.apply_central_impulse(Vector2(-100, 0))
+	var item = load(items_material_common[key]).instance()
+	spawn_item(item)
+
+
