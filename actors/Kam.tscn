@@ -7,6 +7,9 @@
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 
+[node name="ActionTimer" parent="." index="2"]
+wait_time = 0.001
+
 [node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PoolVector2Array( 5.10481, 27.9516, -6.89519, 27.9516, -10.8952, 5.9516, -2.89519, -13.0484, -10.8952, -20.0484, -5.89519, -29.0484, 5.10481, -29.0484 )
 
