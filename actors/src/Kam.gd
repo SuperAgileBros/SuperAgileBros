@@ -34,3 +34,4 @@ func _on_ActionTimer_timeout():
 		spawn_item(creation)
 		for _i in range(3):
 			backpack.pop_front()
+		emit_signal("update_hud")

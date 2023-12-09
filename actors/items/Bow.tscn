@@ -20,6 +20,7 @@ item_max_durability = 23
 work_cost = 1
 damage = 6
 is_equipable = true
+equip_rotation = 0
 updates = {
 1: {
 "damage": 6,

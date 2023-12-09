@@ -15,6 +15,7 @@ export var damage = 0
 export var is_equipable = false
 export var is_throwable = false
 
+export var equip_rotation = 90
 
 func _ready():
 	gravity_scale = 10
