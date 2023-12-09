@@ -6,7 +6,6 @@ export var climbing = false
 
 onready var animation = $CollisionPolygon2D/Animation
 
-var face_right = true
 export var attack_in_progress = false
 
 const max_health = 100
@@ -66,10 +65,6 @@ func _throw():
 		get_parent().add_child(projectile)
 		emit_signal("update_hud")
 		
-
-func _action(action_press_time):
-	#implemented in character script
-	pass
 func die():
 	get_tree().change_scene("res://menus/Menu_main.tscn")
 

@@ -15,7 +15,7 @@ func _backpack_change():
 	for item in player.backpack:
 		var slot = $Backpack.get_node("slot_"+str(i))
 		var sprite = Sprite.new()
-		sprite.texture = item.get_node("Sprite").texture
+		sprite = item.get_node("Sprite").duplicate()
 		sprite.position = Vector2(slot.rect_size.x/2,slot.rect_size.y/2)
 		slot.add_child(sprite)
 		i += 1
@@ -28,12 +28,10 @@ func _backpack_change():
 func add_equipment(var equipment,var equipment_slot):
 	if equipment != null:
 		if equipment_slot.get_child_count() != 0:
-			equipment.get_child(0).texture = equipment.get_node("Sprite").texture
-		else:
-			var sprite = Sprite.new()
-			sprite.texture = equipment.get_node("Sprite").texture
-			sprite.position = Vector2(equipment_slot.rect_size.x/2,equipment_slot.rect_size.y/2)
-			equipment_slot.add_child(sprite)
+			equipment_slot.get_child(0).queue_free()
+		var sprite = equipment.get_node("Sprite").duplicate()
+		sprite.position = Vector2(equipment_slot.rect_size.x/2,equipment_slot.rect_size.y/2)
+		equipment_slot.add_child(sprite)
 	else:
 		if equipment_slot.get_child_count() != 0:
 			equipment_slot.get_child(0).queue_free()

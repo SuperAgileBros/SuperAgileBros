@@ -20,8 +20,9 @@ func _on_Animation_animation_started(anim_name):
 		if weapon != null:
 			print("weapon is " + weapon.item_name)
 			var hand = owner.get_node("Hand")
+			var rotation = weapon.equip_rotation
 			weapon = weapon.get_node("Sprite").duplicate()
-			weapon.rotation_degrees = 90
+			weapon.rotation_degrees = rotation
 			hand.add_child(weapon)
 			weapon.get_node("Hitbox").get_child(0).disabled = false
 			print(hand.get_child_count())

@@ -8,7 +8,8 @@
 [ext_resource path="res://lvls/assets/Background/Background.png" type="Texture" id=6]
 [ext_resource path="res://EnvInteractions/Lever.tscn" type="PackedScene" id=7]
 [ext_resource path="res://EnvInteractions/Gate.tscn" type="PackedScene" id=8]
-[ext_resource path="res://EnvInteractions/Ladder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://actors/items/WoodenSword.tscn" type="PackedScene" id=9]
+[ext_resource path="res://EnvInteractions/Ladder.tscn" type="PackedScene" id=10]
 [ext_resource path="res://lvls/src/Level.gd" type="Script" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=75]
@@ -5442,8 +5443,11 @@ pause_mode = 1
 script = ExtResource( 12 )
 
 [node name="PlayerSpawn" type="Position2D" parent="."]
-position = Vector2( 5212, 60 )
+position = Vector2( 4800, 242 )
 scale = Vector2( 2, 2 )
+
+[node name="RigidBody2D" parent="PlayerSpawn" instance=ExtResource( 9 )]
+position = Vector2( 60, -38 )
 
 [node name="Gate" parent="." instance=ExtResource( 8 )]
 position = Vector2( 4421, 283 )

@@ -4,12 +4,19 @@ func _ready():
 	randomize()
 
 func _on_ActionTimer_timeout():
-	print("timeout")
-	var keys = items_common.keys()
-	var key = keys[randi() % keys.size()]
-	var item = load(items_common[key]).instance()
-	item.position = get_node("Hand").global_position
-	get_parent().add_child(item)
+	var keys = equipment.keys()
+	print(keys)
+	if keys.size() > 0:
+		var key = keys[randi() % keys.size()]
+		print(key)
+		var item  = equipment[key]
+		print(item)
+		if item != null:
+			item.upgrade()
+			emit_signal("update_hud")
+	else:
+		print("no items equipped")
+
 
 func _attack():
 	if equipment.size() > 0:
