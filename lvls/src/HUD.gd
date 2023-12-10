@@ -38,11 +38,10 @@ func add_equipment(var equipment,var equipment_slot):
 		var sprite = equipment.get_node("Sprite").duplicate()
 		sprite.position = Vector2(equipment_slot.rect_size.x/2,equipment_slot.rect_size.y/2)
 		var durability = $Durability.duplicate()
-		print(str(equipment.item_durability) + "/" + str(equipment.item_max_durability))
-		durability.max_value = equipment.item_max_durability
-		durability.value = equipment.item_durability
 		sprite.add_child(durability)
 		durability.show()
+		durability.max_value = equipment.item_max_durability
+		durability.value = equipment.item_durability
 		equipment_slot.add_child(sprite)
 func _portrait():
 	var player = get_parent().get_node("Player").get_node("CollisionPolygon2D").get_node("Sprite")

@@ -65,7 +65,9 @@ func _attack():
 		
 func _throw():
 	if backpack.size() > 0:
+		var durability = backpack[0].item_durability
 		var projectile = backpack.pop_at(0).duplicate()
+		projectile.item_durability = durability
 		projectile.global_position = $Hand.global_position
 		projectile.set_rotation(0)
 		if face_right:
@@ -151,7 +153,10 @@ func collision_process():
 func pickup_item(item):
 	print("item picked up")
 	if backpack.size() < 7:
-		backpack.append(item.duplicate())
+		var durability = item.item_durability
+		var item_to_backpack = item.duplicate()
+		item_to_backpack.item_durability = durability
+		backpack.append(item_to_backpack)
 		item.queue_free()
 		emit_signal("update_hud")
 		
