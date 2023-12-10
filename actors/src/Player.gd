@@ -29,6 +29,18 @@ func _ready():
 		print("not connected")
 	emit_signal("update_hud")
 
+func _process(delta):
+	var hud_needs_update = false
+	for i in range(backpack.size()):
+		if is_instance_valid(backpack[i]) == false:
+			backpack.remove(i)
+			hud_needs_update = true
+	for i in equipment.keys():
+		if is_instance_valid(equipment[i]) == false:
+			equipment[i] = null
+			hud_needs_update = true
+	if hud_needs_update:
+		emit_signal("update_hud")
 
 func _input(event):
 	if event.is_action_pressed("character_action"):
@@ -106,6 +118,10 @@ func player_animations():
 			pass
 		else:
 			animation.play("Attack")
+			if equipment["weapon"] != null:
+				equipment["weapon"].work()
+			emit_signal("update_hud")
+			
 	elif is_on_floor() == true and health > 0:
 		if Input.is_action_pressed("character_right") or Input.is_action_pressed("character_left"):
 			animation.play("Run")

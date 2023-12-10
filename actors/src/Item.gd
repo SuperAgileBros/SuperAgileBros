@@ -7,7 +7,7 @@ export var item_rarity = 0
 export var item_types = ["resource", "weapon", "armor", "accessory", "consumable"]
 export var item_type = 0
 export var item_max_durability = 100
-var item_durability = item_max_durability
+export var item_durability = 1
 export var work_cost = 0
 export var item_level = 1
 export var damage = 0
@@ -20,11 +20,15 @@ export var equip_rotation = 90
 func _ready():
 	gravity_scale = 10
 	$Sprite/Hitbox.damage = damage
+	item_durability = item_max_durability
 
 func _process(delta):
-	if item_durability <= 0:
-		queue_free()
 	if linear_velocity == Vector2(0,0):
 		$Sprite/Hitbox/HitboxCollision.disabled = true
 	else:
 		$Sprite/Hitbox/HitboxCollision.disabled = false
+
+func work():
+	item_durability -= work_cost
+	if item_durability <= 0:
+		queue_free()
