@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/assets/mic.png" type="Texture" id=2]
+[ext_resource path="res://actors/src/Mic.gd" type="Script" id=3]
 
 [node name="Player" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PoolVector2Array( 6.07559, 27.9823, -5.86697, 27.9823, -11.8382, 5.95813, -2.88133, -14.0638, -9.84782, -19.0693, 2.09473, -28.0792, 5.08037, -28.0792 )

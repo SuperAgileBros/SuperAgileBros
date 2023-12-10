@@ -17,6 +17,12 @@ func _backpack_change():
 		var sprite = Sprite.new()
 		sprite = item.get_node("Sprite").duplicate()
 		sprite.position = Vector2(slot.rect_size.x/2,slot.rect_size.y/2)
+		var durability = $Durability.duplicate()
+
+		durability.max_value = item.item_max_durability
+		durability.value = item.item_durability
+		sprite.add_child(durability)
+		durability.show()
 		slot.add_child(sprite)
 		i += 1
 
@@ -26,21 +32,21 @@ func _backpack_change():
 	add_equipment(player.equipment["consumable"],$Equipment/Consumable)
 	
 func add_equipment(var equipment,var equipment_slot):
+	for item in equipment_slot.get_children():
+		item.queue_free()
 	if equipment != null:
-		if equipment_slot.get_child_count() != 0:
-			equipment_slot.get_child(0).queue_free()
 		var sprite = equipment.get_node("Sprite").duplicate()
 		sprite.position = Vector2(equipment_slot.rect_size.x/2,equipment_slot.rect_size.y/2)
+		var durability = $Durability.duplicate()
+		sprite.add_child(durability)
+		durability.show()
+		durability.max_value = equipment.item_max_durability
+		durability.value = equipment.item_durability
 		equipment_slot.add_child(sprite)
-	else:
-		if equipment_slot.get_child_count() != 0:
-			equipment_slot.get_child(0).queue_free()
 func _portrait():
 	var player = get_parent().get_node("Player").get_node("CollisionPolygon2D").get_node("Sprite")
 	var portrait = $PortraitFrame/Portrait
 	portrait.texture.atlas = player.texture
-	print("portrait")
-	print(portrait.texture.to_string())
 
 func _on_update_hud():
 	_backpack_change()
