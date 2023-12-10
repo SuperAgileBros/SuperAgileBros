@@ -21,10 +21,16 @@ func _on_Animation_animation_started(anim_name):
 			print("weapon is " + weapon.item_name)
 			var hand = owner.get_node("Hand")
 			var rotation = weapon.equip_rotation
+			var damage = weapon.damage
+			
 			weapon = weapon.get_node("Sprite").duplicate()
 			weapon.rotation_degrees = rotation
 			hand.add_child(weapon)
-			weapon.get_node("Hitbox").get_child(0).disabled = false
+			
+			if weapon.has_method("ranged_attack"):
+				weapon.ranged_attack(damage)
+			else:
+				weapon.get_node("Hitbox").get_child(0).disabled = false
 			print(hand.get_child_count())
 	elif anim_name == "Death":
 		owner.set_physics_process(false)
