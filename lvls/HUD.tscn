@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=1]
 [ext_resource path="res://lvls/src/HUD.gd" type="Script" id=2]
@@ -120,6 +120,10 @@ region = Rect2( 0, 0, 64, 64 )
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 13 )
 region = Rect2( 15, 0, 30, 30 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 10 )
+region = Rect2( 308, 70, 56, 3 )
 
 [node name="HUD" type="CanvasLayer"]
 pause_mode = 2
@@ -367,3 +371,14 @@ margin_right = 38.5
 margin_bottom = 38.5
 texture = SubResource( 16 )
 expand = true
+
+[node name="Durability" type="TextureProgress" parent="."]
+visible = false
+margin_left = -20.0
+margin_top = 18.0
+margin_right = 22.0
+margin_bottom = 21.0
+value = 100.0
+texture_under = SubResource( 17 )
+texture_progress = SubResource( 17 )
+nine_patch_stretch = true

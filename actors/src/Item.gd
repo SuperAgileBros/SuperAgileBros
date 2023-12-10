@@ -22,6 +22,8 @@ func _ready():
 	$Sprite/Hitbox.damage = damage
 
 func _process(delta):
+	if item_durability <= 0:
+		queue_free()
 	if linear_velocity == Vector2(0,0):
 		$Sprite/Hitbox/HitboxCollision.disabled = true
 	else:

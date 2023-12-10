@@ -17,6 +17,12 @@ func _backpack_change():
 		var sprite = Sprite.new()
 		sprite = item.get_node("Sprite").duplicate()
 		sprite.position = Vector2(slot.rect_size.x/2,slot.rect_size.y/2)
+		var durability = $Durability.duplicate()
+
+		durability.max_value = item.item_max_durability
+		durability.value = item.item_durability
+		sprite.add_child(durability)
+		durability.show()
 		slot.add_child(sprite)
 		i += 1
 
@@ -31,6 +37,12 @@ func add_equipment(var equipment,var equipment_slot):
 	if equipment != null:
 		var sprite = equipment.get_node("Sprite").duplicate()
 		sprite.position = Vector2(equipment_slot.rect_size.x/2,equipment_slot.rect_size.y/2)
+		var durability = $Durability.duplicate()
+
+		durability.max_value = equipment.item_max_durability
+		durability.value = equipment.item_durability
+		sprite.add_child(durability)
+		durability.show()
 		equipment_slot.add_child(sprite)
 func _portrait():
 	var player = get_parent().get_node("Player").get_node("CollisionPolygon2D").get_node("Sprite")
