@@ -16,12 +16,3 @@ func _on_ActionTimer_timeout():
 			emit_signal("update_hud")
 	else:
 		print("no items equipped")
-
-
-func _attack():
-	if equipment.size() > 0:
-		pass
-	else:
-		animation.play("Kick")
-		print("no weapon equipped")
-

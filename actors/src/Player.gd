@@ -87,7 +87,6 @@ func _physics_process(_delta) -> void:
 	if climbing == false:
 		velocity = calculate_velocity(velocity, direction, speed)
 		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
-		print("TEST")
 	elif climbing == true:
 		velocity = calculate_velocity(velocity, direction, speed)
 		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
