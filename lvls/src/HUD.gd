@@ -26,15 +26,12 @@ func _backpack_change():
 	add_equipment(player.equipment["consumable"],$Equipment/Consumable)
 	
 func add_equipment(var equipment,var equipment_slot):
+	for item in equipment_slot.get_children():
+		item.queue_free()
 	if equipment != null:
-		if equipment_slot.get_child_count() != 0:
-			equipment_slot.get_child(0).queue_free()
 		var sprite = equipment.get_node("Sprite").duplicate()
 		sprite.position = Vector2(equipment_slot.rect_size.x/2,equipment_slot.rect_size.y/2)
 		equipment_slot.add_child(sprite)
-	else:
-		if equipment_slot.get_child_count() != 0:
-			equipment_slot.get_child(0).queue_free()
 func _portrait():
 	var player = get_parent().get_node("Player").get_node("CollisionPolygon2D").get_node("Sprite")
 	var portrait = $PortraitFrame/Portrait
