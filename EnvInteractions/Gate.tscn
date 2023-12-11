@@ -40,5 +40,5 @@ position = Vector2( 1, -47 )
 scale = Vector2( 1, 8.64 )
 shape = SubResource( 2 )
 
-[node name="Aniamtion" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 anims/Open = SubResource( 1 )

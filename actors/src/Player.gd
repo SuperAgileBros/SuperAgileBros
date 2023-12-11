@@ -101,9 +101,12 @@ func _physics_process(_delta) -> void:
 	if climbing == false:
 		velocity = calculate_velocity(velocity, direction, speed)
 		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+		
 	elif climbing == true:
 		velocity = calculate_velocity(velocity, direction, speed)
 		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+		velocity.y = 300
+
 		if Input.is_action_pressed("character_jump"):
 			velocity.y = -400
 		elif Input.is_action_pressed("character_down"):
