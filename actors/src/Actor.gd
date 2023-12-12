@@ -5,7 +5,7 @@ var face_right = true
 
 export var speed: = Vector2(400.0,800.0)
 
-export var gravity: = 3000.0
+export var gravity: = 2750.0
 
 var velocity: = Vector2.ZERO
 
