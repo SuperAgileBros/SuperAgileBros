@@ -1,23 +1,33 @@
 extends Area2D
 export var code = "0"
-var codeFromLevers = ""
+var codeFromLevers = -1
 var levers = []
 var lever
 
 func _ready():
-	lever = $Lever
-	Signal.connect("LeverChanged",self,"CheckCode")
+	for lever in self.get_children():
+		if lever is Area2D:
+			levers.append(lever)
+			lever.connect("LeverChanged", self, "CheckCode")
+			print("Added lever:", lever)
+	#lever = $Lever
+	#lever.connect("LeverChanged",self,"CheckCode")
 	#for lever in levers:
 	#	print (lever.name, " ",lever.state)
-
+var sumState = 0
 func CheckCode():
-	var codeFromLever = ""
-	print ("testttt")
-	#for lever in levers:
-	codeFromLevers = lever.state
-	if code == codeFromLevers:
-			$StaticBody2D/CollisionShape2D.disabled = true
-			$Aniamtion.play("Open",false)
+	#var allLeversActivated = true
+	
+	for lever in levers:
+		codeFromLevers += lever.state
+		print(lever)
+	if codeFromLevers <= sumState:
+		$StaticBody2D/CollisionShape2D.disabled = true
+		$Animation.play("Open", false)
+		sumState = codeFromLevers
 	else:
-			$StaticBody2D/CollisionShape2D.disabled = false
-			$Aniamtion.play("Open",false, -2.0)
+		$StaticBody2D/CollisionShape2D.disabled = false
+		$Animation.play("Open", false, -2.0)
+		sumState = codeFromLevers
+
+

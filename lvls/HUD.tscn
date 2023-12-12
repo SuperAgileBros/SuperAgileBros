@@ -1,11 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=1]
 [ext_resource path="res://lvls/src/HUD.gd" type="Script" id=2]
-[ext_resource path="res://actors/assets/michal.png" type="Texture" id=3]
-[ext_resource path="res://actors/assets/kamil.png" type="Texture" id=4]
-[ext_resource path="res://actors/assets/tomek.png" type="Texture" id=5]
-[ext_resource path="res://actors/assets/mati.png" type="Texture" id=6]
+[ext_resource path="res://actors/assets/kamil_notdoingattacking.png" type="Texture" id=3]
+[ext_resource path="res://actors/assets/michal_notdoingattacking.png" type="Texture" id=4]
+[ext_resource path="res://actors/assets/mati_notdoingattacking.png" type="Texture" id=5]
+[ext_resource path="res://actors/assets/tomek_notdoingattacking.png" type="Texture" id=6]
 [ext_resource path="res://menus/Menu_pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/assets/audio/chooseSelect.mp3" type="AudioStream" id=8]
 [ext_resource path="res://actors/assets/arrow.png" type="Texture" id=9]
@@ -121,6 +121,14 @@ region = Rect2( 0, 0, 64, 64 )
 atlas = ExtResource( 13 )
 region = Rect2( 15, 0, 30, 30 )
 
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 308, 71, 56, 2 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 10 )
+region = Rect2( 308, 135, 56, 2 )
+
 [node name="HUD" type="CanvasLayer"]
 pause_mode = 2
 layer = 99
@@ -143,7 +151,7 @@ script = ExtResource( 1 )
 [node name="Michał" type="Sprite" parent="Character_choose"]
 position = Vector2( 527, 325 )
 scale = Vector2( 2.54831, 2.70888 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Michał"]
 anims/highlight = SubResource( 6 )
@@ -151,7 +159,7 @@ anims/highlight = SubResource( 6 )
 [node name="Tomek" type="Sprite" parent="Character_choose"]
 position = Vector2( 367.497, 491 )
 scale = Vector2( 2.45456, 2.63075 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Tomek"]
 anims/highlight = SubResource( 7 )
@@ -159,7 +167,7 @@ anims/highlight = SubResource( 7 )
 [node name="Mateusz" type="Sprite" parent="Character_choose"]
 position = Vector2( 370, 149 )
 scale = Vector2( 2.61225, 2.7615 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Mateusz"]
 anims/highlight = SubResource( 8 )
@@ -167,7 +175,7 @@ anims/highlight = SubResource( 8 )
 [node name="Kamil" type="Sprite" parent="Character_choose"]
 position = Vector2( 212, 323 )
 scale = Vector2( 2.70456, 2.62294 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character_choose/Kamil"]
 anims/highlight = SubResource( 9 )
@@ -367,3 +375,14 @@ margin_right = 38.5
 margin_bottom = 38.5
 texture = SubResource( 16 )
 expand = true
+
+[node name="Durability" type="TextureProgress" parent="."]
+visible = false
+margin_left = -20.0
+margin_top = 18.0
+margin_right = 22.0
+margin_bottom = 21.0
+value = 100.0
+texture_under = SubResource( 18 )
+texture_progress = SubResource( 17 )
+nine_patch_stretch = true

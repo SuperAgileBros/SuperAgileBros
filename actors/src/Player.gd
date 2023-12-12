@@ -29,6 +29,18 @@ func _ready():
 		print("not connected")
 	emit_signal("update_hud")
 
+func _process(delta):
+	var hud_needs_update = false
+	for i in range(backpack.size()):
+		if is_instance_valid(backpack[i]) == false:
+			backpack.remove(i)
+			hud_needs_update = true
+	for i in equipment.keys():
+		if is_instance_valid(equipment[i]) == false:
+			equipment[i] = null
+			hud_needs_update = true
+	if hud_needs_update:
+		emit_signal("update_hud")
 
 func _input(event):
 	if event.is_action_pressed("character_action"):
@@ -53,7 +65,9 @@ func _attack():
 		
 func _throw():
 	if backpack.size() > 0:
+		var durability = backpack[0].item_durability
 		var projectile = backpack.pop_at(0).duplicate()
+		projectile.item_durability = durability
 		projectile.global_position = $Hand.global_position
 		projectile.set_rotation(0)
 		if face_right:
@@ -91,6 +105,8 @@ func _physics_process(_delta) -> void:
 	elif climbing == true:
 		velocity = calculate_velocity(velocity, direction, speed)
 		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+		velocity.y = 300
+
 		if Input.is_action_pressed("character_jump"):
 			velocity.y = -400
 		elif Input.is_action_pressed("character_down"):
@@ -107,6 +123,10 @@ func player_animations():
 			pass
 		else:
 			animation.play("Attack")
+			if equipment["weapon"] != null:
+				equipment["weapon"].work()
+			emit_signal("update_hud")
+			
 	elif is_on_floor() == true and health > 0:
 		if Input.is_action_pressed("character_right") or Input.is_action_pressed("character_left"):
 			animation.play("Run")
@@ -136,7 +156,10 @@ func collision_process():
 func pickup_item(item):
 	print("item picked up")
 	if backpack.size() < 7:
-		backpack.append(item.duplicate())
+		var durability = item.item_durability
+		var item_to_backpack = item.duplicate()
+		item_to_backpack.item_durability = durability
+		backpack.append(item_to_backpack)
 		item.queue_free()
 		emit_signal("update_hud")
 		
