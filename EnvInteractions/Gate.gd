@@ -20,8 +20,8 @@ func CheckCode():
 	
 	for lever in levers:
 		codeFromLevers += lever.state
-		print(lever)
-	if codeFromLevers <= sumState:
+		print(lever.state)
+	if codeFromLevers < sumState:
 		$StaticBody2D/CollisionShape2D.disabled = true
 		$Animation.play("Open", false)
 		sumState = codeFromLevers

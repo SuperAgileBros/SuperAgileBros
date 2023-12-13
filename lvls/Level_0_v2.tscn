@@ -6280,12 +6280,15 @@ z_index = -14
 tile_set = SubResource( 147 )
 cell_size = Vector2( 16, 16 )
 format = 1
+
 tile_data = PoolIntArray( -786368, 2, 0, -786359, 2, 0, -720823, 2, 0, -458728, 5, 0, -458631, 2, 0, -393125, 2, 0, -327589, 2, 0, -327454, 1, 0, -262087, 7, 0, -262067, 5, 0, -196525, 8, 0, 105, 8, 0, 131339, 4, 0, 393333, 9, 0, 589951, 8, 0 )
+
 
 [node name="Gate2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 10111, 2077 )
 
 [node name="Lever" parent="Gate2" instance=ExtResource( 7 )]
+
 position = Vector2( -238, 192 )
 scale = Vector2( 0.8, 0.8 )
 
