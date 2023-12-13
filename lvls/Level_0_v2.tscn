@@ -5869,37 +5869,7 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -786368, 2, 0, -786359, 2, 0, -720823, 2, 0, -458728, 5, 0, -458631, 2, 0, -393125, 2, 0, -327589, 2, 0, -262087, 7, 0, -262067, 5, 0, -196525, 8, 0, 105, 8, 0, 393333, 9, 0, 589951, 8, 0 )
 
-[node name="Slime1" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime4" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime5" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime6" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime7" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime8" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime9" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
 [node name="Slime10" parent="." instance=ExtResource( 10 )]
-position = Vector2( 9187, 970 )
-
-[node name="Slime11" parent="." instance=ExtResource( 10 )]
 position = Vector2( 9187, 970 )
 
 [node name="Gate2" parent="." instance=ExtResource( 8 )]
@@ -5911,6 +5881,7 @@ position = Vector2( -162, 7 )
 
 [node name="Lever" parent="Gate2" instance=ExtResource( 7 )]
 position = Vector2( 120, -2 )
+state = 1
 
 [node name="WaterPond1" parent="." instance=ExtResource( 11 )]
 visible = false
@@ -5918,4 +5889,22 @@ position = Vector2( 9682, 983 )
 scale = Vector2( 14.5, 1.7 )
 
 [node name="Ladder2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 8887, 475 )
+position = Vector2( 8861, 482 )
+
+[node name="Slime1" parent="." instance=ExtResource( 10 )]
+position = Vector2( 8711, 1727 )
+
+[node name="Slime2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 10619, 535 )
+
+[node name="Slime3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 8683, -49 )
+
+[node name="Slime4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 9199, 259 )
+
+[node name="Slime5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 8083, 135 )
+
+[node name="Slime6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 7667, -217 )

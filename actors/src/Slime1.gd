@@ -11,7 +11,8 @@ var move_timer = 0
 var move_interval_min = 1.0
 var move_interval_max = 2.0
 onready var health = 4
-
+var distance
+var proximity_range = 300
 var player
 var node
 var move_direction = 1  # Tu ustawiam chwilowo kierunek slime w trakcie jego wyszukiwnia gracza na scenie
@@ -29,10 +30,12 @@ func _process(delta):
 	
 	if player and is_instance_valid(player):
 		# Oblicz gdzie jest gracz
-		var direction_to_player = (player.global_position - global_position).normalized()
+		distance = player.global_position.distance_to(self.global_position)
+		if distance <= proximity_range:
+			var direction_to_player = (player.global_position - global_position).normalized()
 
 		# Ustawia prędkosć względem gracza
-		velocity.x = direction_to_player.x * 200  # Tu możemy zwiększyć prędkosć slime
+			velocity.x = direction_to_player.x * 350  # Tu możemy zwiększyć prędkosć slime
 	else:
 		# Jak funkcja zmiany postaci usuwa gracza na sam moment wyboru to slime musi sobie poczekać
 		# chwilowo
