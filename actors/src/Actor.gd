@@ -5,7 +5,7 @@ var face_right = true
 
 export var speed: = Vector2(400.0,800.0)
 
-export var gravity: = 3000.0
+export var gravity: = 2750.0
 
 var velocity: = Vector2.ZERO
 
@@ -30,7 +30,10 @@ export var items_material_rare = {
 
 export var items_weapon_common = {
 		"wooden sword": "res://actors/items/WoodenSword.tscn",
-		"bow": "res://actors/items/Bow.tscn"
+		"bow": "res://actors/items/Bow.tscn",
+		"hammer": "res://actors/items/Hammer.tscn",
+		"iron hammer": "res://actors/items/IronHammer.tscn",
+		"iron club": "res://actors/items/IronClub.tscn"
 	}
 
 func _ready():

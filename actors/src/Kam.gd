@@ -1,8 +1,11 @@
 extends Player
 
-export var recepies_common = {
+var recepies_common = {
 	["wooden stick","wooden stick","rope"]: "wooden sword",
-	["wooden stick","rope","rope"]: "bow"
+	["wooden stick","rope","rope"]: "bow",
+	["wooden stick","wooden stick","stone"]: "hammer",
+	["iron pipe","wooden stick","hammer"]: "iron hammer",
+	["iron pipe","iron pipe","iron pipe"]: "iron club"
 }
 
 func _init():
@@ -18,6 +21,7 @@ func _on_ActionTimer_timeout():
 	var bench = [backpack[0].item_name,backpack[1].item_name,backpack[2].item_name]
 	bench.sort()
 	var creation = ""
+	print(recepies_common.size())
 	for recepie in recepies_common:
 		print("recepie: ",recepie)
 		var sorted_recepie = recepie.duplicate()

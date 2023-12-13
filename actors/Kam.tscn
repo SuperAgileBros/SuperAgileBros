@@ -17,10 +17,6 @@ items_material_common = {
 "weed": "res://actors/items/Weed.tscn",
 "woolsack": "res://actors/items/WoolSack.tscn"
 }
-recepies_common = {
-[ "wooden stick", "rope", "rope" ]: "bow",
-[ "wooden stick", "wooden stick", "rope" ]: "wooden sword"
-}
 
 [node name="ActionTimer" parent="." index="2"]
 wait_time = 0.001
