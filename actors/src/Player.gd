@@ -101,16 +101,10 @@ func _physics_process(_delta) -> void:
 	if climbing == false:
 		velocity = calculate_velocity(velocity, direction, speed)
 		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
-		var mask = 0
-		mask |= 1 << 1  # Add layer 2
-		mask |= 1 << 2  # Add layer 3
-		mask |= 1 << 3  # Add layer 4
-		self.collision_mask = mask
 	elif climbing == true:
 		velocity = calculate_velocity(velocity, direction, speed)
 		velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
 		velocity.y = 300
-		self.collision_mask = 0
 		if Input.is_action_pressed("character_jump"):
 			velocity.y = -400
 		elif Input.is_action_pressed("character_down"):
