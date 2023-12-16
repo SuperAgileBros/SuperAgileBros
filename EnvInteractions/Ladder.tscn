@@ -4,7 +4,7 @@
 [ext_resource path="res://lvls/assets/Ladder2.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.30769, 56.1539 )
+extents = Vector2( 7.50951, 46.8373 )
 
 [node name="Ladder" type="Area2D"]
 script = ExtResource( 1 )

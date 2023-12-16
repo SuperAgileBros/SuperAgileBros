@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://actors/src/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/assets/audio/death-bell.mp3" type="AudioStream" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://sound_effects/pickup.wav" type="AudioStream" id=8]
 [ext_resource path="res://sound_effects/hit_taken.wav" type="AudioStream" id=9]
 [ext_resource path="res://sound_effects/charge_attack.wav" type="AudioStream" id=10]
+[ext_resource path="res://actors/src/Hurtbox.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Attack"
@@ -23,7 +24,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ 3 ]
 }
 
@@ -81,7 +82,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ 0 ]
 }
 
@@ -97,7 +98,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ 4 ]
 }
 
@@ -116,7 +117,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 1, 2 ]
 }
 
@@ -158,8 +159,17 @@ anims/RESET = SubResource( 2 )
 anims/Run = SubResource( 5 )
 script = ExtResource( 4 )
 
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2( 32, -29 )
+script = ExtResource( 11 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+
 [node name="Hand" type="Position2D" parent="."]
 position = Vector2( 32, -29 )
+
+[node name="Charge" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )

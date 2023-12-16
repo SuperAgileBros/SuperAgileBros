@@ -18,6 +18,7 @@ export var is_throwable = false
 export var equip_rotation = 90
 
 func _ready():
+	z_index = 1
 	gravity_scale = 10
 	$Sprite/Hitbox.damage = damage
 	item_durability = item_max_durability

@@ -45,7 +45,6 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("character_action"):
 		$ActionTimer.start()
-		$Ablility.play()
 	if event.is_action_released("character_action"):
 		$ActionTimer.stop()
 		$Ablility.stop()
@@ -55,6 +54,9 @@ func _input(event):
 		_equip()
 	if event.is_action_pressed("character_throw"):
 		_throw()
+	if event.is_action_pressed("character_jump"):
+		if is_on_floor() == true:
+			$Jump.play()
 func _equip():
 	if backpack.size() > 0:
 		if backpack[0].is_equipable:
@@ -132,24 +134,20 @@ func player_animations():
 			animation.play("Run")
 			if $Walk.playing == false:
 				$Walk.play()
-		elif Input.is_action_just_pressed("character_jump"):
-			$Walk.stop()
-			$Jump.play()
 		else:
 			$Walk.stop()
 			animation.play("Idle")
 	elif is_on_floor() == false and health > 0:
+		$Walk.stop()
 		animation.play("Jump")
 	elif health <= 0:
+		$Walk.stop()
 		animation.play("Death",false)
 
 func collision_process():
 	for i in range(get_slide_count()):
 		var collision = get_slide_collision(i)
 		if collision.collider is TileMap:
-			print(collision.collider.name)
-			if collision.collider.name == "Water":
-				climbing = true
 			pass
 		elif collision.collider is Item and backpack.size() < 7:
 			pickup_item(collision.collider)
