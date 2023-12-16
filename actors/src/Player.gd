@@ -45,8 +45,10 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("character_action"):
 		$ActionTimer.start()
+		$Ablility.play()
 	if event.is_action_released("character_action"):
 		$ActionTimer.stop()
+		$Ablility.stop()
 	if event.is_action_pressed("character_attack"):
 		_attack()
 	if event.is_action_pressed("character_equip"):
@@ -60,6 +62,7 @@ func _equip():
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
+	$Attack.play()
 	attack_in_progress = true
 
 		
@@ -127,7 +130,13 @@ func player_animations():
 	elif is_on_floor() == true and health > 0:
 		if Input.is_action_pressed("character_right") or Input.is_action_pressed("character_left"):
 			animation.play("Run")
+			if $Walk.playing == false:
+				$Walk.play()
+		elif Input.is_action_just_pressed("character_jump"):
+			$Walk.stop()
+			$Jump.play()
 		else:
+			$Walk.stop()
 			animation.play("Idle")
 	elif is_on_floor() == false and health > 0:
 		animation.play("Jump")
@@ -138,6 +147,9 @@ func collision_process():
 	for i in range(get_slide_count()):
 		var collision = get_slide_collision(i)
 		if collision.collider is TileMap:
+			print(collision.collider.name)
+			if collision.collider.name == "Water":
+				climbing = true
 			pass
 		elif collision.collider is Item and backpack.size() < 7:
 			pickup_item(collision.collider)

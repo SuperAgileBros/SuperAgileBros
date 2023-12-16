@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://actors/src/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/assets/audio/death-bell.mp3" type="AudioStream" id=2]
 [ext_resource path="res://actors/src/Camera.gd" type="Script" id=3]
 [ext_resource path="res://actors/src/Animation.gd" type="Script" id=4]
+[ext_resource path="res://sound_effects/walking.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound_effects/jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound_effects/attack.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound_effects/pickup.wav" type="AudioStream" id=8]
+[ext_resource path="res://sound_effects/hit_taken.wav" type="AudioStream" id=9]
+[ext_resource path="res://sound_effects/charge_attack.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Attack"
@@ -154,6 +160,24 @@ script = ExtResource( 4 )
 
 [node name="Hand" type="Position2D" parent="."]
 position = Vector2( 32, -29 )
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Ablility" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="ItemPickUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]
 [connection signal="animation_finished" from="CollisionPolygon2D/Animation" to="CollisionPolygon2D/Animation" method="_on_Animation_animation_finished"]
