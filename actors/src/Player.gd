@@ -47,12 +47,16 @@ func _input(event):
 		$ActionTimer.start()
 	if event.is_action_released("character_action"):
 		$ActionTimer.stop()
+		$Ablility.stop()
 	if event.is_action_pressed("character_attack"):
 		_attack()
 	if event.is_action_pressed("character_equip"):
 		_equip()
 	if event.is_action_pressed("character_throw"):
 		_throw()
+	if event.is_action_pressed("character_jump"):
+		if is_on_floor() == true:
+			$Jump.play()
 func _equip():
 	if backpack.size() > 0:
 		if backpack[0].is_equipable:
@@ -60,6 +64,7 @@ func _equip():
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
+	$Attack.play()
 	attack_in_progress = true
 
 		
@@ -127,11 +132,16 @@ func player_animations():
 	elif is_on_floor() == true and health > 0:
 		if Input.is_action_pressed("character_right") or Input.is_action_pressed("character_left"):
 			animation.play("Run")
+			if $Walk.playing == false:
+				$Walk.play()
 		else:
+			$Walk.stop()
 			animation.play("Idle")
 	elif is_on_floor() == false and health > 0:
+		$Walk.stop()
 		animation.play("Jump")
 	elif health <= 0:
+		$Walk.stop()
 		animation.play("Death",false)
 
 func collision_process():

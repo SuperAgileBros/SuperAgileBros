@@ -14,5 +14,5 @@ polygon = PoolVector2Array( 5.08037, 26.9812, -7.8574, 26.9812, -11.8382, 3.9559
 position = Vector2( -5.86697, -20.0704 )
 texture = ExtResource( 1 )
 
-[node name="Hand" parent="." index="4"]
+[node name="Hand" parent="." index="5"]
 position = Vector2( 14, -30 )
