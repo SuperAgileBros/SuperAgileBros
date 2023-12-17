@@ -8271,10 +8271,12 @@ position = Vector2( 4439, 2159 )
 position = Vector2( 6894, 1848 )
 
 [node name="Ladder22" parent="." instance=ExtResource( 20 )]
-position = Vector2( 9001, 1669 )
+position = Vector2( 9003, 1656 )
+scale = Vector2( 1, 1.2 )
 
 [node name="Ladder30" parent="." instance=ExtResource( 20 )]
-position = Vector2( 9455, 1654 )
+position = Vector2( 9457, 1656 )
+scale = Vector2( 1, 1.2 )
 
 [node name="Ladder23" parent="." instance=ExtResource( 20 )]
 position = Vector2( 9136, 1842 )
@@ -8293,6 +8295,9 @@ position = Vector2( 6477, 2639 )
 
 [node name="Ladder28" parent="." instance=ExtResource( 20 )]
 position = Vector2( 6510, 2317 )
+
+[node name="Ladder38" parent="." instance=ExtResource( 20 )]
+position = Vector2( 6326, 2480 )
 
 [node name="Ladder29" parent="." instance=ExtResource( 20 )]
 position = Vector2( 6387, 2153 )
