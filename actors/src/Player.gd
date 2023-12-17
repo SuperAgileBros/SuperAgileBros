@@ -151,14 +151,17 @@ func collision_process():
 			pass
 		elif collision.collider is Item and backpack.size() < 7:
 			pickup_item(collision.collider)
+			$ItemPickUp.play()
 			break
-		elif collision.collider is KinematicBody2D:
-			health = health - 1
-			get_parent().set_health_bar() 
 		#zachowaniwe pędu przy kolizji z Rigidbody2D
 		if (collision.collider != null) and (collision.collider is RigidBody2D):
 			collision.collider.apply_central_impulse(-collision.normal * 100)
 	pass
+
+func take_damage(damage):
+	health -= damage
+	$Hit.play()
+	get_parent().set_health_bar()
 
 func pickup_item(item):
 	print("item picked up")
