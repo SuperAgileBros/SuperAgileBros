@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://actors/assets/Arrows_pack.png" type="Texture" id=1]
+[ext_resource path="res://actors/src/Item.gd" type="Script" id=2]
+[ext_resource path="res://actors/src/Hitbox.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 61, 16, 27, 8 )
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.00001
+
+[sub_resource type="SegmentShape2D" id=4]
+b = Vector2( -0.000144005, 23 )
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["item"]]
+position = Vector2( 16, -9 )
+z_index = -1
+collision_layer = 4
+collision_mask = 8
+contact_monitor = true
+script = ExtResource( 2 )
+item_name = "fire missle"
+item_max_durability = 1
+work_cost = 1
+damage = 8
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 3 )
+
+[node name="Hitbox" type="Area2D" parent="Sprite"]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource( 3 )
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="Sprite/Hitbox"]
+rotation = 1.57079
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 14, 0 )
+rotation = 1.57079
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Sprite/Hitbox" to="Sprite/Hitbox" method="_on_Hitbox_body_entered"]
