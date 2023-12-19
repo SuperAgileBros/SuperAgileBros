@@ -3,7 +3,7 @@ class_name Slime
 
 var velocity = Vector2.ZERO
 var gravity = 800
-var jump_power = 350
+var jump_power = 250
 var jump_timer = 0
 var jump_interval_min = 1.0
 var jump_interval_max = 2.0
