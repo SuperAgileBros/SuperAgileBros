@@ -47,8 +47,8 @@ updates = {
 texture = ExtResource( 1 )
 hframes = 3
 script = ExtResource( 4 )
-bullet_scene = "res://actors/items/bullets/Arrow.tscn"
-bullet_velocity = 1000
+bullet_scene = "res://actors/items/bullets/FireMissle.tscn"
+bullet_velocity = 600
 
 [node name="Hitbox" type="Area2D" parent="Sprite"]
 collision_layer = 16
