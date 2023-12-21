@@ -151,6 +151,8 @@ func collision_process():
 		if collision.collider is TileMap:
 			pass
 		elif collision.collider is Item and backpack.size() < 7:
+			if collision.collider.item_name == "bullet":
+				break
 			pickup_item(collision.collider)
 			$ItemPickUp.play()
 			break
