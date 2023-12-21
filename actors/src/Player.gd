@@ -64,8 +64,9 @@ func _equip():
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
-	$Attack.play()
-	attack_in_progress = true
+	if $Attack.playing == false:
+		$Attack.play()
+		attack_in_progress = true
 
 		
 func _throw():
@@ -166,6 +167,7 @@ func take_damage(damage):
 func pickup_item(item):
 	print("item picked up")
 	if backpack.size() < 7:
+		item.pickup()
 		var durability = item.item_durability
 		var item_to_backpack = item.duplicate()
 		item_to_backpack.item_durability = durability
