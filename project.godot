@@ -14,16 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Actor.gd"
 }, {
-"base": "HBoxContainer",
-"class": "ContributorClass",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
-}, {
-"base": "PanelContainer",
-"class": "GistItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
 "base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
@@ -33,11 +23,6 @@ _global_script_classes=[ {
 "class": "Hurtbox",
 "language": "GDScript",
 "path": "res://actors/src/Hurtbox.gd"
-}, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Item",
@@ -59,11 +44,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Player.gd"
 }, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Slime",
 "language": "GDScript",
@@ -71,16 +51,12 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
-"ContributorClass": "",
-"GistItem": "",
 "Hitbox": "",
 "Hurtbox": "",
-"InvitationItem": "",
 "Item": "",
 "KeyBinding": "",
 "Level": "",
 "Player": "",
-"RepositoryItem": "",
 "Slime": ""
 }
 
