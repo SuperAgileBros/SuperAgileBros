@@ -9,6 +9,7 @@ func ranged_attack(damage):
 	var bullet = load(bullet_scene).instance()
 	bullet.get_child(0).get_child(0).damage = damage
 	add_child(bullet)
+	bullet.gravity_scale = 0
 	if get_parent().get_parent().face_right:
 		bullet.apply_central_impulse(Vector2(bullet_velocity, 0))
 	else:

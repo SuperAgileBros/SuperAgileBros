@@ -7,9 +7,6 @@
 [ext_resource path="res://actors/src/Hitbox.gd" type="Script" id=5]
 [ext_resource path="res://sound_effects/slime_hurt.wav" type="AudioStream" id=6]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 33.0
-
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
 length = 0.2
@@ -40,12 +37,16 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 33.0
+
 [node name="Slime1" type="KinematicBody2D"]
 pause_mode = 1
 z_index = -1
 collision_layer = 2
 collision_mask = 14
 script = ExtResource( 1 )
+health = 20
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 pause_mode = 1
@@ -58,25 +59,35 @@ pause_mode = 1
 position = Vector2( 0, -5 )
 texture = ExtResource( 2 )
 
-[node name="Hitbox" type="Area2D" parent="CollisionPolygon2D/Sprite"]
-script = ExtResource( 5 )
-
-[node name="ShapeOfHit" type="CollisionShape2D" parent="CollisionPolygon2D/Sprite/Hitbox"]
-position = Vector2( 1, 11 )
-shape = SubResource( 2 )
-
-[node name="Hurtbox" type="Area2D" parent="CollisionPolygon2D/Sprite"]
-collision_layer = 32
-collision_mask = 16
-script = ExtResource( 4 )
-
-[node name="ShapeOfHurt" type="CollisionShape2D" parent="CollisionPolygon2D/Sprite/Hurtbox"]
-position = Vector2( 1, 11 )
-shape = SubResource( 2 )
-
 [node name="AnimationSlime" type="AnimationPlayer" parent="CollisionPolygon2D"]
 anims/Death = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( 1, -29.5 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 5 )
+
+[node name="ShapeOfHit" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 1, 11 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="Hitbox/ShapeOfHit"]
+wait_time = 0.2
+autostart = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2( 1, -29.5 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 32
+collision_mask = 16
+script = ExtResource( 4 )
+
+[node name="ShapeOfHurt" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( 1, 11 )
+shape = SubResource( 2 )
+
+[connection signal="timeout" from="Hitbox/ShapeOfHit/Timer" to="Hitbox" method="_on_Timer_timeout"]
