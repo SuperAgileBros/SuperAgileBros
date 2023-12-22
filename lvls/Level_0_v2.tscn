@@ -22,7 +22,7 @@
 [ext_resource path="res://actors/items/Bow.tscn" type="PackedScene" id=20]
 [ext_resource path="res://actors/items/Rope.tscn" type="PackedScene" id=21]
 [ext_resource path="res://lvls/assets/Assets/Hive.png" type="Texture" id=22]
-[ext_resource path="res://actors/items/FireStaff.tscn" type="PackedScene" id=23]
+[ext_resource path="res://EnvInteractions/Spawner.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=75]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -8897,14 +8897,6 @@ script = SubResource( 187 )
 pause_mode = 1
 script = ExtResource( 12 )
 
-[node name="Slime2" parent="." instance=ExtResource( 18 )]
-position = Vector2( 5697, 2904 )
-scale = Vector2( 2, 2 )
-
-[node name="Slime1" parent="." instance=ExtResource( 18 )]
-position = Vector2( 7707, 2932 )
-scale = Vector2( 2, 2 )
-
 [node name="Slime3" parent="." instance=ExtResource( 18 )]
 position = Vector2( 3723, 2597 )
 scale = Vector2( 2, 2 )
@@ -8914,11 +8906,8 @@ position = Vector2( 6326, 2947 )
 scale = Vector2( 2, 2 )
 
 [node name="PlayerSpawn" type="Position2D" parent="."]
-position = Vector2( 9567, 1690 )
+position = Vector2( 6367, 2943 )
 scale = Vector2( 2, 2 )
-
-[node name="RigidBody2D6" parent="." instance=ExtResource( 23 )]
-position = Vector2( 9514, 1726 )
 
 [node name="Terrain" type="TileMap" parent="."]
 pause_mode = 1
@@ -9284,6 +9273,12 @@ position = Vector2( 6832, 3021 )
 
 [node name="RigidBody2D5" parent="." instance=ExtResource( 21 )]
 position = Vector2( 6911, 3012 )
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 24 )]
+position = Vector2( 5314, 2896 )
+rotation = 1.57079
+scale = Vector2( 2.40625, 2.64062 )
+frame = 4
 
 [connection signal="body_entered" from="Swimming" to="Swimming" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Swimming" to="Swimming" method="_on_Ladder_body_exited"]
