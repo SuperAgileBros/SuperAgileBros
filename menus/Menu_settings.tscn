@@ -1,14 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://menus/Menu_key_binding.tscn" type="PackedScene" id=1]
+[ext_resource path="res://actors/assets/arrow.png" type="Texture" id=2]
+[ext_resource path="res://menus/src/Menu_settings.gd" type="Script" id=3]
+[ext_resource path="res://menus/src/Audio.gd" type="Script" id=4]
 
-[node name="Control" type="Control"]
+[node name="MenuSettings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1980.0
+margin_bottom = -1080.0
+script = ExtResource( 3 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 174.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -23,3 +33,82 @@ margin_bottom = -4.0
 [node name="Control" parent="TabContainer/Key Binding" instance=ExtResource( 1 )]
 margin_right = 0.0
 margin_bottom = 0.0
+
+[node name="Audio" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 100.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 4 )
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio"]
+margin_right = 97.0
+margin_bottom = 110.0
+columns = 2
+
+[node name="Label" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_right = 44.0
+margin_bottom = 14.0
+
+[node name="Volume" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_left = 48.0
+margin_right = 97.0
+margin_bottom = 14.0
+text = "Volume"
+align = 1
+
+[node name="MasterLabel" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_top = 19.0
+margin_right = 44.0
+margin_bottom = 33.0
+text = "Master"
+
+[node name="MasterVolumeLevel" type="HSlider" parent="TabContainer/Audio/GridContainer"]
+margin_left = 48.0
+margin_top = 18.0
+margin_right = 97.0
+margin_bottom = 34.0
+min_value = -80.0
+max_value = 0.0
+
+[node name="GameLabel" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_top = 39.0
+margin_right = 44.0
+margin_bottom = 53.0
+text = "Game"
+
+[node name="GameVolumeLevel" type="HSlider" parent="TabContainer/Audio/GridContainer"]
+margin_left = 48.0
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 54.0
+value = 50.0
+
+[node name="MusicLabel" type="Label" parent="TabContainer/Audio/GridContainer"]
+margin_top = 59.0
+margin_right = 44.0
+margin_bottom = 73.0
+text = "Music"
+
+[node name="MusicVolumeLevel" type="HSlider" parent="TabContainer/Audio/GridContainer"]
+margin_left = 48.0
+margin_top = 58.0
+margin_right = 97.0
+margin_bottom = 74.0
+value = 50.0
+ticks_on_borders = true
+
+[node name="Back" type="Button" parent="."]
+margin_left = 145.0
+margin_top = 146.0
+margin_right = 669.0
+margin_bottom = 664.0
+rect_rotation = -180.0
+rect_scale = Vector2( 0.25, 0.25 )
+icon = ExtResource( 2 )
+
+[connection signal="value_changed" from="TabContainer/Audio/GridContainer/MasterVolumeLevel" to="TabContainer/Audio" method="_on_MasterVolumeLevel_value_changed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

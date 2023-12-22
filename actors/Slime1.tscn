@@ -65,6 +65,7 @@ script = ExtResource( 3 )
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+bus = "Game"
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 1, -29.5 )
