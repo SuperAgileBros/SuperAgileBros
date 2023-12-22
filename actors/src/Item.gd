@@ -17,10 +17,20 @@ export var is_throwable = false
 
 export var equip_rotation = 90
 
+export var pickup_sound = "res://sound_effects/pickup2.wav"
+var audio_player = AudioStreamPlayer.new()
+
+func _init():
+	audio_player.name = "PickupSound"
+	audio_player.stream = load(pickup_sound)
+	
 func _ready():
+	z_index = 1
 	gravity_scale = 10
 	$Sprite/Hitbox.damage = damage
+	name = item_name
 	item_durability = item_max_durability
+	add_child(audio_player)
 
 func _process(delta):
 	if linear_velocity == Vector2(0,0):
@@ -32,3 +42,6 @@ func work():
 	item_durability -= work_cost
 	if item_durability <= 0:
 		queue_free()
+
+func pickup():
+	audio_player.play()

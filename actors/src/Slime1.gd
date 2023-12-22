@@ -3,14 +3,15 @@ class_name Slime
 
 var velocity = Vector2.ZERO
 var gravity = 800
-var jump_power = 350
+var jump_power = 250
 var jump_timer = 0
 var jump_interval_min = 1.0
 var jump_interval_max = 2.0
 var move_timer = 0
 var move_interval_min = 1.0
 var move_interval_max = 2.0
-onready var health = 4
+onready var health = 40
+var damage = 10
 var distance
 var proximity_range = 300
 var player
@@ -22,6 +23,7 @@ func _ready():
 	# Pobieram instancje gracza za pomocą nazwy, udało mi sie w skrypcie do zmiany gracza
 	# przypisać wartość "Name" taką jaką miał poprzedni obiekt
 	player = get_parent().get_node("Player")
+	$CollisionPolygon2D/Sprite/Hitbox.damage = damage
 	#connect("body_entered", self, "_on_RigidBody2D_body_entered")
 
 
@@ -66,6 +68,11 @@ func jump():
 		velocity.y = -jump_power
 		
 func take_damage(damage):
+	var dmg_label = load("res://EnvInteractions/FadingTekst.tscn").instance()
+	dmg_label.text = str(damage)
+	add_child(dmg_label)
+	dmg_label.get_child(0).play("Fade")
+	$Hit.play()
 	health = health - damage
 
 func die():
