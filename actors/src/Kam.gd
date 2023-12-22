@@ -5,7 +5,9 @@ var recepies_common = {
 	["wooden stick","rope","rope"]: "bow",
 	["wooden stick","wooden stick","stone"]: "hammer",
 	["iron pipe","wooden stick","hammer"]: "iron hammer",
-	["iron pipe","iron pipe","iron pipe"]: "iron club"
+	["iron pipe","iron pipe","iron pipe"]: "iron club",
+	["wooden stick","wooden stick","snowball"]: "ice staff",
+	["wooden stick","wooden stick","amber"]: "fire staff"
 }
 
 func _init():

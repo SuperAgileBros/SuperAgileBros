@@ -36,6 +36,12 @@ export var items_weapon_common = {
 		"iron club": "res://actors/items/IronClub.tscn"
 	}
 
+export var items_weapon_rare = {
+		"ice staff": "res://actors/items/IceStaff.tscn",
+		"fire staff": "res://actors/items/FireStaff.tscn"
+	}
+
+
 func _ready():
 	pause_mode = Node.PAUSE_MODE_STOP
 
