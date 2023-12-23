@@ -11,8 +11,6 @@
 [node name="MenuSettings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1980.0
-margin_bottom = -1080.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
@@ -41,60 +39,62 @@ theme = ExtResource( 2 )
 script = ExtResource( 5 )
 
 [node name="Panel" type="Panel" parent="TabContainer/Graphics"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
 theme = ExtResource( 2 )
 
-[node name="Display Resolution" type="Label" parent="TabContainer/Graphics/Panel"]
+[node name="Display Resolution" type="GridContainer" parent="TabContainer/Graphics/Panel"]
 margin_right = 40.0
 margin_bottom = 23.0
 
+[node name="Label" type="Label" parent="TabContainer/Graphics/Panel/Display Resolution"]
+margin_right = 140.0
+margin_bottom = 23.0
+text = "Display Resolution"
+
 [node name="OptionButton" type="OptionButton" parent="TabContainer/Graphics/Panel/Display Resolution"]
-margin_right = 16.0
-margin_bottom = 25.0
+margin_top = 27.0
+margin_right = 140.0
+margin_bottom = 52.0
 
 [node name="Audio" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 100.0
-margin_right = -4.0
-margin_bottom = 64.0
 theme = ExtResource( 2 )
 script = ExtResource( 4 )
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio"]
-margin_right = 97.0
-margin_bottom = 110.0
-theme = ExtResource( 2 )
-columns = 2
-
-[node name="Label" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_right = 44.0
-margin_bottom = 14.0
+[node name="GridContainer" type="Panel" parent="TabContainer/Audio"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 1606.0
+margin_bottom = 780.0
 theme = ExtResource( 2 )
 
 [node name="Volume" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_left = 48.0
-margin_right = 97.0
-margin_bottom = 14.0
+margin_left = 57.0
+margin_right = 115.0
+margin_bottom = 23.0
 theme = ExtResource( 2 )
 text = "Volume"
 align = 1
 
 [node name="MasterLabel" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_top = 19.0
-margin_right = 44.0
-margin_bottom = 33.0
+margin_top = 29.0
+margin_right = 53.0
+margin_bottom = 52.0
 theme = ExtResource( 2 )
 text = "Master"
 
 [node name="MasterVolumeLevel" type="HSlider" parent="TabContainer/Audio/GridContainer"]
-margin_left = 48.0
-margin_top = 18.0
-margin_right = 97.0
-margin_bottom = 34.0
+margin_left = 57.0
+margin_top = 27.0
+margin_right = 257.0
+margin_bottom = 55.0
 theme = ExtResource( 2 )
 max_value = 1.0
 step = 0.05
@@ -103,17 +103,17 @@ step = 0.05
 stream = ExtResource( 6 )
 
 [node name="GameLabel" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_top = 39.0
-margin_right = 44.0
-margin_bottom = 53.0
+margin_top = 61.0
+margin_right = 53.0
+margin_bottom = 84.0
 theme = ExtResource( 2 )
 text = "Game"
 
 [node name="GameVolumeLevel" type="HSlider" parent="TabContainer/Audio/GridContainer"]
-margin_left = 48.0
-margin_top = 38.0
-margin_right = 97.0
-margin_bottom = 54.0
+margin_left = 57.0
+margin_top = 59.0
+margin_right = 257.0
+margin_bottom = 87.0
 theme = ExtResource( 2 )
 max_value = 1.0
 step = 0.05
@@ -123,17 +123,17 @@ stream = ExtResource( 6 )
 bus = "Game"
 
 [node name="MusicLabel" type="Label" parent="TabContainer/Audio/GridContainer"]
-margin_top = 59.0
-margin_right = 44.0
-margin_bottom = 73.0
+margin_top = 93.0
+margin_right = 53.0
+margin_bottom = 116.0
 theme = ExtResource( 2 )
 text = "Music"
 
 [node name="MusicVolumeLevel" type="HSlider" parent="TabContainer/Audio/GridContainer"]
-margin_left = 48.0
-margin_top = 58.0
-margin_right = 97.0
-margin_bottom = 74.0
+margin_left = 57.0
+margin_top = 91.0
+margin_right = 257.0
+margin_bottom = 119.0
 theme = ExtResource( 2 )
 max_value = 1.0
 step = 0.05
@@ -147,16 +147,17 @@ bus = "Music"
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_right = -1706.0
+margin_bottom = -847.0
 theme = ExtResource( 2 )
 
 [node name="Control" parent="TabContainer/Key Binding" instance=ExtResource( 1 )]
-margin_right = 0.0
-margin_bottom = 0.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
 theme = ExtResource( 2 )
+tab_align = 0
 
 [node name="Back" type="Button" parent="."]
 margin_left = 33.0
