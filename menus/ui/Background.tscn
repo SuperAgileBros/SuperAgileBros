@@ -1,0 +1,199 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://actors/assets/mat.png" type="Texture" id=1]
+[ext_resource path="res://actors/assets/tom.png" type="Texture" id=2]
+[ext_resource path="res://actors/assets/mic.png" type="Texture" id=3]
+[ext_resource path="res://actors/assets/kam.png" type="Texture" id=4]
+[ext_resource path="res://lvls/assets/Background/Background.png" type="Texture" id=5]
+[ext_resource path="res://shaders/crt.tres" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=21]
+shader = ExtResource( 6 )
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.4
+shader_param/scanlines_width = 0.25
+shader_param/grille_opacity = 0.3
+shader_param/resolution = Vector2( 640, 480 )
+shader_param/pixelate = true
+shader_param/roll = true
+shader_param/roll_speed = 8.0
+shader_param/roll_size = 15.0
+shader_param/roll_variation = 1.8
+shader_param/distort_intensity = 0.05
+shader_param/noise_opacity = 0.4
+shader_param/noise_speed = 5.0
+shader_param/static_noise_intensity = 0.06
+shader_param/aberration = 0.03
+shader_param/brightness = 1.4
+shader_param/discolor = true
+shader_param/warp_amount = 1.0
+shader_param/clip_warp = false
+shader_param/vignette_intensity = 0.4
+shader_param/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id=23]
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 120, 68 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 120, 0, 120, 68 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 240, 0, 120, 68 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 360, 0, 120, 68 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ShaderMaterial" id=20]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = ExtResource( 6 )
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.1
+shader_param/scanlines_width = 0.25
+shader_param/grille_opacity = 0.3
+shader_param/resolution = Vector2( 1280, 960 )
+shader_param/pixelate = true
+shader_param/roll = false
+shader_param/roll_speed = 8.0
+shader_param/roll_size = 0.0
+shader_param/roll_variation = 5.0
+shader_param/distort_intensity = 0.05
+shader_param/noise_opacity = 0.4
+shader_param/noise_speed = 5.0
+shader_param/static_noise_intensity = 0.06
+shader_param/aberration = 0.01
+shader_param/brightness = 1.0
+shader_param/discolor = true
+shader_param/warp_amount = 0.0
+shader_param/clip_warp = false
+shader_param/vignette_intensity = 0.8
+shader_param/vignette_opacity = 0.8
+
+[node name="Control" type="Control"]
+material = SubResource( 21 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 23 )
+position = Vector2( 1003, 562 )
+scale = Vector2( 17, 17 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+
+[node name="Control" type="Control" parent="."]
+material = SubResource( 20 )
+anchor_left = 0.5
+anchor_right = 0.5
+rect_scale = Vector2( 2.5, 2.5 )
+
+[node name="MAT" type="AnimatedSprite" parent="Control"]
+position = Vector2( -77.6, 350 )
+frames = SubResource( 3 )
+playing = true
+
+[node name="KAM" type="AnimatedSprite" parent="Control"]
+position = Vector2( -27.6, 350 )
+frames = SubResource( 6 )
+frame = 1
+playing = true
+
+[node name="TOM" type="AnimatedSprite" parent="Control"]
+position = Vector2( 22.4, 350 )
+frames = SubResource( 9 )
+playing = true
+
+[node name="MIC" type="AnimatedSprite" parent="Control"]
+position = Vector2( 72.4, 350 )
+frames = SubResource( 12 )
+frame = 1
+playing = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 22 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0, 0, 1 )
