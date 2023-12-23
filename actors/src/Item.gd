@@ -33,10 +33,11 @@ func _ready():
 	add_child(audio_player)
 
 func _process(delta):
-	if linear_velocity == Vector2(0,0):
+	if linear_velocity < Vector2(1,1):
 		$Sprite/Hitbox/HitboxCollision.disabled = true
 	else:
 		$Sprite/Hitbox/HitboxCollision.disabled = false
+
 
 func work():
 	item_durability -= work_cost

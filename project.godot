@@ -79,7 +79,7 @@ run/main_scene="res://menus/Menu_main.tscn"
 
 [audio]
 
-default_bus_layout=""
+default_bus_layout="res://music/audio_bus.tres"
 
 [autoload]
 

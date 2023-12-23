@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://menus/src/Menu_main_buttons.gd" type="Script" id=1]
+[ext_resource path="res://music/DavidKBD - Concerto Pack - 12 - Ride of The Valkyries (Richard Wagner).ogg" type="AudioStream" id=2]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -51,3 +52,8 @@ margin_right = 420.0
 margin_bottom = 401.0
 rect_min_size = Vector2( 420, 69 )
 text = "Exit"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+bus = "Music"
