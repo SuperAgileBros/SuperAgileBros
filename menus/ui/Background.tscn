@@ -184,6 +184,7 @@ playing = true
 [node name="TOM" type="AnimatedSprite" parent="Control"]
 position = Vector2( 22.4, 350 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="MIC" type="AnimatedSprite" parent="Control"]
