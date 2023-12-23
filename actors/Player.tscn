@@ -132,6 +132,7 @@ script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "Game"
 
 [node name="ActionTimer" type="Timer" parent="."]
 process_mode = 0
@@ -170,24 +171,31 @@ position = Vector2( 32, -29 )
 
 [node name="Charge" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+bus = "Game"
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+bus = "Game"
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+bus = "Game"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
+bus = "Game"
 
 [node name="Ablility" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+bus = "Game"
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
+bus = "Game"
 
 [node name="ItemPickUp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
+bus = "Game"
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]
 [connection signal="animation_finished" from="CollisionPolygon2D/Animation" to="CollisionPolygon2D/Animation" method="_on_Animation_animation_finished"]
