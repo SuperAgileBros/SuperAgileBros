@@ -162,6 +162,9 @@ func collision_process():
 	pass
 
 func take_damage(damage):
+	if equipment["armor"] != null:
+		damage -= equipment["armor"].damage
+		equipment["armor"].work()
 	health -= damage
 	$Hit.play()
 	get_parent().set_health_bar()
