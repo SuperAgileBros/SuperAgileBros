@@ -106,6 +106,10 @@ window/stretch/aspect="expand"
 
 enabled=PoolStringArray(  )
 
+[gui]
+
+theme/custom="res://theme/MinimalUI.tres"
+
 [importer_defaults]
 
 texture={
@@ -215,6 +219,7 @@ limits/message_queue/max_size_kb=10240
 [rendering]
 
 quality/driver/driver_name="GLES2"
+threads/thread_model=2
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.184314, 0.184314, 0.184314, 1 )
