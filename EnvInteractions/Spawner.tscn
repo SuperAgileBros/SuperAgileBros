@@ -47,7 +47,7 @@ animations = [ {
 modulate = Color( 1, 1, 1, 0.647059 )
 position = Vector2( -8, -4 )
 frames = SubResource( 9 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

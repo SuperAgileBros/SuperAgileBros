@@ -14,20 +14,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Actor.gd"
 }, {
-"base": "HBoxContainer",
-"class": "ContributorClass",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://actors/src/Enemy.gd"
-}, {
-"base": "PanelContainer",
-"class": "GistItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
 }, {
 "base": "Area2D",
 "class": "Hitbox",
@@ -64,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Player.gd"
 }, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
-}, {
 "base": "Enemy",
 "class": "Slime",
 "language": "GDScript",
@@ -76,9 +61,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
-"ContributorClass": "",
 "Enemy": "",
-"GistItem": "",
 "Hitbox": "",
 "Hurtbox": "",
 "InvitationItem": "",
@@ -103,7 +86,7 @@ run/main_scene="res://menus/Menu_main.tscn"
 
 [audio]
 
-default_bus_layout=""
+default_bus_layout="res://music/audio_bus.tres"
 
 [autoload]
 
@@ -129,6 +112,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[gui]
+
+theme/custom="res://theme/MinimalUI.tres"
 
 [importer_defaults]
 
@@ -239,6 +226,7 @@ limits/message_queue/max_size_kb=10240
 [rendering]
 
 quality/driver/driver_name="GLES2"
+threads/thread_model=2
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.184314, 0.184314, 0.184314, 1 )

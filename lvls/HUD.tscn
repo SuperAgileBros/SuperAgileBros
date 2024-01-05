@@ -228,10 +228,11 @@ offset = Vector2( 0.000976563, 250.046 )
 
 [node name="Menu_pause" parent="." instance=ExtResource( 7 )]
 pause_mode = 0
+visible = true
 margin_left = 641.0
 margin_top = 210.0
-margin_right = 1489.0
-margin_bottom = 786.0
+margin_right = -379.0
+margin_bottom = -330.0
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = 184.0

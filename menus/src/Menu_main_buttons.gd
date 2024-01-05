@@ -2,8 +2,8 @@ extends VBoxContainer
 
 var tutorial = "res://lvls/Level_0_v2.tscn"
 var new_game = "res://lvls/Level_0_v2.tscn"
-var load_game = "res://lvls/Level_0_v2.tscn"
-var settings = "res://menus/Menu_key_binding.tscn"
+var load_game = "res://lvls/Level_0.tscn"
+var settings = "res://menus/Menu_settings.tscn"
 
 func _ready():
 	get_node("TutorialButton").connect("pressed", self, "_on_button_pressed", [tutorial])
