@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Hurtbox.gd"
 }, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
-}, {
 "base": "RigidBody2D",
 "class": "Item",
 "language": "GDScript",
@@ -64,12 +59,10 @@ _global_script_class_icons={
 "Enemy": "",
 "Hitbox": "",
 "Hurtbox": "",
-"InvitationItem": "",
 "Item": "",
 "KeyBinding": "",
 "Level": "",
 "Player": "",
-"RepositoryItem": "",
 "Slime": ""
 }
 

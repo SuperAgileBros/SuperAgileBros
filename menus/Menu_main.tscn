@@ -66,3 +66,9 @@ text = "Exit"
 stream = ExtResource( 2 )
 autoplay = true
 bus = "Music"
+
+[connection signal="pressed" from="Buttons/TutorialButton" to="Buttons" method="_on_button_pressed" binds= [ "tutorial" ]]
+[connection signal="pressed" from="Buttons/NewGameButton" to="Buttons" method="_on_button_pressed" binds= [ "new game" ]]
+[connection signal="pressed" from="Buttons/LoadGameButton" to="Buttons" method="_on_button_pressed" binds= [ "load game" ]]
+[connection signal="pressed" from="Buttons/SettingsButton" to="Buttons" method="_on_button_pressed" binds= [ "settings" ]]
+[connection signal="pressed" from="Buttons/ExitButton" to="Buttons" method="_on_quit_pressed"]
