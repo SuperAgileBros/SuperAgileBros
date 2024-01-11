@@ -8,7 +8,8 @@ var scene_paths={
 	"tutorial":"res://lvls/Level_0_v2.tscn",
 	"new game":"res://lvls/Level_0_v2.tscn",
 	"load game":"res://lvls/Level_0.tscn",
-	"settings":"res://menus/Menu_settings.tscn"
+	"settings":"res://menus/Menu_settings.tscn",
+	"about" : "res://menus/Menu_about.tscn"
 }
 
 func _on_button_pressed(path_name):

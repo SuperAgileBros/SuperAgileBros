@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://theme/MinimalUI.tres" type="Theme" id=1]
+[ext_resource path="res://menus/ui/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menus/Back_to_main_menu.gd" type="Script" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+
+[node name="Back" type="Button" parent="."]
+margin_left = 33.0
+margin_top = 34.0
+margin_right = 133.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 1 )
+text = "MAIN MENU"
+script = ExtResource( 3 )
+
+[node name="creators" type="Panel" parent="."]
+margin_left = 688.0
+margin_top = 239.0
+margin_right = 1188.0
+margin_bottom = 539.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="creators"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_right = 200.0
+margin_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 400, 0 )
+bbcode_enabled = true
+bbcode_text = "[b]Super Agile Bros[/b]
+github: [url]https://github.com/SuperAgileBros/SuperAgileBros[/url]
+web version: [url]https://superagilebros.github.io/SuperAgileBros/[/url]
+"
+text = "Super Agile Bros
+github: https://github.com/SuperAgileBros/SuperAgileBros
+web version: https://superagilebros.github.io/SuperAgileBros/
+"
+fit_content_height = true
+
+[node name="credits" type="Panel" parent="."]
+margin_left = 1262.0
+margin_top = 239.0
+margin_right = 1762.0
+margin_bottom = 977.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="credits"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.0
+margin_top = 50.0
+margin_right = 200.0
+margin_bottom = 194.0
+grow_horizontal = 2
+rect_min_size = Vector2( 400, 0 )
+bbcode_enabled = true
+bbcode_text = "[b]Assets used[:/b]
+
+* Legacy Fantasy Bundle: [url=https://anokolisa.itch.io/sidescroller-pixelart-sprites-asset-pack-forest-16x16]link[/url]
+
+* Minimalistic Theme for Godot Games: [url=https://azagaya.itch.io/minimalistic-ui]link[/url]
+
+* Concerto, Classical Music Turned to METAL Assets Pack: [url=https://davidkbd.itch.io/concerto-classical-music-turned-to-metal-assets-pack]link[/url]
+
+* 2D Pixel Art Portal Sprites: [url=https://elthen.itch.io/2d-pixel-art-portal-sprites]link[/url]
+
+* Arrows pack: [url=https://kenam0.itch.io/arrows-pack]link[/url]
+
+* Zombie Roguelike Items 16x16: [url=https://jeresikstus.itch.io/zombie-roguelike-items-16x16]link[/url]"
+text = "Assets used[:/b]
+
+* Legacy Fantasy Bundle: link
+
+* Minimalistic Theme for Godot Games: link
+
+* Concerto, Classical Music Turned to METAL Assets Pack: link
+
+* 2D Pixel Art Portal Sprites: link
+
+* Arrows pack: link
+
+* Zombie Roguelike Items 16x16: link"
+fit_content_height = true
+
+[connection signal="pressed" from="Back" to="Back" method="_on_Back_pressed"]
