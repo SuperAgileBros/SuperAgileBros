@@ -39,8 +39,6 @@ theme = ExtResource( 2 )
 script = ExtResource( 5 )
 
 [node name="Panel" type="Panel" parent="TabContainer/Graphics"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 100.0
 margin_top = 100.0
 margin_right = -100.0
@@ -48,8 +46,8 @@ margin_bottom = -100.0
 theme = ExtResource( 2 )
 
 [node name="Display Resolution" type="GridContainer" parent="TabContainer/Graphics/Panel"]
-margin_right = 40.0
-margin_bottom = 23.0
+margin_right = 140.0
+margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="TabContainer/Graphics/Panel/Display Resolution"]
 margin_right = 140.0
@@ -71,8 +69,8 @@ script = ExtResource( 4 )
 [node name="GridContainer" type="Panel" parent="TabContainer/Audio"]
 margin_left = 100.0
 margin_top = 100.0
-margin_right = 1606.0
-margin_bottom = 780.0
+margin_right = -100.0
+margin_bottom = -100.0
 theme = ExtResource( 2 )
 
 [node name="Volume" type="Label" parent="TabContainer/Audio/GridContainer"]
@@ -152,10 +150,11 @@ margin_bottom = -847.0
 theme = ExtResource( 2 )
 
 [node name="Control" parent="TabContainer/Key Binding" instance=ExtResource( 1 )]
+visible = false
 margin_left = 100.0
 margin_top = 100.0
-margin_right = -100.0
-margin_bottom = -100.0
+margin_right = 102.0
+margin_bottom = 127.0
 theme = ExtResource( 2 )
 tab_align = 0
 
