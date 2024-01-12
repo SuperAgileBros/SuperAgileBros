@@ -11,29 +11,33 @@ const display_resolutions = [
 ]
 
 onready var resolution_dropdown := $"Panel/Display Resolution/OptionButton" as OptionButton
+onready var config = $"../..".get_config()
 
 func _ready():
 	# Cache screen size into a variable
 	var screen_size := OS.get_screen_size()
-
+	var screen_setting = Vector2(ProjectSettings.get_setting("display/window/size/width"),ProjectSettings.get_setting("display/window/size/height"))
+	if OS.window_fullscreen:
+		$"Panel/Display Resolution/CheckBox".pressed = true
 	# Add resolutions to the display resolution dropdown
 	for resolution in display_resolutions:
-		if resolution.x < screen_size.x and resolution.y < screen_size.y:
+		if resolution.x <= screen_size.x and resolution.y <= screen_size.y:
 			resolution_dropdown.add_item(str(resolution.x) + "×" + str(resolution.y))
-
-	# Add a "Fullscreen" item at the end and select it by default
-	resolution_dropdown.add_item("Fullscreen")
-	if OS.window_fullscreen:
-		resolution_dropdown.select(resolution_dropdown.get_item_count() - 1)
-	else:
-		resolution_dropdown.select(display_resolutions.bsearch(OS.window_size))
+	resolution_dropdown.select(display_resolutions.bsearch(screen_setting))
 
 func _on_display_resolution_change(id: int) -> void:
-	if id < resolution_dropdown.get_item_count() - 1:
-		OS.set_window_fullscreen(false)
-		OS.set_window_size(display_resolutions[id])
-		# May be maximized automatically if the previous window size was bigger than screen size
-		OS.set_window_maximized(false)
-	else:
-		# The last item of the OptionButton is always "Fullscreen"
+	config.set_value("display","window/size/width", display_resolutions[id].x)
+	config.set_value("display","window/size/height", display_resolutions[id].y)
+
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D,SceneTree.STRETCH_ASPECT_KEEP,display_resolutions[id])
+	
+
+
+func _on_CheckBox_toggled(button_pressed):
+	print("fullscreen:" + str(button_pressed))
+	if button_pressed:
+		config.set_value("display","window/size/fullscreen",true)
 		OS.set_window_fullscreen(true)
+	else:
+		config.set_value("display","window/size/fullscreen",false)
+		OS.set_window_fullscreen(false)

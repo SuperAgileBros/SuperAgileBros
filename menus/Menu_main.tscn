@@ -24,6 +24,7 @@ custom_constants/separation = 14
 script = ExtResource( 1 )
 
 [node name="TutorialButton" type="Button" parent="Buttons"]
+visible = false
 margin_right = 420.0
 margin_bottom = 69.0
 rect_min_size = Vector2( 420, 69 )
@@ -31,28 +32,35 @@ theme = ExtResource( 4 )
 text = "Tutorial"
 
 [node name="NewGameButton" type="Button" parent="Buttons"]
-margin_top = 83.0
 margin_right = 420.0
-margin_bottom = 152.0
+margin_bottom = 69.0
 rect_min_size = Vector2( 420, 69 )
 theme = ExtResource( 4 )
 text = "New Game"
 
 [node name="LoadGameButton" type="Button" parent="Buttons"]
-margin_top = 166.0
+margin_top = 83.0
 margin_right = 420.0
-margin_bottom = 235.0
+margin_bottom = 152.0
 rect_min_size = Vector2( 420, 69 )
 theme = ExtResource( 4 )
 text = "Load Game"
 
 [node name="SettingsButton" type="Button" parent="Buttons"]
+margin_top = 166.0
+margin_right = 420.0
+margin_bottom = 235.0
+rect_min_size = Vector2( 420, 69 )
+theme = ExtResource( 4 )
+text = "Settings"
+
+[node name="AboutButton" type="Button" parent="Buttons"]
 margin_top = 249.0
 margin_right = 420.0
 margin_bottom = 318.0
 rect_min_size = Vector2( 420, 69 )
 theme = ExtResource( 4 )
-text = "Settings"
+text = "About"
 
 [node name="ExitButton" type="Button" parent="Buttons"]
 margin_top = 332.0
@@ -66,3 +74,10 @@ text = "Exit"
 stream = ExtResource( 2 )
 autoplay = true
 bus = "Music"
+
+[connection signal="pressed" from="Buttons/TutorialButton" to="Buttons" method="_on_button_pressed" binds= [ "tutorial" ]]
+[connection signal="pressed" from="Buttons/NewGameButton" to="Buttons" method="_on_button_pressed" binds= [ "new game" ]]
+[connection signal="pressed" from="Buttons/LoadGameButton" to="Buttons" method="_on_button_pressed" binds= [ "load game" ]]
+[connection signal="pressed" from="Buttons/SettingsButton" to="Buttons" method="_on_button_pressed" binds= [ "settings" ]]
+[connection signal="pressed" from="Buttons/AboutButton" to="Buttons" method="_on_button_pressed" binds= [ "about" ]]
+[connection signal="pressed" from="Buttons/ExitButton" to="Buttons" method="_on_quit_pressed"]

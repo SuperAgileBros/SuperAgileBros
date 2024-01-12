@@ -9,19 +9,23 @@ var KeyBinding = preload("res://menus/ui/Key_binding.tscn")
 
 func _ready():
 	self.name = controller_name
-	var scrollContainer = ScrollContainer.new()
-	scrollContainer.anchor_bottom = 1
-	scrollContainer.anchor_right = 1
-	scrollContainer.margin_right = self.rect_size.x
-	scrollContainer.margin_bottom = self.rect_size.y
-	self.add_child(scrollContainer)
+	#var scrollContainer = ScrollContainer.new()
+	#var scrollContainer = get_node("ScrollContainer")
+	#scrollContainer.anchor_bottom = 1
+	#scrollContainer.anchor_right = 1
+	#scrollContainer.margin_right = self.rect_size.x
+	#scrollContainer.margin_bottom = self.rect_size.y
+	#scrollContainer.rect_size = get_parent().rect_size
+	
+	#self.add_child(scrollContainer)
 
-	var vbox = VBoxContainer.new()
-	vbox.anchor_bottom = 1
-	vbox.anchor_right = 1
-	vbox.margin_right = self.rect_size.x
-	vbox.margin_bottom = self.rect_size.y
-	scrollContainer.add_child(vbox)
+	#var vbox = VBoxContainer.new()
+	#vbox.anchor_bottom = 1
+	#vbox.anchor_right = 1
+	#vbox.margin_right = self.rect_size.x
+	#vbox.margin_bottom = self.rect_size.y
+	#scrollContainer.add_child(vbox)
+	var vbox = $ScrollContainer/VBoxContainer
 
 
 	var character_actions = []
