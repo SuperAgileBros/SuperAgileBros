@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=2]
+[gd_scene load_steps=180 format=2]
 
 [ext_resource path="res://lvls/assets/Assets/Tiles.png" type="Texture" id=1]
 [ext_resource path="res://lvls/assets/Assets/Buildings.png" type="Texture" id=2]
@@ -9354,6 +9354,16 @@ script = SubResource( 187 )
 9/shapes = [  ]
 9/z_index = 0
 
+[sub_resource type="CapsuleShape2D" id=217]
+radius = 12.0
+height = 298.0
+
+[sub_resource type="CapsuleShape2D" id=218]
+height = 136.0
+
+[sub_resource type="CapsuleShape2D" id=219]
+height = 174.0
+
 [node name="Level" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 12 )
@@ -9744,12 +9754,41 @@ position = Vector2( 9545, 1727 )
 
 [node name="AnimatedSprite2" parent="." instance=ExtResource( 25 )]
 position = Vector2( 5085, 2999 )
-frame = 0
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 26 )
 autoplay = true
 bus = "Music"
 
+[node name="Glut" type="Area2D" parent="."]
+position = Vector2( 18466, 214 )
+script = ExtResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Glut"]
+position = Vector2( -17, 101 )
+shape = SubResource( 217 )
+
+[node name="Glut2" type="Area2D" parent="."]
+position = Vector2( 18466, 214 )
+script = ExtResource( 17 )
+
+[node name="Collision" type="CollisionShape2D" parent="Glut2"]
+position = Vector2( 686, 18 )
+shape = SubResource( 218 )
+
+[node name="Glut3" type="Area2D" parent="."]
+position = Vector2( 18466, 214 )
+script = ExtResource( 17 )
+
+[node name="Collision" type="CollisionShape2D" parent="Glut3"]
+position = Vector2( 493, 31 )
+shape = SubResource( 219 )
+
 [connection signal="body_entered" from="Swimming" to="Swimming" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Swimming" to="Swimming" method="_on_Ladder_body_exited"]
+[connection signal="body_entered" from="Glut" to="Glut" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Glut" to="Glut" method="_on_Ladder_body_exited"]
+[connection signal="body_entered" from="Glut2" to="Glut2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Glut2" to="Glut2" method="_on_Ladder_body_exited"]
+[connection signal="body_entered" from="Glut3" to="Glut3" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Glut3" to="Glut3" method="_on_Ladder_body_exited"]
