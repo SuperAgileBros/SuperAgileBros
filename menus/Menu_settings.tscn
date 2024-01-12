@@ -170,7 +170,7 @@ margin_right = 133.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 100, 50 )
 theme = ExtResource( 2 )
-text = "MAIN MENU"
+text = "BACK"
 
 [node name="Save" type="Button" parent="."]
 margin_left = 224.0
