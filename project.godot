@@ -96,6 +96,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1280.0
 window/size/height=720.0
+window/size/resizable=false
 window/size/borderless=true
 window/size/fullscreen=true
 window/dpi/allow_hidpi=true
