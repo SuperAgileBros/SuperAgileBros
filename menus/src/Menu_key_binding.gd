@@ -20,3 +20,4 @@ func _ready():
 		newTab.controller_name = Input.get_joy_name(joypad)
 		newTab.controller_id = joypad
 		add_child(newTab)
+	print("key binding size: " + str(rect_size))

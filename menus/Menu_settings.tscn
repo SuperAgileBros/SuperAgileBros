@@ -39,8 +39,6 @@ theme = ExtResource( 2 )
 script = ExtResource( 5 )
 
 [node name="Panel" type="Panel" parent="TabContainer/Graphics"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 100.0
 margin_top = 100.0
 margin_right = -100.0
@@ -48,8 +46,8 @@ margin_bottom = -100.0
 theme = ExtResource( 2 )
 
 [node name="Display Resolution" type="GridContainer" parent="TabContainer/Graphics/Panel"]
-margin_right = 40.0
-margin_bottom = 23.0
+margin_right = 140.0
+margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="TabContainer/Graphics/Panel/Display Resolution"]
 margin_right = 140.0
@@ -61,6 +59,12 @@ margin_top = 27.0
 margin_right = 140.0
 margin_bottom = 52.0
 
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Graphics/Panel/Display Resolution"]
+margin_top = 56.0
+margin_right = 140.0
+margin_bottom = 79.0
+text = "Fullscreen"
+
 [node name="Audio" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -71,8 +75,8 @@ script = ExtResource( 4 )
 [node name="GridContainer" type="Panel" parent="TabContainer/Audio"]
 margin_left = 100.0
 margin_top = 100.0
-margin_right = 1606.0
-margin_bottom = 780.0
+margin_right = -100.0
+margin_bottom = -100.0
 theme = ExtResource( 2 )
 
 [node name="Volume" type="Label" parent="TabContainer/Audio/GridContainer"]
@@ -152,10 +156,10 @@ margin_bottom = -847.0
 theme = ExtResource( 2 )
 
 [node name="Control" parent="TabContainer/Key Binding" instance=ExtResource( 1 )]
-margin_left = 100.0
-margin_top = 100.0
-margin_right = -100.0
-margin_bottom = -100.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
 theme = ExtResource( 2 )
 tab_align = 0
 
@@ -166,7 +170,16 @@ margin_right = 133.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 100, 50 )
 theme = ExtResource( 2 )
-text = "MAIN MENU"
+text = "BACK"
+
+[node name="Save" type="Button" parent="."]
+margin_left = 224.0
+margin_top = 34.0
+margin_right = 344.0
+margin_bottom = 81.0
+text = "Save Settings"
 
 [connection signal="item_selected" from="TabContainer/Graphics/Panel/Display Resolution/OptionButton" to="TabContainer/Graphics" method="_on_display_resolution_change"]
+[connection signal="toggled" from="TabContainer/Graphics/Panel/Display Resolution/CheckBox" to="TabContainer/Graphics" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
