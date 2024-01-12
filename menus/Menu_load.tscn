@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://menus/src/Saves.tscn" type="PackedScene" id=1]
+[ext_resource path="res://menus/src/Menu_load.gd" type="Script" id=2]
+[ext_resource path="res://theme/MinimalUI.tres" type="Theme" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Saves" parent="." instance=ExtResource( 1 )]
+margin_right = 629.0
+margin_bottom = 558.0
+
+[node name="SaveName" type="Label" parent="."]
+margin_left = 207.0
+margin_top = 127.0
+margin_right = 632.0
+margin_bottom = 160.0
+
+[node name="Panel" type="Panel" parent="SaveName"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="load game" type="Button" parent="."]
+margin_left = 694.0
+margin_top = 120.0
+margin_right = 761.0
+margin_bottom = 160.0
+text = "LOAD"
+
+[node name="Back" type="Button" parent="."]
+margin_left = 33.0
+margin_top = 34.0
+margin_right = 133.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 3 )
+text = "BACK"
+
+[connection signal="pressed" from="load game" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

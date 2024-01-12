@@ -26,3 +26,13 @@ func _on_MAIN_MENU_pressed():
 			get_tree().paused = false
 		#_save_settings()
 		get_tree().change_scene("res://menus/Menu_main.tscn")
+
+
+func _on_SAVE_pressed():
+	$"../SaveMenu".visible = true
+	visible = false
+
+
+func _on_LOAD_pressed():
+	$"../LoadMenu".visible = true
+	visible = false
