@@ -59,6 +59,12 @@ margin_top = 27.0
 margin_right = 140.0
 margin_bottom = 52.0
 
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Graphics/Panel/Display Resolution"]
+margin_top = 56.0
+margin_right = 140.0
+margin_bottom = 79.0
+text = "Fullscreen"
+
 [node name="Audio" type="Tabs" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -166,5 +172,14 @@ rect_min_size = Vector2( 100, 50 )
 theme = ExtResource( 2 )
 text = "MAIN MENU"
 
+[node name="Save" type="Button" parent="."]
+margin_left = 224.0
+margin_top = 34.0
+margin_right = 344.0
+margin_bottom = 81.0
+text = "Save Settings"
+
 [connection signal="item_selected" from="TabContainer/Graphics/Panel/Display Resolution/OptionButton" to="TabContainer/Graphics" method="_on_display_resolution_change"]
+[connection signal="toggled" from="TabContainer/Graphics/Panel/Display Resolution/CheckBox" to="TabContainer/Graphics" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
