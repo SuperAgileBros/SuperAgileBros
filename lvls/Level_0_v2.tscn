@@ -1,4 +1,4 @@
-[gd_scene load_steps=230 format=2]
+[gd_scene load_steps=224 format=2]
 
 [ext_resource path="res://lvls/assets/Assets/Tiles.png" type="Texture" id=1]
 [ext_resource path="res://lvls/assets/Assets/Buildings.png" type="Texture" id=2]
@@ -268,24 +268,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 11.5103, 0, 11.3488 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 6.03906, 0, 6.10156 )
 
 [sub_resource type="ConvexPolygonShape2D" id=88]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=264]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=265]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=266]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=267]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=268]
-points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="ConvexPolygonShape2D" id=269]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=89]
@@ -2792,7 +2774,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 131/shape_one_way_margin = 0.0
 131/shapes = [  ]
 131/z_index = 0
-132/name = "LadderGRockML.png 220"
+132/name = "Rocks.png 132"
 132/texture = ExtResource( 13 )
 132/tex_offset = Vector2( 0, 0 )
 132/modulate = Color( 1, 1, 1, 1 )
@@ -2803,11 +2785,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 132/shape_offset = Vector2( 0, 0 )
 132/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 132/shape = SubResource( 150 )
-132/shape_one_way = true
+132/shape_one_way = false
 132/shape_one_way_margin = 1.0
 132/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
+"one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 150 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -4472,146 +4454,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 219/z_index = 0
-220/name = "LadderGRockL.png 220"
-220/texture = ExtResource( 13 )
-220/tex_offset = Vector2( 0, 0 )
-220/modulate = Color( 1, 1, 1, 1 )
-220/region = Rect2( 0, 112, 16, 16 )
-220/tile_mode = 0
-220/occluder_offset = Vector2( 0, 0 )
-220/navigation_offset = Vector2( 0, 0 )
-220/shape_offset = Vector2( 0, 0 )
-220/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-220/shape = SubResource( 264 )
-220/shape_one_way = true
-220/shape_one_way_margin = 1.0
-220/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 264 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-220/z_index = 0
-221/name = "Rocks.png 226"
-221/texture = ExtResource( 13 )
-221/tex_offset = Vector2( 0, 0 )
-221/modulate = Color( 1, 1, 1, 1 )
-221/region = Rect2( 0, 160, 16, 16 )
-221/tile_mode = 0
-221/occluder_offset = Vector2( 0, 0 )
-221/navigation_offset = Vector2( 0, 0 )
-221/shape_offset = Vector2( 0, 0 )
-221/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-221/shape_one_way = false
-221/shape_one_way_margin = 0.0
-221/shapes = [  ]
-221/z_index = 0
-222/name = "LadderGRockMM.png 222"
-222/texture = ExtResource( 13 )
-222/tex_offset = Vector2( 0, 0 )
-222/modulate = Color( 1, 1, 1, 1 )
-222/region = Rect2( 32, 112, 16, 16 )
-222/tile_mode = 0
-222/occluder_offset = Vector2( 0, 0 )
-222/navigation_offset = Vector2( 0, 0 )
-222/shape_offset = Vector2( 0, 0 )
-222/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-222/shape = SubResource( 265 )
-222/shape_one_way = true
-222/shape_one_way_margin = 1.0
-222/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 265 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-222/z_index = 0
-223/name = "LadderGRockMR.png 223"
-223/texture = ExtResource( 13 )
-223/tex_offset = Vector2( 0, 0 )
-223/modulate = Color( 1, 1, 1, 1 )
-223/region = Rect2( 48, 112, 16, 16 )
-223/tile_mode = 0
-223/occluder_offset = Vector2( 0, 0 )
-223/navigation_offset = Vector2( 0, 0 )
-223/shape_offset = Vector2( 0, 0 )
-223/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-223/shape = SubResource( 266 )
-223/shape_one_way = true
-223/shape_one_way_margin = 1.0
-223/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 266 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-223/z_index = 0
-224/name = "LadderGRockL.png 224"
-224/texture = ExtResource( 13 )
-224/tex_offset = Vector2( 0, 0 )
-224/modulate = Color( 1, 1, 1, 1 )
-224/region = Rect2( 64, 112, 16, 16 )
-224/tile_mode = 0
-224/occluder_offset = Vector2( 0, 0 )
-224/navigation_offset = Vector2( 0, 0 )
-224/shape_offset = Vector2( 0, 0 )
-224/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-224/shape = SubResource( 267 )
-224/shape_one_way = true
-224/shape_one_way_margin = 1.0
-224/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 267 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-224/z_index = 0
-225/name = "LadderGRockBottomL.png 225"
-225/texture = ExtResource( 13 )
-225/tex_offset = Vector2( 0, 0 )
-225/modulate = Color( 1, 1, 1, 1 )
-225/region = Rect2( 0, 160, 16, 16 )
-225/tile_mode = 0
-225/occluder_offset = Vector2( 0, 0 )
-225/navigation_offset = Vector2( 0, 0 )
-225/shape_offset = Vector2( 0, 0 )
-225/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-225/shape = SubResource( 268 )
-225/shape_one_way = true
-225/shape_one_way_margin = 1.0
-225/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 268 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-225/z_index = 0
-226/name = "LadderGRockBottomR.png 226"
-226/texture = ExtResource( 13 )
-226/tex_offset = Vector2( 0, 0 )
-226/modulate = Color( 1, 1, 1, 1 )
-226/region = Rect2( 64, 160, 16, 16 )
-226/tile_mode = 0
-226/occluder_offset = Vector2( 0, 0 )
-226/navigation_offset = Vector2( 0, 0 )
-226/shape_offset = Vector2( 0, 0 )
-226/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-226/shape = SubResource( 269 )
-226/shape_one_way = true
-226/shape_one_way_margin = 1.0
-226/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": true,
-"one_way_margin": 1.0,
-"shape": SubResource( 269 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-226/z_index = 0
 
 [sub_resource type="TileSet" id=2]
 0/name = "Background.png 0"
@@ -9609,7 +9451,7 @@ extents = Vector2( 79, 59 )
 extents = Vector2( 65.5, 44.5 )
 
 [sub_resource type="RectangleShape2D" id=236]
-extents = Vector2( 144, 49.25 )
+extents = Vector2( 144, 46.5 )
 
 [sub_resource type="RectangleShape2D" id=237]
 extents = Vector2( 240.5, 45.5 )

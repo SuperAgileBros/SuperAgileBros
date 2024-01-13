@@ -6,6 +6,7 @@ var config = ConfigFile.new()
 func _ready():
 	if get_parent() is Popup:
 		$Background.visible = false
+# warning-ignore:unused_variable
 	var err = config.load("user://settings.cfg")
 	
 func _on_Back_pressed():
