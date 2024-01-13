@@ -190,7 +190,7 @@ func pickup_item(item):
 		var item_to_backpack = {
 			"item_name": name,
 			"item_level": level,
-			"item_durability": durability,
+			"item_durability": item.item_durability,
 			"item_max_durability": item.item_max_durability,
 			"work_cost": item.work_cost,
 			"is_equipable": item.is_equipable,
@@ -206,9 +206,12 @@ func get_equipment(item):
 	if item_type == "resource":
 		item_type = "weapon"
 	if equipment[item_type] != null:
-		var equiped_item = equipment[item_type].duplicate()
+		var equiped_item = load(equipment[item_type]["item_path"]).instance()
+		equiped_item.item_level = equipment[item_type]["item_level"]
+		print(str(equiped_item.item_durability) + " = " + str(equipment[item_type]["item_durability"]))
 		equiped_item.global_position = $Hand.global_position
 		get_parent().add_child(equiped_item)
+		equiped_item.item_durability = equipment[item_type]["item_durability"]
 
 	equipment[item_type] = item
 

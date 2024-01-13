@@ -2,6 +2,7 @@ extends Actor
 class_name Enemy
 
 export var health = 10
+export var path = "res://actors/src/Actor.gd"
 
 	
 func take_damage(damage):
@@ -15,7 +16,7 @@ func take_damage(damage):
 
 func get_save_data():
 	return {
-		"type":get_class(),
+		"path":path,
 		"position":get_global_position(),
 		"health":health
 	}
