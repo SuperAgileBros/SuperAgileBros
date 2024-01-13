@@ -35,5 +35,5 @@ frame = 0
 [node name="Animation" parent="CollisionPolygon2D" index="1"]
 anims/Kick = SubResource( 1 )
 
-[node name="Hand" parent="." index="4"]
+[node name="Hand" parent="." index="5"]
 position = Vector2( 13, -29 )
