@@ -10285,6 +10285,10 @@ shape = SubResource( 255 )
 position = Vector2( 1433, -670 )
 shape = SubResource( 255 )
 
+[node name="CollisionShape2D56" type="CollisionShape2D" parent="Ladders"]
+position = Vector2( 2097, -1330 )
+shape = SubResource( 255 )
+
 [node name="CollisionShape2D52" type="CollisionShape2D" parent="Ladders"]
 position = Vector2( 1359, -829.5 )
 shape = SubResource( 270 )
