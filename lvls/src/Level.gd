@@ -35,6 +35,9 @@ func _ready():
 
 	if save_data.size() == 0:
 		_add_player()
+		if $PlayerSpawn != null:
+			$Player.set_position($PlayerSpawn.position)
+			$PlayerSpawn.queue_free()
 	else:
 		print("load save: "+str(save_data))
 		for node in save_data:
@@ -46,11 +49,11 @@ func _ready():
 					new_node = players[node_data["name"]].instance()
 					new_node.name = "Player"
 					new_node.health = node_data["health"]
-					new_node.set_position(node_data["position"])
 					new_node.equipment = node_data["equipment"]
 					new_node.backpack = node_data["backpack"]
 					new_node.climbing = node_data["climbing"]
 					add_child(new_node)
+					new_node.set_position(node_data["position"])
 					new_node.set_owner(self)
 					$PlayerSpawn.queue_free()
 	
@@ -58,9 +61,6 @@ func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	get_tree().paused = false
 	set_health_bar() 
-	if $PlayerSpawn != null:
-		$Player.set_position($PlayerSpawn.position)
-		$PlayerSpawn.queue_free()
 
 func _add_player():
 	if $Player == null:
