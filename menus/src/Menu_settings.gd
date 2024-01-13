@@ -6,6 +6,7 @@ var config = ConfigFile.new()
 func _ready():
 	if get_parent() is Popup:
 		$Background.visible = false
+# warning-ignore:unused_variable
 	var err = config.load("user://settings.cfg")
 	
 func _on_Back_pressed():
@@ -19,6 +20,10 @@ func _on_Back_pressed():
 		$"../VBoxContainer".visible = true
 	
 func _save_settings():
+	for action in InputMap.get_actions():
+		var events = InputMap.get_action_list(action)
+		config.set_value("input", action, { "deadzone":InputMap.action_get_deadzone(action) ,"events":events})
+
 	print("saving settings: " + str(config.save("user://settings.cfg")))
 	print(config.to_string())
 	

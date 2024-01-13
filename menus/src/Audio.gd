@@ -32,6 +32,8 @@ func _ready():
 func _on_VolumeLevel_value_changed(value, id, sender):
 	print(AudioServer.get_bus_volume_db(id))
 	print(value)
+	var config = $"../..".get_config()
+	config.set_value("global", "volume "+str(id), linear2db(value))
 	AudioServer.set_bus_volume_db(id,linear2db(value))
 	sender.get_child(0).play()
 	pass # Replace with function body.
