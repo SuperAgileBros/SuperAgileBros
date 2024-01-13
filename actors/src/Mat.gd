@@ -9,10 +9,10 @@ func _ready():
 
 func _on_ActionTimer_timeout():
 	$Ablility.play()
-	var keys = items_material_common.keys()
+	var keys = items.keys()
 	var key = keys[randi() % keys.size()]
 	print(key)
-	var item = load(items_material_common[key]).instance()
+	var item = load(items[key]).instance()
 	spawn_item(item)
 
 

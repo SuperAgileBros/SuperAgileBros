@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://menus/Menu_settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://menus/src/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://menus/src/Saves.tscn" type="PackedScene" id=3]
+[ext_resource path="res://menus/src/SaveMenu.gd" type="Script" id=4]
+[ext_resource path="res://theme/MinimalUI.tres" type="Theme" id=5]
+[ext_resource path="res://menus/Menu_load.tscn" type="PackedScene" id=6]
 
 [node name="Control" type="Popup"]
 pause_mode = 2
-visible = true
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -49,7 +52,47 @@ margin_right = 93.0
 margin_bottom = 112.0
 text = "MAIN MENU"
 
+[node name="SaveMenu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="SaveName" type="LineEdit" parent="SaveMenu"]
+margin_left = 207.0
+margin_top = 127.0
+margin_right = 441.0
+margin_bottom = 160.0
+max_length = 36
+placeholder_text = "save name"
+
+[node name="save game" type="Button" parent="SaveMenu"]
+margin_left = 509.0
+margin_top = 128.0
+margin_right = 576.0
+margin_bottom = 168.0
+text = "SAVE"
+
+[node name="Saves" parent="SaveMenu" instance=ExtResource( 3 )]
+
+[node name="Back" type="Button" parent="SaveMenu"]
+margin_left = 33.0
+margin_top = 34.0
+margin_right = 133.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 5 )
+text = "BACK"
+
+[node name="LoadMenu" parent="." instance=ExtResource( 6 )]
+visible = false
+back_path = ""
+
+[connection signal="pressed" from="VBoxContainer/SAVE" to="VBoxContainer" method="_on_SAVE_pressed"]
+[connection signal="pressed" from="VBoxContainer/LOAD" to="VBoxContainer" method="_on_LOAD_pressed"]
 [connection signal="pressed" from="VBoxContainer/SETTINGS" to="VBoxContainer" method="_on_SETTINGS_pressed"]
 [connection signal="pressed" from="VBoxContainer/MAIN MENU" to="VBoxContainer" method="_on_MAIN_MENU_pressed"]
+[connection signal="pressed" from="SaveMenu/save game" to="SaveMenu" method="_on_save_game_pressed"]
+[connection signal="pressed" from="SaveMenu/Back" to="SaveMenu" method="_on_Back_pressed"]
 
 [editable path="MenuSettings"]

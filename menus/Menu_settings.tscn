@@ -15,6 +15,7 @@ theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 7 )]
+visible = false
 theme = ExtResource( 2 )
 
 [node name="TabContainer" type="TabContainer" parent="."]

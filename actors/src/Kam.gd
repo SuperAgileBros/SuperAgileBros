@@ -17,7 +17,7 @@ func _ready():
 	pass
 
 func _on_ActionTimer_timeout():
-	var items = items_weapon_common
+
 	if backpack.size() < 3:
 		return
 	var bench = [backpack[0].item_name,backpack[1].item_name,backpack[2].item_name]

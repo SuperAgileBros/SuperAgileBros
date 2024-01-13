@@ -22,23 +22,27 @@ signal update_hud
 
 var action_press_time = 0
 
+func get_save_data():
+	return {
+		"type": "player",
+		"name": player_name,
+		"position": global_position,
+		"health": health,
+		"backpack": backpack,
+		"equipment": equipment,
+		"climbing": climbing
+	}
+
 func _ready():
 	if connect("update_hud", get_parent().get_node("HUD"), "_on_update_hud"):
 		pass
 	else:
 		print("not connected")
+	print(backpack)
 	emit_signal("update_hud")
 
 func _process(delta):
 	var hud_needs_update = false
-	for i in range(backpack.size()):
-		if is_instance_valid(backpack[i]) == false:
-			backpack.remove(i)
-			hud_needs_update = true
-	for i in equipment.keys():
-		if is_instance_valid(equipment[i]) == false:
-			equipment[i] = null
-			hud_needs_update = true
 	if hud_needs_update:
 		emit_signal("update_hud")
 
@@ -59,21 +63,25 @@ func _input(event):
 			$Jump.play()
 func _equip():
 	if backpack.size() > 0:
-		if backpack[0].is_equipable:
+		if backpack[0]["is_equipable"]:
 			var item = backpack.pop_at(0)
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
 	if $Attack.playing == false:
-		$Attack.play()
-		attack_in_progress = true
+		if equipment["weapon"] != null:
+			$Attack.play()
+			attack_in_progress = true
 
 		
 func _throw():
 	if backpack.size() > 0:
-		var durability = backpack[0].item_durability
-		var projectile = backpack.pop_at(0).duplicate()
+		var durability = backpack[0]["item_durability"]
+		var level = backpack[0]["item_level"]
+		var projectile = load(backpack.pop_at(0)["item_path"]).instance()
 		projectile.item_durability = durability
+		projectile.item_level = level
+		
 		projectile.global_position = $Hand.global_position
 		projectile.set_rotation(0)
 		if face_right:
@@ -83,6 +91,7 @@ func _throw():
 			projectile.global_position.x -= 20
 			projectile.apply_central_impulse(Vector2(-1000, 0))
 		get_parent().add_child(projectile)
+		projectile.set_owner(get_parent())
 		emit_signal("update_hud")
 		
 func die():
@@ -127,7 +136,9 @@ func player_animations():
 		else:
 			animation.play("Attack")
 			if equipment["weapon"] != null:
-				equipment["weapon"].work()
+				equipment["weapon"]["item_durability"] -= equipment["weapon"]["work_cost"]
+				if equipment["weapon"]["item_durability"] <= 0:
+					equipment["weapon"] = null
 			emit_signal("update_hud")
 			
 	elif is_on_floor() == true and health > 0:
@@ -174,20 +185,33 @@ func pickup_item(item):
 	if backpack.size() < 7:
 		item.pickup()
 		var durability = item.item_durability
-		var item_to_backpack = item.duplicate()
-		item_to_backpack.item_durability = durability
+		var name = item.item_name
+		var level = item.item_level
+		var item_to_backpack = {
+			"item_name": name,
+			"item_level": level,
+			"item_durability": item.item_durability,
+			"item_max_durability": item.item_max_durability,
+			"work_cost": item.work_cost,
+			"is_equipable": item.is_equipable,
+			"item_type": item.item_types[item.item_type],
+			"item_path": items[name]
+		}
 		backpack.append(item_to_backpack)
 		item.queue_free()
 		emit_signal("update_hud")
 		
 func get_equipment(item):
-	var item_type = item.item_types[item.item_type]
+	var item_type = item["item_type"]
 	if item_type == "resource":
 		item_type = "weapon"
 	if equipment[item_type] != null:
-		var equiped_item = equipment[item_type].duplicate()
+		var equiped_item = load(equipment[item_type]["item_path"]).instance()
+		equiped_item.item_level = equipment[item_type]["item_level"]
+		print(str(equiped_item.item_durability) + " = " + str(equipment[item_type]["item_durability"]))
 		equiped_item.global_position = $Hand.global_position
 		get_parent().add_child(equiped_item)
+		equiped_item.item_durability = equipment[item_type]["item_durability"]
 
 	equipment[item_type] = item
 

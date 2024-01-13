@@ -15,7 +15,7 @@ func _on_Animation_animation_finished(anim_name):
 
 func _on_Animation_animation_started(anim_name):
 	if anim_name == "Attack":
-		var weapon = owner.equipment["weapon"]
+		var weapon = load(owner.equipment["weapon"]["item_path"]).instance()
 		print("Attack is in progress")
 		if weapon != null:
 			print("weapon is " + weapon.item_name)

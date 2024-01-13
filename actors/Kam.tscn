@@ -6,17 +6,6 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
-items_material_common = {
-"bottle": "res://actors/items/Bottle.tscn",
-"copper wire": "res://actors/items/CopperWire.tscn",
-"flower": "res://actors/items/Flower.tscn",
-"iron pipe": "res://actors/items/IronPipe.tscn",
-"rope": "res://actors/items/Rope.tscn",
-"stick": "res://actors/items/Stick.tscn",
-"stone": "res://actors/items/Stone.tscn",
-"weed": "res://actors/items/Weed.tscn",
-"woolsack": "res://actors/items/WoolSack.tscn"
-}
 
 [node name="ActionTimer" parent="." index="2"]
 wait_time = 0.001
@@ -27,5 +16,5 @@ polygon = PoolVector2Array( 5.10481, 27.9516, -6.89519, 27.9516, -10.8952, 5.951
 [node name="Sprite" parent="CollisionPolygon2D" index="0"]
 texture = ExtResource( 2 )
 
-[node name="Hand" parent="." index="4"]
+[node name="Hand" parent="." index="5"]
 position = Vector2( 15, -29 )

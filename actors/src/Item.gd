@@ -20,6 +20,13 @@ export var equip_rotation = 90
 export var pickup_sound = "res://sound_effects/pickup2.wav"
 var audio_player = AudioStreamPlayer.new()
 
+func get_save_data():
+	return {
+		"item_name": item_name,
+		"item_durability": item_durability,
+		"position": get_global_position()
+	}
+
 func _init():
 	audio_player.name = "PickupSound"
 	audio_player.stream = load(pickup_sound)
@@ -30,6 +37,7 @@ func _ready():
 	$Sprite/Hitbox.damage = damage
 	name = item_name
 	item_durability = item_max_durability
+	add_to_group("Persist")
 	add_child(audio_player)
 
 func _process(delta):
