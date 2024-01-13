@@ -43,10 +43,6 @@ func _ready():
 
 func _process(delta):
 	var hud_needs_update = false
-	for i in equipment.keys():
-		if is_instance_valid(equipment[i]) == false:
-			equipment[i] = null
-			hud_needs_update = true
 	if hud_needs_update:
 		emit_signal("update_hud")
 
@@ -67,14 +63,15 @@ func _input(event):
 			$Jump.play()
 func _equip():
 	if backpack.size() > 0:
-		if backpack[0].is_equipable:
+		if backpack[0]["is_equipable"]:
 			var item = backpack.pop_at(0)
 			get_equipment(item)
 			emit_signal("update_hud")
 func _attack():
 	if $Attack.playing == false:
-		$Attack.play()
-		attack_in_progress = true
+		if equipment["weapon"] != null:
+			$Attack.play()
+			attack_in_progress = true
 
 		
 func _throw():
@@ -139,7 +136,9 @@ func player_animations():
 		else:
 			animation.play("Attack")
 			if equipment["weapon"] != null:
-				equipment["weapon"].work()
+				equipment["weapon"]["item_durability"] -= equipment["weapon"]["work_cost"]
+				if equipment["weapon"]["item_durability"] <= 0:
+					equipment["weapon"] = null
 			emit_signal("update_hud")
 			
 	elif is_on_floor() == true and health > 0:
@@ -193,6 +192,9 @@ func pickup_item(item):
 			"item_level": level,
 			"item_durability": durability,
 			"item_max_durability": item.item_max_durability,
+			"work_cost": item.work_cost,
+			"is_equipable": item.is_equipable,
+			"item_type": item.item_types[item.item_type],
 			"item_path": items[name]
 		}
 		backpack.append(item_to_backpack)
@@ -200,7 +202,7 @@ func pickup_item(item):
 		emit_signal("update_hud")
 		
 func get_equipment(item):
-	var item_type = item.item_types[item.item_type]
+	var item_type = item["item_type"]
 	if item_type == "resource":
 		item_type = "weapon"
 	if equipment[item_type] != null:

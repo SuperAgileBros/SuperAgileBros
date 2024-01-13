@@ -14,7 +14,7 @@ export var items = {
 		"wooden stick": "res://actors/items/WoodenStick.tscn",
 		"stone": "res://actors/items/Stone.tscn",
 		"rope": "res://actors/items/Rope.tscn",
-		"woolsack": "res://actors/items/WoolSack.tscn",
+		"wool sack": "res://actors/items/WoolSack.tscn",
 		"bottle" : "res://actors/items/Bottle.tscn",
 		"weed" : "res://actors/items/Weed.tscn",
 		"flower": "res://actors/items/Flower.tscn",
