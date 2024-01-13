@@ -9,6 +9,8 @@ var scene_paths={
 }
 
 func _on_button_pressed(path_name):
+	if path_name == "new game":
+		ProjectSettings.set_setting("global/save_data",{})
 	get_tree().change_scene(scene_paths[path_name])
 
 func _on_quit_pressed():
