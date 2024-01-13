@@ -3,6 +3,7 @@ class_name Level
 
 var hud = preload("res://lvls/HUD.tscn")
 
+export var save_data = {}
 
 export var players = {
 	"MAT":preload("res://actors/Mat.tscn"),
@@ -14,23 +15,59 @@ export var current_player: String = "MAT"
 
 var characterChooseVisible: bool = false
 
+#func _init():
+	#hud = hud.instance()
+	#hud.name = "HUD"
+	#add_child(hud)
+	#if save_data.size() == 0:
+	#	_add_player()
+	#else:
+	#	print("load save: "+str(save_data))
+		
 func _init():
+	save_data = ProjectSettings.get_setting("global/save_data")
 	hud = hud.instance()
 	hud.name = "HUD"
 	add_child(hud)
-	_add_player()
-
 
 func _ready():
+	print("level ready")
+
+	if save_data.size() == 0:
+		_add_player()
+	else:
+		print("load save: "+str(save_data))
+		for node in save_data:
+			var new_node = null
+			var node_data = save_data[node]
+			if node_data.has("type"):
+				print("node type: "+node_data["type"])
+				if node_data["type"] == "player":
+					new_node = players[node_data["name"]].instance()
+					new_node.name = "Player"
+					new_node.health = node_data["health"]
+					new_node.set_position(node_data["position"])
+					new_node.equipment = node_data["equipment"]
+					new_node.backpack = node_data["backpack"]
+					new_node.climbing = node_data["climbing"]
+					add_child(new_node)
+					new_node.set_owner(self)
+					$PlayerSpawn.queue_free()
+	
+
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	get_tree().paused = false
 	set_health_bar() 
 	if $PlayerSpawn != null:
 		$Player.set_position($PlayerSpawn.position)
+		$PlayerSpawn.queue_free()
 
 func _add_player():
-	var player = players[current_player].instance()
-	player.name = "Player"
-	add_child(player)
+	if $Player == null:
+		var player = players[current_player].instance()
+		player.name = "Player"
+		add_child(player)
+		player.set_owner(self)
 
 
 func set_health_bar() -> void:

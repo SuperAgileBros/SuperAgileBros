@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/src/Actor.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Actor",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://actors/src/Enemy.gd"
@@ -104,6 +104,11 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[global]
+
+save_data={
+}
 
 [gui]
 

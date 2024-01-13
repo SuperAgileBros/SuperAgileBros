@@ -8,64 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "KinematicBody2D",
-"class": "Actor",
-"language": "GDScript",
-"path": "res://actors/src/Actor.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://actors/src/Enemy.gd"
-}, {
-"base": "Area2D",
-"class": "Hitbox",
-"language": "GDScript",
-"path": "res://actors/src/Hitbox.gd"
-}, {
-"base": "Area2D",
-"class": "Hurtbox",
-"language": "GDScript",
-"path": "res://actors/src/Hurtbox.gd"
-}, {
-"base": "RigidBody2D",
-"class": "Item",
-"language": "GDScript",
-"path": "res://actors/src/Item.gd"
-}, {
-"base": "HBoxContainer",
-"class": "KeyBinding",
-"language": "GDScript",
-"path": "res://menus/ui/Key_binding.gd"
-}, {
-"base": "Node2D",
-"class": "Level",
-"language": "GDScript",
-"path": "res://lvls/src/Level.gd"
-}, {
-"base": "Actor",
-"class": "Player",
-"language": "GDScript",
-"path": "res://actors/src/Player.gd"
-}, {
-"base": "Enemy",
-"class": "Slime",
-"language": "GDScript",
-"path": "res://actors/src/Slime1.gd"
-} ]
-_global_script_class_icons={
-"Actor": "",
-"Enemy": "",
-"Hitbox": "",
-"Hurtbox": "",
-"Item": "",
-"KeyBinding": "",
-"Level": "",
-"Player": "",
-"Slime": ""
-}
-
 [application]
 
 config/name="Super Agile Bros"
@@ -77,7 +19,6 @@ They can be used for different purpose:
 - Performance tests to evaluate performance of the 2D physics engine"
 run/main_scene="res://menus/Menu_main.tscn"
 config/project_settings_override="settings.cfg"
-config/icon=""
 
 [audio]
 

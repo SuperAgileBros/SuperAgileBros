@@ -22,19 +22,27 @@ signal update_hud
 
 var action_press_time = 0
 
+func get_save_data():
+	return {
+		"type": "player",
+		"name": player_name,
+		"position": global_position,
+		"health": health,
+		"backpack": backpack,
+		"equipment": equipment,
+		"climbing": climbing
+	}
+
 func _ready():
 	if connect("update_hud", get_parent().get_node("HUD"), "_on_update_hud"):
 		pass
 	else:
 		print("not connected")
+	print(backpack)
 	emit_signal("update_hud")
 
 func _process(delta):
 	var hud_needs_update = false
-	for i in range(backpack.size()):
-		if is_instance_valid(backpack[i]) == false:
-			backpack.remove(i)
-			hud_needs_update = true
 	for i in equipment.keys():
 		if is_instance_valid(equipment[i]) == false:
 			equipment[i] = null
@@ -71,9 +79,12 @@ func _attack():
 		
 func _throw():
 	if backpack.size() > 0:
-		var durability = backpack[0].item_durability
-		var projectile = backpack.pop_at(0).duplicate()
+		var durability = backpack[0]["item_durability"]
+		var level = backpack[0]["item_level"]
+		var projectile = load(backpack.pop_at(0)["item_path"]).instance()
 		projectile.item_durability = durability
+		projectile.item_level = level
+		
 		projectile.global_position = $Hand.global_position
 		projectile.set_rotation(0)
 		if face_right:
@@ -83,6 +94,7 @@ func _throw():
 			projectile.global_position.x -= 20
 			projectile.apply_central_impulse(Vector2(-1000, 0))
 		get_parent().add_child(projectile)
+		projectile.set_owner(get_parent())
 		emit_signal("update_hud")
 		
 func die():
@@ -174,8 +186,15 @@ func pickup_item(item):
 	if backpack.size() < 7:
 		item.pickup()
 		var durability = item.item_durability
-		var item_to_backpack = item.duplicate()
-		item_to_backpack.item_durability = durability
+		var name = item.item_name
+		var level = item.item_level
+		var item_to_backpack = {
+			"item_name": name,
+			"item_level": level,
+			"item_durability": durability,
+			"item_max_durability": item.item_max_durability,
+			"item_path": items[name]
+		}
 		backpack.append(item_to_backpack)
 		item.queue_free()
 		emit_signal("update_hud")

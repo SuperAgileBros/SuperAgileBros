@@ -10,7 +10,7 @@ export var gravity: = 2750.0
 var velocity: = Vector2.ZERO
 
 
-export var items_material_common = {
+export var items = {
 		"wooden stick": "res://actors/items/WoodenStick.tscn",
 		"stone": "res://actors/items/Stone.tscn",
 		"rope": "res://actors/items/Rope.tscn",
@@ -19,31 +19,25 @@ export var items_material_common = {
 		"weed" : "res://actors/items/Weed.tscn",
 		"flower": "res://actors/items/Flower.tscn",
 		"copper wire": "res://actors/items/CopperWire.tscn",
-		"iron pipe": "res://actors/items/IronPipe.tscn"
-}
-
-export var items_material_rare = {
+		"iron pipe": "res://actors/items/IronPipe.tscn",
 		"wooden plank": "res://actors/items/WoodenPlank.tscn",
 		"snowball": "res://actors/items/Snowball.tscn",
-		"amber": "res://actors/items/Amber.tscn"
-	}
-
-export var items_weapon_common = {
+		"amber": "res://actors/items/Amber.tscn",
 		"wooden sword": "res://actors/items/WoodenSword.tscn",
 		"bow": "res://actors/items/Bow.tscn",
 		"hammer": "res://actors/items/Hammer.tscn",
 		"iron hammer": "res://actors/items/IronHammer.tscn",
-		"iron club": "res://actors/items/IronClub.tscn"
-	}
-
-export var items_weapon_rare = {
+		"iron club": "res://actors/items/IronClub.tscn",
 		"ice staff": "res://actors/items/IceStaff.tscn",
-		"fire staff": "res://actors/items/FireStaff.tscn"
+		"fire staff": "res://actors/items/FireStaff.tscn",
+		"thic cloth":"res://actors/items/ThicCloth.tscn",
+		"wooden guard":"res://actors/items/WoodenGuard.tscn"
 	}
 
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_STOP
+	add_to_group("Persist")
 
 func spawn_item(item):
 	item.position = get_node("Hand").global_position

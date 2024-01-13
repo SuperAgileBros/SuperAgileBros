@@ -14,16 +14,16 @@ func list_saves():
 	save_files.list_dir_begin()
 	var save_file = save_files.get_next()
 	while save_file != "":
-		if save_file.ends_with(".res"):
+		if save_file.ends_with(".save"):
 			var button = Button.new()
-			button.text = save_file.replace(".res", "")
+			button.text = save_file.replace(".save", "")
 			button.connect("pressed", self, "_on_save_button_pressed", [save_file])
 			vbox.add_child(button)
 		save_file = save_files.get_next()
 
 func _on_save_button_pressed(save_file):
 	print("Save file selected: " + save_file)
-	$"../SaveName".text = save_file.replace(".res", "")
+	$"../SaveName".text = save_file.replace(".save", "")
 func update_saves():
 	for child in vbox.get_children():
 		child.queue_free()

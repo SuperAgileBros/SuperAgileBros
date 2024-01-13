@@ -9754,6 +9754,7 @@ position = Vector2( 9545, 1727 )
 
 [node name="AnimatedSprite2" parent="." instance=ExtResource( 25 )]
 position = Vector2( 5085, 2999 )
+frame = 6
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 26 )

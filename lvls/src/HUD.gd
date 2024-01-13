@@ -2,7 +2,8 @@ extends CanvasLayer
 
 
 func _ready():
-	_backpack_change()
+	#_backpack_change()
+	pass
 	
 func _backpack_change():
 	var player = get_parent().get_node("Player")
@@ -12,15 +13,16 @@ func _backpack_change():
 				i.queue_free()
 			
 	var i = 0
+	print(player.backpack)
 	for item in player.backpack:
 		var slot = $Backpack.get_node("slot_"+str(i))
 		var sprite = Sprite.new()
-		sprite = item.get_node("Sprite").duplicate()
+		sprite = load(item["item_path"]).instance().get_node("Sprite").duplicate()
 		sprite.position = Vector2(slot.rect_size.x/2,slot.rect_size.y/2)
 		var durability = $Durability.duplicate()
 
-		durability.max_value = item.item_max_durability
-		durability.value = item.item_durability
+		durability.max_value = item["item_max_durability"]
+		durability.value = item["item_durability"]
 		sprite.add_child(durability)
 		durability.show()
 		slot.add_child(sprite)

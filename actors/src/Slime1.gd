@@ -1,8 +1,6 @@
 extends Enemy
 class_name Slime
 
-var velocity = Vector2.ZERO
-var gravity = 800
 var max_speed = 200
 var jump_power = 200
 var jump_timer = 0

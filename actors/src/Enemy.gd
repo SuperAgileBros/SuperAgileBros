@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 class_name Enemy
 
 export var health = 10
@@ -12,3 +12,10 @@ func take_damage(damage):
 	if self.get_node("Hit") != null:
 		$Hit.play()
 	health = health - damage
+
+func get_save_data():
+	return {
+		"type":get_class(),
+		"position":get_global_position(),
+		"health":health
+	}
