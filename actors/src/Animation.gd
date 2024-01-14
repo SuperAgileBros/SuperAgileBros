@@ -24,6 +24,7 @@ func _on_Animation_animation_started(anim_name):
 			var damage = weapon.damage
 			
 			weapon = weapon.get_node("Sprite").duplicate()
+			weapon.get_node("Hitbox").damage = damage
 			weapon.rotation_degrees = rotation
 			hand.add_child(weapon)
 			

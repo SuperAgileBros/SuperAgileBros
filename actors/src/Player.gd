@@ -18,6 +18,7 @@ export var equipment = {
 	"accessory": null,
 	"consumable": null
 }
+
 signal update_hud
 
 var action_press_time = 0

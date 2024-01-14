@@ -57,4 +57,12 @@ func knockback(force, source_position):
 	velocity += direction * force
 
 func die():
+	get_parent().kill_count["bee"] += 1
+	print(get_parent().kill_count)
+	if get_parent().kill_count["bee"] == 10:
+		var boss = load("res://actors/EliteBee.tscn").instance()
+		boss.set_position(global_position)
+		get_parent().add_child(boss)
+		get_parent().kill_count["bee"] = 0
+		
 	queue_free()

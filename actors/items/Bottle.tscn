@@ -32,6 +32,7 @@ texture = SubResource( 2 )
 collision_layer = 16
 collision_mask = 32
 script = ExtResource( 3 )
+damage = 3
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Sprite/Hitbox"]
 scale = Vector2( 0.999999, 0.999999 )

@@ -8,10 +8,10 @@ var charge_speed = 300
 var walk_speed = 100
 
 var charge_pause_time = 2.0
-var walk_pause_time = 1.0
+var walk_pause_time = .5
 var damage = 2
 var distance
-var proximity_range = 300
+var proximity_range = 500
 var player
 var node
 
@@ -87,4 +87,11 @@ func knockback(force, source_position):
 	velocity += direction * force
 
 func die():
+	get_parent().kill_count["boar"] += 1
+	print(get_parent().kill_count)
+	if get_parent().kill_count["boar"] == 10:
+		var boss = load("res://actors/EliteBoar.tscn").instance()
+		boss.set_position(global_position)
+		get_parent().add_child(boss)
+		get_parent().kill_count["boar"] = 0
 	queue_free()

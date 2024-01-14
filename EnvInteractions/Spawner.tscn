@@ -47,10 +47,11 @@ animations = [ {
 radius = 883.263
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
+pause_mode = 1
 modulate = Color( 1, 1, 1, 0.647059 )
 position = Vector2( -8, -4 )
 frames = SubResource( 9 )
-frame = 5
+frame = 7
 playing = true
 
 [node name="Timer" type="Timer" parent="."]

@@ -72,5 +72,13 @@ func knockback(force, source_position):
 	velocity += direction * force
 
 func die():
+	get_parent().kill_count["slime"] += 1
+	print(get_parent().kill_count)
+	if get_parent().kill_count["slime"] == 10:
+		var boss = load("res://actors/EliteSlime1.tscn").instance()
+		boss.set_position(global_position)
+		get_parent().add_child(boss)
+		get_parent().kill_count["slime"] = 0
+	
 	queue_free()
 

@@ -12,6 +12,12 @@ export var players = {
 	"MIC":preload("res://actors/Mic.tscn")
 }
 export var current_player: String = "MAT"
+export var kill_count = {
+	"bee":0,
+	"boar":0,
+	"slime":0
+}
+export var throphy = [false,false,false]
 
 var characterChooseVisible: bool = false
 func get_save_data():
@@ -19,6 +25,8 @@ func get_save_data():
 	var actors := get_tree().get_nodes_in_group("Persist")
 	for a in actors:
 		new_save_data[get_path_to(a)] = a.get_save_data()
+	new_save_data["kill_count"] = kill_count
+	new_save_data["throphy"] = throphy
 	return new_save_data
 
 func _init():
@@ -61,6 +69,10 @@ func _ready():
 					new_node.health = node_data["health"]
 					new_node.set_position(node_data["position"])
 					add_child(new_node)
+			if node_data == "kill_count":
+				kill_count = save_data[node]
+			if node_data == "throphy":
+				throphy = save_data[node]
 
 	
 
@@ -97,7 +109,15 @@ func _process(_delta):
 			get_tree().paused = false
 			$HUD/Character_choose.hide()
 			characterChooseVisible = false
-			
+	var endgame = true
+	for value in throphy.values():
+		if value != true:
+			endgame = false
+			break
+	if endgame:
+		get_tree().paused = true
+		$HUD/Endgame.show()
+
 			
 ##	if Input.is_action_just_pressed("character_change"):   // Michał ne wywalaj jeszcze tego proszę :D
 	#	if get_tree().paused: 
