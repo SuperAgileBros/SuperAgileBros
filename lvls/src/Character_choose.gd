@@ -41,6 +41,8 @@ func _process(delta):
 func _characterSwitch(choosenCharacter):
 	$ChooseSound.play()
 	var instanceName = "Player"
+	if currentKinematicBody == null:
+		currentKinematicBody = get_parent().get_parent().get_node("Player")
 	var previousKinematicBody = currentKinematicBody
 	var currentindex = currentKinematicBody.get_index()
 	currentKinematicBody.name = "TEMP"
