@@ -69,10 +69,10 @@ func _ready():
 					new_node.health = node_data["health"]
 					new_node.set_position(node_data["position"])
 					add_child(new_node)
-			if node_data == "kill_count":
-				kill_count = save_data[node]
-			if node_data == "throphy":
-				throphy = save_data[node]
+			if node == "kill_count":
+				kill_count = node_data
+			if node == "throphy":
+				throphy = node_data
 
 	
 
