@@ -16,6 +16,7 @@ func take_damage(damage):
 
 func get_save_data():
 	return {
+		"type":"enemy",
 		"path":path,
 		"position":get_global_position(),
 		"health":health

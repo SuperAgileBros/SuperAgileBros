@@ -56,6 +56,12 @@ func _ready():
 				elif node_data["type"] == "lever":
 					get_node(node).state = node_data["state"]
 					get_node(node).emit_signal("LeverChanged")
+				elif node_data["type"] == "enemy":
+					new_node = load(node_data["path"]).instance()
+					new_node.health = node_data["health"]
+					new_node.set_position(node_data["position"])
+					add_child(new_node)
+
 	
 
 	pause_mode = Node.PAUSE_MODE_PROCESS
