@@ -2,7 +2,7 @@ extends Enemy
 class_name Slime
 
 var max_speed = 200
-var jump_power = 200
+var jump_power = 400
 var jump_timer = 0
 var jump_interval_min = 1.0
 var jump_interval_max = 2.0

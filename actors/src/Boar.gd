@@ -6,7 +6,7 @@ var state = States.IDLE
 
 var charge_speed = 300
 var walk_speed = 100
-var velocity = Vector2.ZERO
+
 var charge_pause_time = 2.0
 var walk_pause_time = 1.0
 var damage = 2
@@ -14,7 +14,7 @@ var distance
 var proximity_range = 300
 var player
 var node
-var gravity = 400
+
 var max_fall_speed = 500
 var move_direction = Vector2(1, 0)
 onready var sprite = $CollisionPolygon2D/Sprite

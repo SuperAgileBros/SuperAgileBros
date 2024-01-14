@@ -80,6 +80,7 @@ z_index = -1
 collision_layer = 2
 collision_mask = 14
 script = ExtResource( 2 )
+path = "res://actors/Boar.tscn"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 pause_mode = 1
