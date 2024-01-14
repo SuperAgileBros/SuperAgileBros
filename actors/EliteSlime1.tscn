@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://actors/src/EliteSlime1.gd" type="Script" id=1]
 [ext_resource path="res://actors/assets/blob minion walk.png" type="Texture" id=2]
@@ -72,6 +72,10 @@ tracks/0/keys = {
 radius = 24.0
 height = 56.0
 
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 32.0
+height = 62.0
+
 [node name="EliteSlime1" type="KinematicBody2D"]
 pause_mode = 1
 z_index = -1
@@ -126,6 +130,6 @@ script = ExtResource( 4 )
 
 [node name="ShapeOfHurt" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( -4, 23 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [connection signal="timeout" from="Hitbox/ShapeOfHit/Timer" to="Hitbox" method="_on_Timer_timeout"]
