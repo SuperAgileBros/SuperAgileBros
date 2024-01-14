@@ -12,7 +12,7 @@ var move_interval_min = 1.0
 var move_interval_max = 2.0
 var damage = 20
 var distance
-var proximity_range = 300
+var proximity_range = 1000
 var player
 var node
 var move_direction = 1  # Tu ustawiam chwilowo kierunek slime w trakcie jego wyszukiwnia gracza na scenie
@@ -50,6 +50,12 @@ func _process(delta):
 	#collision_process()	
 	# timer random skoku
 	jump_timer -= delta
+	if velocity.x < 0 and face_right == false:
+		face_right = true
+		scale.x = -2
+	if velocity.x > 0 and face_right == true:
+		face_right = false
+		scale.x = -2
 
 	# tutaj jesli wartosc timerajest 0 lub nizej to kazde mu skakac
 	if jump_timer <= 0:
@@ -57,6 +63,8 @@ func _process(delta):
 		jump()
 	# Funkcja poruszania
 	#velocity = move_and_slide(velocity, Vector2.UP)
+	if velocity.x > 0 and is_on_floor():
+		$CollisionPolygon2D/AnimationSlime.play("walk")
 	velocity = move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
 
 	if health <= 0:
@@ -73,5 +81,6 @@ func knockback(force, source_position):
 	velocity += direction * force
 
 func die():
+	get_parent().throphy[1] = true
 	queue_free()
 

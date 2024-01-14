@@ -12,6 +12,12 @@ export var players = {
 	"MIC":preload("res://actors/Mic.tscn")
 }
 export var current_player: String = "MAT"
+export var kill_count = {
+	"bee":0,
+	"boar":0,
+	"slime":0
+}
+export var throphy = [false,false,false]
 
 var characterChooseVisible: bool = false
 func get_save_data():

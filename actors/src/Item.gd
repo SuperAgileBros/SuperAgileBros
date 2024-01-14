@@ -37,7 +37,6 @@ func _ready():
 	$Sprite/Hitbox.damage = damage
 	name = item_name
 	item_durability = item_max_durability
-	add_to_group("Persist")
 	add_child(audio_player)
 
 func _process(delta):

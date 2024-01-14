@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://lvls/src/Character_choose.gd" type="Script" id=1]
 [ext_resource path="res://lvls/src/HUD.gd" type="Script" id=2]
@@ -13,6 +13,22 @@
 [ext_resource path="res://lvls/assets/equipment_background.tres" type="Texture" id=11]
 [ext_resource path="res://lvls/assets/backpack_background.tres" type="Texture" id=12]
 [ext_resource path="res://actors/assets/mat.png" type="Texture" id=13]
+[ext_resource path="res://actors/assets/eye monster idle.png" type="Texture" id=14]
+[ext_resource path="res://actors/assets/blob minion walk.png" type="Texture" id=15]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 10 )
+region = Rect2( 308, 86, 56, 4 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 10 )
+region = Rect2( 307, 6, 58, 4 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 10 )
+region = Rect2( 308, 118, 56, 4 )
 
 [sub_resource type="Theme" id=4]
 
@@ -93,25 +109,69 @@ tracks/0/keys = {
 "values": [ Vector2( 212, 323 ), Vector2( 212, 285 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 1, 0.913725, 0.576471, 0.584314 )
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-shadow_size = 5
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 320, 320 )
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 14 )
+region = Rect2( 320, 0, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 10 )
-region = Rect2( 308, 86, 56, 4 )
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 14 )
+region = Rect2( 640, 0, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 10 )
-region = Rect2( 307, 6, 58, 4 )
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 14 )
+region = Rect2( 960, 0, 320, 320 )
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 10 )
-region = Rect2( 308, 118, 56, 4 )
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 15 )
+region = Rect2( 80, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 15 )
+region = Rect2( 160, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 15 )
+region = Rect2( 240, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 15 )
+region = Rect2( 320, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 15 )
+region = Rect2( 400, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 15 )
+region = Rect2( 480, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 15 )
+region = Rect2( 560, 0, 80, 80 )
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 10 )
@@ -134,15 +194,27 @@ pause_mode = 2
 layer = 99
 script = ExtResource( 2 )
 
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_left = 184.0
+margin_top = 88.0
+margin_right = 504.0
+margin_bottom = 112.0
+theme = SubResource( 1 )
+value = 100.0
+texture_under = SubResource( 14 )
+texture_over = SubResource( 12 )
+texture_progress = SubResource( 13 )
+nine_patch_stretch = true
+
 [node name="Character_choose" type="Panel" parent="."]
 visible = false
 modulate = Color( 1, 0.976471, 0.976471, 1 )
 self_modulate = Color( 1, 1, 1, 0.788235 )
-margin_left = 616.0
-margin_top = 237.0
-margin_right = 1332.0
-margin_bottom = 855.0
-rect_scale = Vector2( 1.00137, 1 )
+margin_left = 576.0
+margin_top = 100.0
+margin_right = 1292.0
+margin_bottom = 718.0
+rect_scale = Vector2( 0.482728, 0.482728 )
 size_flags_stretch_ratio = 0.0
 theme = SubResource( 4 )
 custom_styles/panel = SubResource( 5 )
@@ -183,18 +255,6 @@ anims/highlight = SubResource( 9 )
 [node name="ChooseSound" type="AudioStreamPlayer" parent="Character_choose"]
 stream = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="Character_choose"]
-light_mask = 512
-margin_left = 153.0
-margin_top = -80.0
-margin_right = 310.774
-margin_bottom = -62.0
-rect_scale = Vector2( 2.77165, 4.37977 )
-custom_styles/normal = SubResource( 10 )
-text = "WYBIERZ BOHATERA"
-align = 1
-valign = 1
-
 [node name="ArrowRight" type="Sprite" parent="Character_choose"]
 self_modulate = Color( 1, 0.913725, 0.576471, 0.584314 )
 position = Vector2( 394.459, 304 )
@@ -226,18 +286,6 @@ scale = Vector2( 0.104692, 0.0839845 )
 texture = ExtResource( 9 )
 offset = Vector2( 0.000976563, 250.046 )
 
-[node name="HealthBar" type="TextureProgress" parent="."]
-margin_left = 184.0
-margin_top = 88.0
-margin_right = 504.0
-margin_bottom = 112.0
-theme = SubResource( 1 )
-value = 100.0
-texture_under = SubResource( 14 )
-texture_over = SubResource( 12 )
-texture_progress = SubResource( 13 )
-nine_patch_stretch = true
-
 [node name="Equipment" type="HBoxContainer" parent="."]
 margin_left = 184.0
 margin_top = 120.0
@@ -261,8 +309,30 @@ rect_pivot_offset = Vector2( 25, 25 )
 texture = ExtResource( 11 )
 expand = true
 
+[node name="Throphy" type="Control" parent="Equipment"]
+margin_left = 108.0
+margin_right = 108.0
+margin_bottom = 50.0
+
+[node name="EyeMonsterIdle" type="AnimatedSprite" parent="Equipment/Throphy"]
+modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 35, 24 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 23 )
+frame = 2
+playing = true
+
+[node name="BlobMinionWalk" type="AnimatedSprite" parent="Equipment/Throphy"]
+modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 100.5, -1 )
+scale = Vector2( 1.2125, 1.175 )
+frames = SubResource( 32 )
+frame = 2
+playing = true
+
 [node name="Accessory" type="TextureRect" parent="Equipment"]
 pause_mode = 2
+visible = false
 margin_left = 108.0
 margin_right = 158.0
 margin_bottom = 50.0
@@ -272,8 +342,9 @@ texture = ExtResource( 11 )
 expand = true
 
 [node name="Consumable" type="TextureRect" parent="Equipment"]
-margin_left = 162.0
-margin_right = 212.0
+visible = false
+margin_left = 108.0
+margin_right = 158.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
@@ -382,6 +453,5 @@ nine_patch_stretch = true
 
 [node name="Menu_pause" parent="." instance=ExtResource( 7 )]
 pause_mode = 0
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0

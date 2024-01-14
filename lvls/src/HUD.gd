@@ -26,7 +26,9 @@ func _backpack_change():
 		durability.show()
 		slot.add_child(sprite)
 		i += 1
-
+	for j in range(get_parent().throphy.size()):
+		if get_parent().throphy[j]:
+			$Equipment/Throphy.get_child(j).modulate = Color(1,1,1,1)
 	add_equipment(player.equipment["weapon"],$Equipment/Weapon)
 	add_equipment(player.equipment["armor"],$Equipment/Armor)
 	add_equipment(player.equipment["accessory"],$Equipment/Accessory)
@@ -49,6 +51,7 @@ func _portrait():
 	var player = get_parent().get_node("Player").get_node("CollisionPolygon2D").get_node("Sprite")
 	var portrait = $PortraitFrame/Portrait
 	portrait.texture.atlas = player.texture
+
 
 func _on_update_hud():
 	_backpack_change()
