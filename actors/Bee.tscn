@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://actors/src/Slime1.gd" type="Script" id=1]
+[ext_resource path="res://actors/src/Bee.gd" type="Script" id=1]
 [ext_resource path="res://lvls/assets/Mob/Small Bee/Fly/Fly-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://actors/src/Animation.gd" type="Script" id=3]
 [ext_resource path="res://actors/src/Hurtbox.gd" type="Script" id=4]
@@ -55,7 +55,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 20.8806
+radius = 56.5685
 
 [node name="Bee" type="KinematicBody2D"]
 pause_mode = 1

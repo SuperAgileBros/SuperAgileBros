@@ -174,8 +174,12 @@ func collision_process():
 
 func take_damage(damage):
 	if equipment["armor"] != null:
-		damage -= equipment["armor"].damage
-		equipment["armor"].work()
+		damage -= equipment["armor"]["damage"]
+		equipment["armor"]["item_durability"] -= equipment["armor"]["work_cost"]
+		if equipment["armor"]["item_durability"] <= 0:
+			equipment["armor"] = null
+		if damage < 0:
+			damage = 0
 	health -= damage
 	$Hit.play()
 	get_parent().set_health_bar()
@@ -193,6 +197,7 @@ func pickup_item(item):
 			"item_durability": item.item_durability,
 			"item_max_durability": item.item_max_durability,
 			"work_cost": item.work_cost,
+			"damage":item.damage,
 			"is_equipable": item.is_equipable,
 			"item_type": item.item_types[item.item_type],
 			"item_path": items[name]

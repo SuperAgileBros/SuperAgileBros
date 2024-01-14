@@ -2,10 +2,7 @@ extends Control
 
 
 func _on_save_game_pressed():
-	var save_data := {}
-	var actors := get_tree().get_nodes_in_group("Persist")
-	for a in actors:
-		save_data[get_path_to(a)] = a.get_save_data()
+	var save_data:Dictionary = get_tree().get_nodes_in_group("Level")[0].get_save_data()
 
 	var data_as_str = var2str(save_data)
 	#var data_as_str = var2str(get_tree())

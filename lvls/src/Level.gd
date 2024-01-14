@@ -14,16 +14,13 @@ export var players = {
 export var current_player: String = "MAT"
 
 var characterChooseVisible: bool = false
+func get_save_data():
+	var new_save_data := {}
+	var actors := get_tree().get_nodes_in_group("Persist")
+	for a in actors:
+		new_save_data[get_path_to(a)] = a.get_save_data()
+	return new_save_data
 
-#func _init():
-	#hud = hud.instance()
-	#hud.name = "HUD"
-	#add_child(hud)
-	#if save_data.size() == 0:
-	#	_add_player()
-	#else:
-	#	print("load save: "+str(save_data))
-		
 func _init():
 	save_data = ProjectSettings.get_setting("global/save_data")
 	hud = hud.instance()
@@ -56,6 +53,9 @@ func _ready():
 					new_node.set_position(node_data["position"])
 					new_node.set_owner(self)
 					$PlayerSpawn.queue_free()
+				elif node_data["type"] == "lever":
+					get_node(node).state = node_data["state"]
+					get_node(node).emit_signal("LeverChanged")
 	
 
 	pause_mode = Node.PAUSE_MODE_PROCESS

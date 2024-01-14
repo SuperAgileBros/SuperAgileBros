@@ -3,13 +3,17 @@ extends Area2D
 export var state = -1
 signal LeverChanged
 
-
-
 func LeverChanged():
 	emit_signal("LeverChanged")
 	
+func _init():
+	add_to_group("Persist")
+func get_save_data():
+	return {
+	"type":"lever",
+	"state":state
+}
 func _ready():
- 
 	if state == -1:
 	   $"Sprite/Lever-shaft".flip_h = false
 	else:

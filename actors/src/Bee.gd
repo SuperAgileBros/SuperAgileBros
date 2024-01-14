@@ -1,6 +1,6 @@
 extends Enemy
 
-var velocity = Vector2.ZERO
+
 var fly_speed = 150
 var hover_amplitude = 50
 var hover_frequency = 2

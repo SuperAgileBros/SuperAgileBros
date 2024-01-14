@@ -1,8 +1,7 @@
 extends Enemy
 class_name EliteSlime
 
-var velocity = Vector2.ZERO
-var gravity = 800
+
 var max_speed = 300
 var jump_power = 300
 var jump_timer = 0
