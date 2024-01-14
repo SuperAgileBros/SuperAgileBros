@@ -110,8 +110,8 @@ func _process(_delta):
 			$HUD/Character_choose.hide()
 			characterChooseVisible = false
 	var endgame = true
-	for value in throphy.values():
-		if value != true:
+	for v in range(throphy.size()):
+		if throphy[v] != true:
 			endgame = false
 			break
 	if endgame:

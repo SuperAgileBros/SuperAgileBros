@@ -10385,11 +10385,10 @@ shape = SubResource( 272 )
 
 [node name="slime_spawn" parent="." instance=ExtResource( 25 )]
 position = Vector2( 14233, 3032 )
-frame = 1
 
 [node name="boar_spawn" parent="." instance=ExtResource( 25 )]
 position = Vector2( 6596, 1709 )
-frame = 0
+frame = 6
 
 [node name="Timer" parent="boar_spawn" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10400,7 +10399,7 @@ shape = SubResource( 275 )
 
 [node name="boar_spawn8" parent="." instance=ExtResource( 25 )]
 position = Vector2( 10309, 975 )
-frame = 0
+frame = 6
 
 [node name="Timer" parent="boar_spawn8" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10411,6 +10410,7 @@ shape = SubResource( 275 )
 
 [node name="boar_spawn2" parent="." instance=ExtResource( 25 )]
 position = Vector2( 4820, 2139 )
+frame = 5
 
 [node name="Timer" parent="boar_spawn2" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10421,6 +10421,7 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn3" parent="." instance=ExtResource( 25 )]
 position = Vector2( 5096, 3005 )
+frame = 5
 
 [node name="Timer" parent="boar_spawn3" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10431,7 +10432,7 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn4" parent="." instance=ExtResource( 25 )]
 position = Vector2( 2133, 2643 )
-frame = 6
+frame = 4
 
 [node name="Timer" parent="boar_spawn4" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10442,7 +10443,7 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn5" parent="." instance=ExtResource( 25 )]
 position = Vector2( 4311, 2490 )
-frame = 5
+frame = 3
 
 [node name="Timer" parent="boar_spawn5" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10453,7 +10454,7 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn6" parent="." instance=ExtResource( 25 )]
 position = Vector2( 7435, 2658 )
-frame = 5
+frame = 3
 
 [node name="Timer" parent="boar_spawn6" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10464,7 +10465,7 @@ shape = SubResource( 277 )
 
 [node name="boar_spawn7" parent="." instance=ExtResource( 25 )]
 position = Vector2( 7032, 1884 )
-frame = 5
+frame = 3
 
 [node name="Timer" parent="boar_spawn7" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10475,23 +10476,22 @@ shape = SubResource( 278 )
 
 [node name="slime_spawn6" parent="." instance=ExtResource( 25 )]
 position = Vector2( 11783, 3084 )
-frame = 1
 
 [node name="slime_spawn3" parent="." instance=ExtResource( 25 )]
 position = Vector2( 12925, 2610 )
-frame = 1
 
 [node name="slime_spawn4" parent="." instance=ExtResource( 25 )]
 position = Vector2( 14118, 1825 )
-frame = 0
+frame = 6
 
 [node name="slime_spawn5" parent="." instance=ExtResource( 25 )]
 position = Vector2( 12735, 1933 )
+frame = 5
 
 [node name="slime_spawn2" parent="." instance=ExtResource( 25 )]
 position = Vector2( 11249, 1943 )
 rotation = 1.57079
-frame = 0
+frame = 6
 
 [node name="CollisionShape2D" parent="slime_spawn2/Area2D" index="0"]
 position = Vector2( 149.5, -324.997 )
