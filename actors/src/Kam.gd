@@ -20,7 +20,7 @@ func _on_ActionTimer_timeout():
 
 	if backpack.size() < 3:
 		return
-	var bench = [backpack[0].item_name,backpack[1].item_name,backpack[2].item_name]
+	var bench = [backpack[0]["item_name"],backpack[1]["item_name"],backpack[2]["item_name"]]
 	bench.sort()
 	var creation = ""
 	print(recepies_common.size())

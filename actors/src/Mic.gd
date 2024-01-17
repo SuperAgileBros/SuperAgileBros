@@ -12,7 +12,7 @@ func _on_ActionTimer_timeout():
 		print("to repair " + key)
 		var item  = equipment[key]
 		if item != null:
-			item.item_durability = item.item_max_durability
+			item["item_durability"] = item["item_max_durability"]
 			emit_signal("update_hud")
 	else:
 		print("no items equipped")

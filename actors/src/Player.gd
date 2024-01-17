@@ -14,9 +14,9 @@ var health = max_health
 export var backpack = []
 export var equipment = {
 	"weapon": null,
-	"armor": null,
-	"accessory": null,
-	"consumable": null
+	"armor": null
+	#"accessory": null,
+	#"consumable": null
 }
 
 signal update_hud
