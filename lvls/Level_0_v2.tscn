@@ -9483,9 +9483,6 @@ extents = Vector2( 759.313, 68 )
 [sub_resource type="RectangleShape2D" id=241]
 extents = Vector2( 1287.5, 161.375 )
 
-[sub_resource type="RectangleShape2D" id=243]
-extents = Vector2( 671.5, 101 )
-
 [sub_resource type="RectangleShape2D" id=239]
 extents = Vector2( 112, 76 )
 
@@ -9506,6 +9503,9 @@ extents = Vector2( 347.5, 83.5 )
 
 [sub_resource type="RectangleShape2D" id=242]
 extents = Vector2( 342, 62 )
+
+[sub_resource type="RectangleShape2D" id=243]
+extents = Vector2( 671.5, 101 )
 
 [sub_resource type="RectangleShape2D" id=244]
 extents = Vector2( 80.75, 38 )
@@ -10396,11 +10396,11 @@ shape = SubResource( 272 )
 
 [node name="slime_spawn" parent="." instance=ExtResource( 25 )]
 position = Vector2( 14233, 3032 )
-frame = 3
+frame = 1
 
 [node name="boar_spawn" parent="." instance=ExtResource( 25 )]
 position = Vector2( 6596, 1709 )
-frame = 2
+frame = 0
 
 [node name="Timer" parent="boar_spawn" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10411,7 +10411,7 @@ shape = SubResource( 275 )
 
 [node name="boar_spawn8" parent="." instance=ExtResource( 25 )]
 position = Vector2( 10309, 975 )
-frame = 2
+frame = 0
 
 [node name="Timer" parent="boar_spawn8" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10422,7 +10422,6 @@ shape = SubResource( 275 )
 
 [node name="boar_spawn2" parent="." instance=ExtResource( 25 )]
 position = Vector2( 4820, 2139 )
-frame = 1
 
 [node name="Timer" parent="boar_spawn2" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10433,7 +10432,6 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn3" parent="." instance=ExtResource( 25 )]
 position = Vector2( 5096, 3005 )
-frame = 1
 
 [node name="Timer" parent="boar_spawn3" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10444,7 +10442,7 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn4" parent="." instance=ExtResource( 25 )]
 position = Vector2( 2133, 2643 )
-frame = 0
+frame = 6
 
 [node name="Timer" parent="boar_spawn4" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10455,6 +10453,7 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn5" parent="." instance=ExtResource( 25 )]
 position = Vector2( 4311, 2490 )
+frame = 5
 
 [node name="Timer" parent="boar_spawn5" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10465,6 +10464,7 @@ shape = SubResource( 276 )
 
 [node name="boar_spawn6" parent="." instance=ExtResource( 25 )]
 position = Vector2( 7435, 2658 )
+frame = 5
 
 [node name="Timer" parent="boar_spawn6" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10475,6 +10475,7 @@ shape = SubResource( 277 )
 
 [node name="boar_spawn7" parent="." instance=ExtResource( 25 )]
 position = Vector2( 7032, 1884 )
+frame = 5
 
 [node name="Timer" parent="boar_spawn7" index="0"]
 monster_scene = "res://actors/Boar.tscn"
@@ -10485,24 +10486,23 @@ shape = SubResource( 278 )
 
 [node name="slime_spawn6" parent="." instance=ExtResource( 25 )]
 position = Vector2( 11783, 3084 )
-frame = 3
+frame = 1
 
 [node name="slime_spawn3" parent="." instance=ExtResource( 25 )]
 position = Vector2( 12925, 2610 )
-frame = 3
+frame = 1
 
 [node name="slime_spawn4" parent="." instance=ExtResource( 25 )]
 position = Vector2( 14118, 1825 )
-frame = 2
+frame = 0
 
 [node name="slime_spawn5" parent="." instance=ExtResource( 25 )]
 position = Vector2( 12735, 1933 )
-frame = 1
 
 [node name="slime_spawn2" parent="." instance=ExtResource( 25 )]
 position = Vector2( 11249, 1943 )
 rotation = 1.57079
-frame = 2
+frame = 0
 
 [node name="CollisionShape2D" parent="slime_spawn2/Area2D" index="0"]
 position = Vector2( 149.5, -324.997 )
@@ -10717,9 +10717,9 @@ shape = SubResource( 240 )
 position = Vector2( 53.5, 445.625 )
 shape = SubResource( 241 )
 
-[node name="Collision21" type="CollisionShape2D" parent="Wodzia1"]
+[node name="Collision21" type="CollisionPolygon2D" parent="Wodzia1"]
 position = Vector2( -2450, 1018 )
-shape = SubResource( 243 )
+polygon = PoolVector2Array( -668, 115, -666, -77, -481, -77, -481, -174, -454, -172, -458, -79, 680, -77, 682, 127 )
 
 [node name="Szlamix" type="Area2D" parent="."]
 position = Vector2( 14006, 2226 )
