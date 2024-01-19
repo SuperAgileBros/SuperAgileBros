@@ -6,6 +6,7 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
+about = "\"KAM to dobrze poinformowany gość, człowiek renesansu, złota rączka… gdyby tylko jeszcze mu się chciało, tak jak mu się nie chce…Kiedy jednak poziom motywacji osiągnie wystarczający pułap, nikt tak dobrze nie poskłada złomu w użyteczną całość. Twój wymarzony artefakt jest już w zasięgu ręki. Przygotuj zatem swoje plany, przyszykuj materiały i pozwól mistrzowi działać... tylko upewnij się raz na jakiś czas, że już zabrał się do pracy. \""
 
 [node name="ActionTimer" parent="." index="2"]
 wait_time = 0.001

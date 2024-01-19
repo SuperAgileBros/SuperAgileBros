@@ -6,6 +6,7 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+about = "\"MIC to realista i empiryk. Po co zawracać sobie głowę niezliczonymi hipotezami i dywagacjami nad ich potencjalnym wpływem i zastosowaniem, kiedy robota czeka, a czas nagli.Doświadczony serwisant wie co, jak i czy właściwie warto się za coś zabrać. Jeśli coś ci się popsuło lub niedomaga, ten człowiek  da temu drugie życie... Przeważnie...\"Żebyś sprawiedliwości stała się zadość wszystkie opisy są do wglądu."
 
 [node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PoolVector2Array( 6.07559, 27.9823, -5.86697, 27.9823, -11.8382, 5.95813, -2.88133, -14.0638, -9.84782, -19.0693, 2.09473, -28.0792, 5.08037, -28.0792 )

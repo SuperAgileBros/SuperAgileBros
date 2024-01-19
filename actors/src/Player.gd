@@ -8,6 +8,8 @@ onready var animation = $CollisionPolygon2D/Animation
 
 export var attack_in_progress = false
 
+export var about = ""
+
 const max_health = 100
 var health = max_health
 
