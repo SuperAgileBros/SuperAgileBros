@@ -23,6 +23,7 @@ func _ready():
 func _input(event):
 	if listening:
 		if _total_event_is_action(event):
+			print("This key is already used")
 			return
 		elif controller_id == -1 and event is InputEventKey:
 			InputMap.action_add_event(action_name, event)
@@ -39,7 +40,13 @@ func _input(event):
 
 func _total_event_is_action(event):
 	var actions = InputMap.get_actions()
+	var non_ui_actions = []
+
 	for action in actions:
+		if not action.begins_with("ui_"):
+			non_ui_actions.append(action)	
+
+	for action in non_ui_actions:
 		if InputMap.event_is_action(event, action):
 			if event is InputEventJoypadMotion:
 				return _check_JoyMotion(event, action)
@@ -61,10 +68,12 @@ func _on_AddButton_pressed():
 	var button = get_node("AddButton")
 	if _can_change_keys():
 		button.text = "Press a key..."
+		button.enabled_focus_mode = 0
 		_set_can_change_keys(false)
 		listening = true
 	elif listening:
 		button.text = "+"
+		
 		listening = false
 		_set_can_change_keys(true)
 
