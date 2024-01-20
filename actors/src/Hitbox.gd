@@ -5,6 +5,7 @@ export var damage = 0
 
 func _on_Hitbox_body_entered(body):
 	if owner is Item and owner.item_name == "bullet":
+		yield(get_tree().create_timer(1.0), "timeout")
 		queue_free()
 
 

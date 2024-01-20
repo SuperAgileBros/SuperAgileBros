@@ -41,3 +41,6 @@ func _on_ActionTimer_timeout():
 		for _i in range(3):
 			backpack.pop_front()
 		emit_signal("update_hud")
+		$Ability.play()
+	else:
+		$Fail.play()

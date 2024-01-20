@@ -69,11 +69,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 24.0
-height = 56.0
+radius = 64.0
+height = 64.0
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 32.0
+radius = 64.0
 height = 62.0
 
 [node name="EliteSlime1" type="KinematicBody2D"]
@@ -85,8 +85,7 @@ script = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 pause_mode = 1
-position = Vector2( 7, -80 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 7, -196 )
 polygon = PoolVector2Array( -30, 102, -38, 132, -28, 196, 16, 196, 22, 132, -2, 96 )
 
 [node name="Sprite" type="Sprite" parent="CollisionPolygon2D"]
@@ -114,7 +113,7 @@ scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 5 )
 
 [node name="ShapeOfHit" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 4, 48 )
+position = Vector2( -8, -41 )
 shape = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="Hitbox/ShapeOfHit"]
@@ -129,7 +128,7 @@ collision_mask = 16
 script = ExtResource( 4 )
 
 [node name="ShapeOfHurt" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2( -4, 23 )
+position = Vector2( -16, -66 )
 shape = SubResource( 5 )
 
 [connection signal="timeout" from="Hitbox/ShapeOfHit/Timer" to="Hitbox" method="_on_Timer_timeout"]

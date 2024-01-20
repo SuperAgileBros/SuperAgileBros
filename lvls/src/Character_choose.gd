@@ -63,6 +63,9 @@ func _characterSwitch(choosenCharacter):
 	currentKinematicBody.queue_free()
 	currentKinematicBody = choosenCharacter.instance()
 	currentKinematicBody.position = previousKinematicBody.position
+	currentKinematicBody.health = previousKinematicBody.health
+	currentKinematicBody.equipment = previousKinematicBody.equipment
+	currentKinematicBody.backpack = previousKinematicBody.backpack
 	#currentKinematicBody.z_index = -1
 	currentKinematicBody.name = instanceName
 	get_parent().get_parent().add_child(currentKinematicBody,true)

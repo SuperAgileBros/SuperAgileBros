@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://actors/src/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/assets/audio/death-bell.mp3" type="AudioStream" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://sound_effects/hit_taken.wav" type="AudioStream" id=9]
 [ext_resource path="res://sound_effects/charge_attack.wav" type="AudioStream" id=10]
 [ext_resource path="res://actors/src/Hurtbox.gd" type="Script" id=11]
+[ext_resource path="res://sound_effects/Minifantasy_Dungeon_SFX/09_human_charging_1_loop.wav" type="AudioStream" id=12]
+[ext_resource path="res://sound_effects/Minifantasy_Dungeon_SFX/27_sword_miss_3.wav" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Attack"
@@ -170,7 +172,8 @@ script = ExtResource( 11 )
 position = Vector2( 32, -29 )
 
 [node name="Charge" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 12 )
+volume_db = 2.0
 bus = "Game"
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="."]
@@ -195,6 +198,10 @@ bus = "Game"
 
 [node name="ItemPickUp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
+bus = "Game"
+
+[node name="Fail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
 bus = "Game"
 
 [connection signal="timeout" from="ActionTimer" to="." method="_on_ActionTimer_timeout"]

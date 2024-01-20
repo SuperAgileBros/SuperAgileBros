@@ -74,6 +74,8 @@ margin_bottom = 168.0
 text = "SAVE"
 
 [node name="Saves" parent="SaveMenu" instance=ExtResource( 3 )]
+margin_right = 439.0
+margin_bottom = 406.0
 
 [node name="Back" type="Button" parent="SaveMenu"]
 margin_left = 33.0
