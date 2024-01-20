@@ -16,5 +16,8 @@ polygon = PoolVector2Array( 5.10481, 27.9516, -6.89519, 27.9516, -10.8952, 5.951
 [node name="Sprite" parent="CollisionPolygon2D" index="0"]
 texture = ExtResource( 2 )
 
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PoolVector2Array( -27, -27, -25, 30, -38, 30, -42, 8, -36, -10, -45, -21, -36, -30 )
+
 [node name="Hand" parent="." index="5"]
 position = Vector2( 15, -29 )

@@ -82,5 +82,6 @@ func knockback(force, source_position):
 
 func die():
 	get_parent().throphy[1] = true
+	get_parent().get_node("HUD")._on_update_hud()
 	queue_free()
 

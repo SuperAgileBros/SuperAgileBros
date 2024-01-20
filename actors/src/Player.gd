@@ -8,15 +8,17 @@ onready var animation = $CollisionPolygon2D/Animation
 
 export var attack_in_progress = false
 
+export var about = ""
+
 const max_health = 100
-var health = max_health
+export var health = max_health
 
 export var backpack = []
 export var equipment = {
 	"weapon": null,
-	"armor": null,
-	"accessory": null,
-	"consumable": null
+	"armor": null
+	#"accessory": null,
+	#"consumable": null
 }
 
 signal update_hud
@@ -155,6 +157,7 @@ func player_animations():
 		animation.play("Jump")
 	elif health <= 0:
 		$Walk.stop()
+		get_node("Hurtbox").get_child(0).disabled = true
 		animation.play("Death",false)
 
 func collision_process():

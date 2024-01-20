@@ -6,6 +6,7 @@
 
 [node name="Player" instance=ExtResource( 3 )]
 script = ExtResource( 2 )
+about = "\"MAT to długowłosy otaku z miliardem pomysłów, które opuszczają jego czaszkę zanim zdąży stworzyć  z nich coś konkretnego.Nic dziwnego zatem, że kiedy trafił do [ISKEKAJA] przypadła mu zaszczytna rola głównego producenta złomu. Cóż… złomu, który ma potencjał, aby stać się czymś naprawdę przydatnym…  gdyby tylko istniał ktoś, kto potrafić zamienić go w coś użytecznego… do tego czasu zawsze może posłużyć jako broń improwizowana.\""
 
 [node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PoolVector2Array( 5.08037, 26.9812, -7.8574, 26.9812, -11.8382, 3.95593, -3.87654, -14.0638, -9.84782, -19.0693, -2.88133, -29.0803, 2.09473, -30.0814 )

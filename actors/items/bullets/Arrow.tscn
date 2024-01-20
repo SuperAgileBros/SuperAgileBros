@@ -10,7 +10,6 @@ region = Rect2( 61, 16, 27, 8 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.00001
-height = 20.0
 
 [sub_resource type="SegmentShape2D" id=4]
 b = Vector2( -0.000144005, 23 )

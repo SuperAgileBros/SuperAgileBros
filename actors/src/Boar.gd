@@ -23,6 +23,7 @@ onready var animation = $CollisionPolygon2D/AnimationBoar
 var charge_timer = 0.0
 var walk_timer = 0.0
 
+
 func _ready():
 	player = get_parent().get_node("Player")
 	animation.play("Walk")

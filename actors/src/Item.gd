@@ -34,7 +34,6 @@ func _init():
 func _ready():
 	z_index = 1
 	gravity_scale = 10
-	$Sprite/Hitbox.damage = damage
 	name = item_name
 	item_durability = item_max_durability
 	add_child(audio_player)

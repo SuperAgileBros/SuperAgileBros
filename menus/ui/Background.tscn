@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://actors/assets/mat.png" type="Texture" id=1]
 [ext_resource path="res://actors/assets/tom.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://actors/assets/kam.png" type="Texture" id=4]
 [ext_resource path="res://lvls/assets/Background/Background.png" type="Texture" id=5]
 [ext_resource path="res://shaders/crt.tres" type="Shader" id=6]
+[ext_resource path="res://logo.png" type="Texture" id=7]
 
 [sub_resource type="ShaderMaterial" id=21]
 shader = ExtResource( 6 )
@@ -201,3 +202,9 @@ margin_top = -540.0
 margin_right = 960.0
 margin_bottom = 540.0
 color = Color( 1, 0, 0, 1 )
+
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 448, 274 )
+rotation = -0.404825
+scale = Vector2( 1.99983, 2.89336 )
+texture = ExtResource( 7 )

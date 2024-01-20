@@ -6,6 +6,15 @@ func _init():
 
 func _ready():
 	randomize()
+func _process(delta):
+	if $ActionTimer.is_stopped():
+		$Charge.stop()
+	else:
+		if $Charge.is_playing():
+			pass
+		else:
+			$Charge.play()
+	
 
 func _on_ActionTimer_timeout():
 	$Ablility.play()

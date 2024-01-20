@@ -31,8 +31,8 @@ func _backpack_change():
 			$Equipment/Throphy.get_child(j).modulate = Color(1,1,1,1)
 	add_equipment(player.equipment["weapon"],$Equipment/Weapon)
 	add_equipment(player.equipment["armor"],$Equipment/Armor)
-	add_equipment(player.equipment["accessory"],$Equipment/Accessory)
-	add_equipment(player.equipment["consumable"],$Equipment/Consumable)
+	#add_equipment(player.equipment["accessory"],$Equipment/Accessory)
+	#add_equipment(player.equipment["consumable"],$Equipment/Consumable)
 	
 func add_equipment(var equipment,var equipment_slot):
 	print(equipment)
@@ -40,6 +40,8 @@ func add_equipment(var equipment,var equipment_slot):
 		item.queue_free()
 	if equipment != null:
 		var sprite = load(equipment["item_path"]).instance().get_node("Sprite").duplicate()
+		if equipment["item_level"] > 1:
+			sprite.frame = equipment["item_level"]-1
 		sprite.position = Vector2(equipment_slot.rect_size.x/2,equipment_slot.rect_size.y/2)
 		var durability = $Durability.duplicate()
 		sprite.add_child(durability)

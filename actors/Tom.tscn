@@ -21,9 +21,7 @@ tracks/0/keys = {
 
 [node name="Player" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-
-[node name="ActionTimer" parent="." index="2"]
-wait_time = 0.001
+about = "\"TOM to człowiek ciekawy świata, sumienny i pracowity. To właśnie ta ciekawość sprawia, że nieustannie stara się pójść o krok dalej, wypróbować coś nowego lub sprawdzić czy przypadkiem nie da się zrobić czegoś lepiej.Ten gość poświęci znacznie więcej, niż swój wolny czas, by wynieść zawartość twojego ekwipunku na wyższy poziom, czyniąc go bardziej użytecznym lub śmiercionośnym... Nie pozwól mu paść z przepracowania.\""
 
 [node name="CollisionPolygon2D" parent="." index="3"]
 polygon = PoolVector2Array( 6.07559, 27.9823, -5.86697, 27.9823, -10.843, 8.96142, -3.87654, -15.0649, -10.843, -19.0693, -4.87176, -27.0781, 5.08037, -27.0781 )
@@ -34,6 +32,9 @@ frame = 0
 
 [node name="Animation" parent="CollisionPolygon2D" index="1"]
 anims/Kick = SubResource( 1 )
+
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PoolVector2Array( -24, -19, -29, -30, -39, -30, -47, -19, -38, -11, -44, 11, -40, 31, -23, 31 )
 
 [node name="Hand" parent="." index="5"]
 position = Vector2( 13, -29 )

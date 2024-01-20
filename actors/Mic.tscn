@@ -14,5 +14,8 @@ polygon = PoolVector2Array( 6.07559, 27.9823, -5.86697, 27.9823, -11.8382, 5.958
 texture = ExtResource( 2 )
 frame = 1
 
-[node name="Hand" parent="." index="4"]
+[node name="CollisionPolygon2D" parent="Hurtbox" index="0"]
+polygon = PoolVector2Array( -24, -19, -27, -30, -39, -30, -43, -21, -43, 8, -37, 29, -26, 29, -24, -2 )
+
+[node name="Hand" parent="." index="5"]
 position = Vector2( 14, -29 )

@@ -15,15 +15,19 @@ func _on_Animation_animation_finished(anim_name):
 
 func _on_Animation_animation_started(anim_name):
 	if anim_name == "Attack":
-		var weapon = load(owner.equipment["weapon"]["item_path"]).instance()
+		var equiped_weapon = owner.equipment["weapon"]
+		var weapon = load(equiped_weapon["item_path"]).instance()
 		print("Attack is in progress")
 		if weapon != null:
 			print("weapon is " + weapon.item_name)
 			var hand = owner.get_node("Hand")
 			var rotation = weapon.equip_rotation
-			var damage = weapon.damage
+			var damage = equiped_weapon["damage"]
+			var level = equiped_weapon["item_level"]
 			
 			weapon = weapon.get_node("Sprite").duplicate()
+			if level > 1:
+				weapon.frame = level - 1
 			weapon.get_node("Hitbox").damage = damage
 			weapon.rotation_degrees = rotation
 			hand.add_child(weapon)

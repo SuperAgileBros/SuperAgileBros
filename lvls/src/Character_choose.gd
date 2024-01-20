@@ -10,8 +10,21 @@ var tomekCharacter : PackedScene = preload("res://actors/Tom.tscn")
 var matCharacter : PackedScene = preload("res://actors/Mat.tscn")
 var kamilCharacter : PackedScene = preload("res://actors/Kam.tscn")
 var michalCharacter : PackedScene = preload("res://actors/Mic.tscn")
-onready var currentKinematicBody = get_parent().get_parent().get_node("Player")
 
+var currentPlayerDictionary : Dictionary = {
+	"MAT" : matCharacter,
+	"TOM" : tomekCharacter,
+	"KAM" : kamilCharacter,
+	"MIC" : michalCharacter
+}
+
+onready var currentKinematicBody : Player = get_parent().get_parent().get_node("Player")
+
+func _ready():
+	if currentKinematicBody == null:
+		var cp = $"..".get_parent().current_player
+		$About.text = currentPlayerDictionary[cp].instance().about
+		
 func _process(delta): 
 	if  self.visible:	
 		if Input.is_action_just_pressed("character_jump") and $"Mateusz/AnimationPlayer".is_playing()==false:
@@ -40,6 +53,7 @@ func _process(delta):
 			
 func _characterSwitch(choosenCharacter):
 	$ChooseSound.play()
+
 	var instanceName = "Player"
 	if currentKinematicBody == null:
 		currentKinematicBody = get_parent().get_parent().get_node("Player")
@@ -49,10 +63,14 @@ func _characterSwitch(choosenCharacter):
 	currentKinematicBody.queue_free()
 	currentKinematicBody = choosenCharacter.instance()
 	currentKinematicBody.position = previousKinematicBody.position
-	currentKinematicBody.z_index = -1
+	currentKinematicBody.health = previousKinematicBody.health
+	currentKinematicBody.equipment = previousKinematicBody.equipment
+	currentKinematicBody.backpack = previousKinematicBody.backpack
+	#currentKinematicBody.z_index = -1
 	currentKinematicBody.name = instanceName
 	get_parent().get_parent().add_child(currentKinematicBody,true)
 	get_parent().get_parent().move_child(currentKinematicBody,currentindex)
+	$About.text = currentKinematicBody.about
 	
 
 
