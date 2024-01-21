@@ -100,9 +100,10 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/width=1280.0
-window/size/height=720.0
+window/size/width=1920.0
+window/size/height=1080.0
 window/size/borderless=true
+window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
